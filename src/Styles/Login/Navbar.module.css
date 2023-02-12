@@ -1,0 +1,142 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #f8f9fa;
+
+    z-index: 999;
+    top: 0px;
+    position: sticky;
+    padding: 0 20px;
+
+}
+
+.ButtonDrawer {
+    display: none;
+}
+
+.navLogo {
+    width: 25%;
+    text-align: start;
+}
+
+.navLogo img {
+    height: 4rem;
+
+}
+
+.buttons {
+    flex: 1;
+}
+
+.topButtons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-top: 0.5rem;
+}
+
+.bottomButtons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+
+}
+
+
+
+
+
+.reg:hover {
+    background-color: #700606 !important;
+}
+
+.ab fieldset {
+    border: none;
+}
+
+.eve fieldset {
+    border: none;
+}
+
+.mem fieldset {
+    border: none;
+}
+
+.opp fieldset {
+    border: none;
+}
+
+.tea fieldset {
+    border: none;
+}
+
+.logb {
+    color: #700606 !important;
+}
+
+.logb {
+    border-color: #700606 !important;
+}
+
+.searches fieldset {
+    border-bottom: 3px solid black !important;
+}
+
+.searches label {
+    color: #700606 !important;
+}
+
+
+
+
+@media screen and (min-width: 1025px) and (max-width: 1094px) {
+    .bottomButtons {
+        gap: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .bottomButtons {
+        display: none;
+    }
+
+    .topButtons {
+        display: none;
+    }
+
+    .ButtonDrawer {
+        display: block;
+        display: flex;
+        justify-content: end;
+
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+    .navLogo {
+        width: 18%;
+    }
+
+    .navLogo img {
+        height: 3rem;
+        padding-left: 5px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+
+    .navLogo {
+        width: 10%;
+    }
+
+    .navLogo img {
+        height: 2rem;
+        padding-left: 5px;
+    }
+}

@@ -1,0 +1,84 @@
+.login{
+    margin: 0;
+    padding: 0;
+}
+.loginBox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.loginBoxInfo{
+    width: 25rem;
+    height: auto;
+    margin: 2rem 0;
+    background-color: #f8f9fa;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.loginBoxInfo h1{
+    padding-top: 3rem;
+    color: #680D0D;
+    font-weight: 700;
+    font-size: 33px;
+
+}
+.loginData{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* align-items: center; */
+    text-align: start;
+
+    width: 15rem;
+    height: 19rem;
+    padding-top: 2rem;
+}
+.forgot{
+    width: 15rem;
+
+    /* padding-bottom: 2rem; */
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+
+
+.rollnum fieldset {
+    border-color:  #680D0D!important ;
+}
+.rollnum label{
+    color: #680D0D!important;
+}
+
+.pass fieldset {
+    border-color: #680D0D!important;
+
+}
+.pass label {
+    color: #680D0D!important;
+
+}
+.logb{
+    color: #700606!important;
+    border-color: #700606!important;
+
+}
+
+
+
+@media screen and (max-width: 260px) {
+    .forgot{
+        width: 5rem;
+
+    }
+}

@@ -1,0 +1,87 @@
+
+
+.regInput{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+
+}
+.forms{
+    padding: 1rem;
+    width: 55rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-evenly;
+    
+}
+.upload span{
+    margin-top: -5px;
+    color: #700606;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.submit {
+    background-color: #700606!important;
+}
+.regInput p span{
+    color: #700606;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.fields fieldset{
+    border-color: #700606!important;
+
+}
+
+.fields label{
+    color: #700606!important;
+}
+.gen{
+    margin-top: 1rem;
+    color: #700606;
+}
+.gend{
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+}
+.fields fieldset placeholder {
+    padding-bottom: 1rem!important;
+}
+.css-19b914d-MuiFormControl-root-MuiTextField-root{
+    width: -webkit-fill-available!important;
+
+}
+
+.show{
+    margin-top: 1.3rem;
+    color: #700606;
+
+}
+
+
+
+
+@media screen and (max-width: 820px) {
+    .forms{
+        display: flex;
+        width: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 260px) {
+    .forms{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

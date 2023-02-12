@@ -1,0 +1,58 @@
+import { TextField } from "@mui/material";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { tempIdActions } from "../../Store";
+import Styles from "../../Styles/Register/Demo.module.css";
+
+export const Inputs = (props) => {
+  const dispatch = useDispatch();
+
+  // const changeHandler = (e) => {
+  //   if (props.label === "fullName") {
+  //     dispatch(tempIdActions.EnteredName({ name: e.target.value }));
+  //   } else if (props.label === "email") {
+  //     dispatch(tempIdActions.EnteredEmail({ email: e.target.value }));
+  //   } else if (props.label === "phone-number") {
+  //     dispatch(tempIdActions.EnteredPhone({ Phone: e.target.value }));
+  //   } else if (props.label === "password") {
+  //     dispatch(tempIdActions.EnteredPass({ password: e.target.value }));
+  //   } else if (props.label === "confirmPassword") {
+  //     dispatch(
+  //       tempIdActions.EnteredConfirmPass({ ConfirmPass: e.target.value })
+  //     );
+  //   } else if (props.label === "pincode") {
+  //     dispatch(tempIdActions.EnteredPincode({ Pincode: e.target.value }));
+  //   }
+  // };
+  return (
+    <>
+      <TextField
+        name={props.name}
+        type={props.type}
+        id={props.label}
+        className={Styles.fields}
+        variant="outlined"
+        label={props.label}
+        size="small"
+        sx={{ width: "100%" }}
+        helperText={props.helperText}
+        value={
+          props.label === "fullName"
+            ? props.value
+            : props.label === "email"
+            ? props.value
+            : props.label === "phone-number"
+            ? props.value
+            : props.label === "password"
+            ? props.value
+            : props.label === "confirmPassword"
+            ? props.value
+            : props.label === "pincode"
+            ? props.value
+            : ""
+        }
+        onChange={props.onChange}
+      />
+    </>
+  );
+};
