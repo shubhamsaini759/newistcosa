@@ -26,45 +26,6 @@ import * as Yup from "yup";
 const Demo = () => {
   const tempId = useSelector((state) => state.tempIdReducer);
   const navigate = useNavigate();
-  const formik = useFormik({
-    initialValues: {
-      FullName: "",
-      Gender: "",
-      DateOfBirth: "",
-      PhoneNumber: "",
-      Email: "",
-      Password: "",
-      ConfirmPassword: "",
-      Pincode: "",
-    },
-    validationSchema: Yup.object({
-      FullName: Yup.string("string")
-        .min(3, "minimum 3 char required")
-        .required("required"),
-      Gender: Yup.string("string").required("required"),
-      DateOfBirth: Yup.string("string").required("required"),
-      CountryCode: Yup.string("string").required("required"),
-      PhoneNumber: Yup.number("only number allowes")
-        .min(1000000000, "please enter a valid num")
-        .max(9999999999, "please enter a valid num")
-        .required("required"),
-      Email: Yup.string()
-        .email("please enter valid email")
-        .required("required"),
-      Password: Yup.string("string")
-        .min(6, "max 6 char required")
-        .required("required"),
-      ConfirmPassword: Yup.string("string")
-        .min(6, "max 6 char required")
-        .required("required"),
-      Pincode: Yup.string(),
-    }),
-    onSubmit: (values) => {
-      const detail = { ...tempId, ...values };
-      console.log({ detail }, "submitted");
-    },
-  });
-
   const [batchList, setBatchList] = useState([]);
   const [rollnumList, setRollNumList] = useState([]);
   const [countryList, setCountryList] = useState([]);
@@ -72,6 +33,7 @@ const Demo = () => {
   const [cityList, setCityList] = useState([]);
 
   const [show, setShow] = useState(false);
+  const [ emailExist, setEmailExist ] = useState('');
 
   const handleCheck = () => {
     setShow((x) => !x);
@@ -100,7 +62,6 @@ const Demo = () => {
   }, []);
 
   useEffect(() => {
-    console.log(tempId, "reducer");
     axios
       .get(
         "http://13.233.130.119/Batch/GetRollNumberByBatch?batch=" +
@@ -133,15 +94,71 @@ const Demo = () => {
       });
   }, [tempId]);
 
+
+  const formik = useFormik({
+    initialValues: {
+      FullName: "",
+      Gender: "",
+      DateOfBirth: "",
+      PhoneNumber: "",
+      Email: "",
+      Password: "",
+      ConfirmPassword: "",
+      Pincode: "",
+    },
+    validationSchema: Yup.object({
+      FullName: Yup.string("string")
+        .min(3, "minimum 3 char required")
+        .max(15,'max 15 char allowed')
+        .required("required"),
+      Gender: Yup.string("string").required("required"),
+      DateOfBirth: Yup.string("string").required("required"),
+      CountryCode: Yup.string("string").optional("required"),
+      PhoneNumber: Yup.number("only number allowes")
+        .min(1000000000, "please enter a valid num")
+        .max(9999999999, "please enter a valid num")
+        .required("required"),
+      Email: Yup.string()
+        .max(50,'enter min 50 char')
+        .email("please enter valid email")
+        .required("required"),
+      Password: Yup.string("string")
+        .min(6, "max 6 char required")
+        .max(16,'max 16 char allowed')
+        .required("required"),
+      ConfirmPassword: Yup.string("string")
+        .min(6, "max 6 char required")
+        .max(16,'max 16 char allowed')
+        .required("required")
+        .oneOf([Yup.ref('Password'), null], 'Must match "password" field value'),
+      Pincode: Yup.string(),
+    }),
+    onSubmit: value => {
+      const detail = {...tempId,...value}
+      console.log(detail,'values')
+
+      axios 
+        .put('http://13.233.130.119/Account/PutRegister',detail)
+        .then((result)=>{console.log(result,'result')})
+        .catch((err)=>{
+          console.log(err.response.data.Message,'error')
+          setEmailExist(err.response.data.Message)
+        })
+    },
+  });
+  console.log(formik.errors)
+ 
+  
   return (
     <Container>
       <form onSubmit={formik.handleSubmit}>
         <div className={Styles.firstRow}>
-          <SelectAuto name="BatchID" label="batchId" Data={batchList} />
+          <SelectAuto name="BatchID" label="batchId" Data={batchList}  />
           <SelectAuto name="RollNumberID" label="rollno" Data={rollnumList} />
           <Inputs
             label="fullName"
             name="FullName"
+            type='text'
             onChange={formik.handleChange}
             value={formik.values.FullName}
             helperText={formik.touched.FullName && formik.errors.FullName}
@@ -149,34 +166,7 @@ const Demo = () => {
         </div>
 
         <div className={Styles.secondRow}>
-          <IconButton
-            className={Styles.upload}
-            color="primary"
-            aria-label="upload picture"
-            component="label"
-            onChange={(e) => console.log(e.target.files, "done")}
-          >
-            <Input hidden accept="image/*" type="file" />
-            <PhotoCamera sx={{ color: "#700606" }} />
-            <span className={Styles.texts}>upload image</span>
-          </IconButton>
-
-          <TextField
-            type="date"
-            className={Styles.fields}
-            size="small"
-            label="Date"
-            placeholder=""
-            InputLabelProps={{
-              shrink: true,
-            }}
-            name="DateOfBirth"
-            onChange={formik.handleChange}
-            value={formik.values.DateOfBirth}
-            helperText={formik.touched.DateOfBirth && formik.errors.DateOfBirth}
-          />
-
-          <FormControl className={Styles.gend}>
+        <FormControl className={Styles.gend} required>
             <FormLabel className={Styles.gen}>Gender</FormLabel>
             <RadioGroup
               name="Gender"
@@ -189,32 +179,50 @@ const Demo = () => {
               <FormControlLabel
                 control={<Radio size="small" />}
                 label="Male"
-                value="male"
+                value="Male"
               />
               <FormControlLabel
                 control={<Radio size="small" />}
                 label="Female"
-                value="female"
+                value="Female"
               />
             </RadioGroup>
           </FormControl>
+         
+
+          <TextField
+            type="date"
+            className={Styles.fields}
+            size="small"
+            label="Date Of Birth"
+            placeholder=""
+            InputLabelProps={{
+              shrink: true,
+            }}
+            name="DateOfBirth"
+            onChange={formik.handleChange}
+            value={formik.values.DateOfBirth}
+            helperText={formik.touched.DateOfBirth && formik.errors.DateOfBirth}
+          />
+
+          
         </div>
 
         <div className={Styles.thirdRow}>
           <Inputs
             label="email"
             name="Email"
-            type="text"
+            type='text'
             onChange={formik.handleChange}
             value={formik.values.Email}
-            helperText={formik.touched.Email && formik.errors.Email}
+            helperText={formik.touched.Email && formik.errors.Email || emailExist}
           />
           <div className={Styles.phn}>
             <CountryCode />
             <Inputs
               label="phone-number"
               name="PhoneNumber"
-              type="text"
+              type='text'
               onChange={formik.handleChange}
               value={formik.values.PhoneNumber}
               helperText={
@@ -232,16 +240,16 @@ const Demo = () => {
 
         <div className={Styles.fifthRow}>
           <Inputs
-            type="text"
             label="pincode"
             name="Pincode"
+            type='text'
             onChange={formik.handleChange}
             value={formik.values.Pincode}
           />
           <Inputs
             label="password"
             name="Password"
-            type={show ? "text" : "password"}
+            type={show?'text':'password'}
             onChange={formik.handleChange}
             value={formik.values.Password}
             helperText={formik.touched.Password && formik.errors.Password}
@@ -249,7 +257,7 @@ const Demo = () => {
           <Inputs
             label="confirmPassword"
             name="ConfirmPassword"
-            type={show ? "text" : "password"}
+            type={show?'text':'password'}
             onChange={formik.handleChange}
             value={formik.values.ConfirmPassword}
             helperText={
@@ -257,6 +265,20 @@ const Demo = () => {
             }
           />
         </div>
+
+        <div className={Styles.sixthRow}>
+            <IconButton
+              className={Styles.upload}
+              color="primary"
+              aria-label="upload picture"
+              component="label"
+              onChange={(e) => console.log(e.target.files, "done")}
+            >
+            <Input hidden accept="image/*" type="file" />
+            <PhotoCamera sx={{ color: "#700606" }} />
+            <span className={Styles.texts}>upload image</span>
+            </IconButton>
+          </div>
 
         <div className={Styles.show}>
           <Checkbox
@@ -270,7 +292,7 @@ const Demo = () => {
         <div className={Styles.submit}>
           <Button
             className={Styles.submitBtn}
-            type="submit"
+            type='submit'
             variant="contained"
             sx={{
               marginTop: "2rem",

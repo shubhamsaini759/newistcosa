@@ -71,9 +71,15 @@
 
 
 }
+.sixthRow{
+    display: flex;
+
+    margin-top: 1rem;
+    justify-content: flex-start;
+    gap: 1rem;
+}
 
 .submit {
-    margin-top: 1rem;
     padding-bottom: 2rem;
     display: flex;
     justify-content: flex-end;
@@ -112,8 +118,6 @@
 .upload {
     display: flex;
     justify-content: flex-start;
-    align-items: start;
-    flex: 1 !important;
     padding: 0px !important;
     align-self: flex-start;
 }

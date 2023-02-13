@@ -29,6 +29,7 @@ export const Inputs = (props) => {
       <TextField
         name={props.name}
         type={props.type}
+        error='true'
         id={props.label}
         className={Styles.fields}
         variant="outlined"

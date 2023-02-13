@@ -1,5 +1,4 @@
 import React from 'react'
-import RegInput from './RegInputs/RegInput'
 import Styles from '../../Styles/Register/Register.module.css'
 import Demo from './RegInputs/demo'
 

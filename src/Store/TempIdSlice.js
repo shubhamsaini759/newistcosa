@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 
 export const TempIdSlice = createSlice({
   name: "tempId",
@@ -30,6 +29,7 @@ export const TempIdSlice = createSlice({
     },
     RollId(state, action) {
       state.RollNumberID = action.payload.rollID;
+      state.UserID = action.payload.rollID;
     },
     EnteredName(state, action) {
       state.FullName = action.payload.name;
