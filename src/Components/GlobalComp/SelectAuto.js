@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -12,9 +12,9 @@ export default function SelectAuto(props) {
   const changeHandler = (event, value) => {
     console.log(value.CityId, "disspatch");
 
-    if (props.label === "BatchId") {
+    if (props.label === "Batch Id") {
       dispatch(tempIdActions.BatchId({ batchID: value.BatchID }));
-    } else if (props.label === "Rollno") {
+    } else if (props.label === "Roll No") {
       dispatch(tempIdActions.RollId({ rollID: value.RollNumberID }));
     } else if (props.label === "Country") {
       dispatch(tempIdActions.CountryId({ countryID: value.countryId }));
@@ -27,16 +27,15 @@ export default function SelectAuto(props) {
 
   return (
     <Autocomplete
-  
       className={Styles.fields}
       disablePortal
       id={props.label}
       size="small"
       options={props.Data}
       getOptionLabel={(option) => {
-        if (props.label === "BatchId") {
+        if (props.label === "Batch Id") {
           return option.BatchID.toString();
-        } else if (props.label === "R") {
+        } else if (props.label === "Roll No") {
           return option.RollNumberID.toString();
         } else if (props.label === "Country") {
           return option.countryName;
@@ -47,8 +46,14 @@ export default function SelectAuto(props) {
         }
       }}
       onChange={changeHandler}
-      sx={{ width: 300 }}
-      renderInput={(params) => <TextField required {...params} label={props.label} />}
+      renderInput={(params) => (
+        <TextField
+          required
+          {...params}
+          sx={{ "& .MuiInputBase-root": { maxWidth: 250, width: 250 } }}
+          label={props.label}
+        />
+      )}
     />
   );
 }

@@ -41,9 +41,9 @@ export default function CountryCode() {
       onChange={changeHandler}
       renderInput={(params) => (
         <TextField
-    required
+          required
           {...params}
-          label="code"
+          label="Country Code"
           inputProps={{
             ...params.inputProps,
             autoComplete: "new-password", // disable autocomplete and autofill

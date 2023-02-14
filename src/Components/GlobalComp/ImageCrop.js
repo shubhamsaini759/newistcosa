@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import ImgCrop from 'antd-img-crop';
-import { Upload } from 'antd';
+import React, { useState } from "react";
+import ImgCrop from "antd-img-crop";
+import { Upload } from "antd";
 
 const getSrcFromFile = (file) => {
   return new Promise((resolve) => {
@@ -39,10 +39,10 @@ const ImageCrop = () => {
         onChange={onChange}
         onPreview={onPreview}
       >
-        {fileList.length < 1 && '+ Upload'}
+        {fileList.length < 1 && "+ Upload"}
       </Upload>
     </ImgCrop>
   );
 };
 
-export default ImageCrop
+export default ImageCrop;

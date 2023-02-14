@@ -30,24 +30,23 @@ export const Inputs = (props) => {
         required={props.required}
         name={props.name}
         type={props.type}
-        error='true'
         id={props.label}
         className={Styles.fields}
         variant="outlined"
         label={props.label}
         size="small"
-        sx={{ width: "100%" }}
+        sx={{ "& .MuiInputBase-root": { width: 250, maxWidth: 250 } }}
         helperText={props.helperText}
         value={
           props.label === "FullName"
             ? props.value
             : props.label === "Email"
             ? props.value
-            : props.label === "Phone-number"
+            : props.label === "Phone Number"
             ? props.value
             : props.label === "Password"
             ? props.value
-            : props.label === "ConfirmPassword"
+            : props.label === "Confirm Password"
             ? props.value
             : props.label === "Pincode"
             ? props.value

@@ -1,16 +1,17 @@
-.login{
+.login {
     margin: 0;
     padding: 0;
 }
-.loginBox{
+
+.loginBox {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
-.loginBoxInfo{
+.loginBoxInfo {
     width: 25rem;
     height: auto;
     margin: 2rem 0;
@@ -20,16 +21,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
-.loginBoxInfo h1{
+
+.loginBoxInfo h1 {
     padding-top: 3rem;
     color: #680D0D;
     font-weight: 700;
     font-size: 33px;
 
 }
-.loginData{
+
+.loginData {
 
     display: flex;
     flex-direction: column;
@@ -41,43 +44,23 @@
     height: 19rem;
     padding-top: 2rem;
 }
-.forgot{
+
+.forgot {
     width: 15rem;
 
     /* padding-bottom: 2rem; */
     display: flex;
     justify-content: space-between;
-    
-}
-
-
-
-
-.rollnum fieldset {
-    border-color:  #680D0D!important ;
-}
-.rollnum label{
-    color: #680D0D!important;
-}
-
-.pass fieldset {
-    border-color: #680D0D!important;
 
 }
-.pass label {
-    color: #680D0D!important;
 
-}
-.logb{
-    color: #700606!important;
-    border-color: #700606!important;
 
-}
+
 
 
 
 @media screen and (max-width: 260px) {
-    .forgot{
+    .forgot {
         width: 5rem;
 
     }
