@@ -1,6 +1,6 @@
 import React from 'react'
 import Styles from '../../Styles/Register/Register.module.css'
-import Demo from './RegInputs/demo'
+import UserRegister from './RegInputs/UserRegister'
 
 const Register = () => {
   return (
@@ -12,7 +12,7 @@ const Register = () => {
       </div>
 
       <div className={Styles.alumniData} >
-        <Demo />
+        <UserRegister />
       </div>
     
 

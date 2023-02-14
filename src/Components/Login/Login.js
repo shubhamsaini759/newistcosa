@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loginActions } from '../../Store'
 import api from '../../Utils/api'
 import { useNavigate } from 'react-router-dom'
+import { Path } from '../../Utils/api/endPoints'
 
 const Login = () => {
 
@@ -31,7 +32,7 @@ const Login = () => {
       dispatch(loginActions.loginHandler())
 
         api
-        .post('/Account',data)
+        .post(Path.UserLogin,data)
         .then((result)=>{
             localStorage.setItem('accessToken', result.data[0].Token )
             console.log(result,'output')

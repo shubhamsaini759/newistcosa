@@ -1,12 +1,19 @@
 export const Path ={
+// RegisterPage
     // get
-        BatchList : 'http://192.168.29.113/ISTCOSA.API/Batch',
-        RollNumber : 'http://192.168.29.113/ISTCOSA.API/RollNumber/GetAllRollNoByBatch?BatchId=',
-        Country : 'http://192.168.29.113/ISTCOSA.API/CommonType/GetByCountry',
-        State : 'http://192.168.29.113/ISTCOSA.API/CommonType/GetByState?CountryId=',
-        City : 'http://192.168.29.113/ISTCOSA.API/CommonType/GetByCity?StateId=',
+        BatchList : 'Batch',
+        RollNumber : 'Batch/GetRollNumberByBatch?batch=',
+        Country : 'CommonType/GetByCountry',
+        State : 'CommonType/GetByState?CountryId=',
+        City : 'CommonType/GetByCity?StateId=',
 
     // put
-        Register : 'http://192.168.29.113/ISTCOSA.API/Account/PutRegister',
+        Register : 'Account/PutRegister',
+
+
+// Login Page
+
+    // post
+        UserLogin : 'Account'
 
 } 

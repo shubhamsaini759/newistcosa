@@ -27,6 +27,7 @@ export const Inputs = (props) => {
   return (
     <>
       <TextField
+        required={props.required}
         name={props.name}
         type={props.type}
         error='true'
@@ -38,17 +39,17 @@ export const Inputs = (props) => {
         sx={{ width: "100%" }}
         helperText={props.helperText}
         value={
-          props.label === "fullName"
+          props.label === "FullName"
             ? props.value
-            : props.label === "email"
+            : props.label === "Email"
             ? props.value
-            : props.label === "phone-number"
+            : props.label === "Phone-number"
             ? props.value
-            : props.label === "password"
+            : props.label === "Password"
             ? props.value
-            : props.label === "confirmPassword"
+            : props.label === "ConfirmPassword"
             ? props.value
-            : props.label === "pincode"
+            : props.label === "Pincode"
             ? props.value
             : ""
         }

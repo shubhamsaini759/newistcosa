@@ -22,8 +22,11 @@ import { useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { Container } from "react-bootstrap";
 import * as Yup from "yup";
+import ImageConvert from "../../GlobalComp/ImageConvert";
+import { Path } from "../../../Utils/api/endPoints";
+import api from "../../../Utils/api";
 
-const Demo = () => {
+const UserRegister = () => {
   const tempId = useSelector((state) => state.tempIdReducer);
   const navigate = useNavigate();
   const [batchList, setBatchList] = useState([]);
@@ -40,8 +43,8 @@ const Demo = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("http://13.233.130.119/Batch")
+    api
+      .get(Path.BatchList)
       .then((result) => {
         const data = Array.from(result.data);
         setBatchList(data);
@@ -50,8 +53,8 @@ const Demo = () => {
         console.log(err, "batchListError");
       });
 
-    axios
-      .get("http://13.233.130.119/CommonType/GetByCountry")
+    api
+      .get(Path.Country)
       .then((result) => {
         const data = Array.from(result.data);
         setCountryList(data);
@@ -62,10 +65,9 @@ const Demo = () => {
   }, []);
 
   useEffect(() => {
-    axios
+    api
       .get(
-        "http://13.233.130.119/Batch/GetRollNumberByBatch?batch=" +
-          tempId.BatchID
+        Path.RollNumber+tempId.BatchID
       )
       .then((result) => {
         const data = Array.from(result.data);
@@ -73,10 +75,9 @@ const Demo = () => {
         console.log(data);
       });
 
-    axios
+    api
       .get(
-        "http://13.233.130.119/CommonType/GetByState?CountryId=" +
-          tempId.CountryID
+        Path.State+tempId.CountryID
       )
       .then((result) => {
         const data = Array.from(result.data);
@@ -84,9 +85,9 @@ const Demo = () => {
         console.log(result);
       });
 
-    axios
+    api
       .get(
-        "http://13.233.130.119/CommonType/GetByCity?StateId=" + tempId.StateID
+        Path.City + tempId.StateID
       )
       .then((result) => {
         const data = Array.from(result.data);
@@ -137,8 +138,8 @@ const Demo = () => {
       const detail = {...tempId,...value}
       console.log(detail,'values')
 
-      axios 
-        .put('http://13.233.130.119/Account/PutRegister',detail)
+      api 
+        .put(Path.Register,detail)
         .then((result)=>{console.log(result,'result')})
         .catch((err)=>{
           console.log(err.response.data.Message,'error')
@@ -153,10 +154,11 @@ const Demo = () => {
     <Container>
       <form onSubmit={formik.handleSubmit}>
         <div className={Styles.firstRow}>
-          <SelectAuto name="BatchID" label="batchId" Data={batchList}  />
-          <SelectAuto name="RollNumberID" label="rollno" Data={rollnumList} />
+          <SelectAuto name="BatchID" label="BatchId" Data={batchList}  />
+          <SelectAuto name="RollNumberID" label="Rollno" Data={rollnumList} />
           <Inputs
-            label="fullName"
+            required='required'
+            label="FullName"
             name="FullName"
             type='text'
             onChange={formik.handleChange}
@@ -170,6 +172,7 @@ const Demo = () => {
             <FormLabel className={Styles.gen}>Gender</FormLabel>
             <RadioGroup
               name="Gender"
+              
               value={formik.values.Gender}
               className={Styles.GenLabel}
               row
@@ -180,6 +183,7 @@ const Demo = () => {
                 control={<Radio size="small" />}
                 label="Male"
                 value="Male"
+                checked
               />
               <FormControlLabel
                 control={<Radio size="small" />}
@@ -191,6 +195,7 @@ const Demo = () => {
          
 
           <TextField
+          required
             type="date"
             className={Styles.fields}
             size="small"
@@ -210,7 +215,8 @@ const Demo = () => {
 
         <div className={Styles.thirdRow}>
           <Inputs
-            label="email"
+          required='required'
+            label="Email"
             name="Email"
             type='text'
             onChange={formik.handleChange}
@@ -220,6 +226,7 @@ const Demo = () => {
           <div className={Styles.phn}>
             <CountryCode />
             <Inputs
+            required='required'
               label="phone-number"
               name="PhoneNumber"
               type='text'
@@ -233,21 +240,22 @@ const Demo = () => {
         </div>
 
         <div className={Styles.fourthRow}>
-          <SelectAuto label="country" Data={countryList} />
-          <SelectAuto label="state" Data={stateList} />
-          <SelectAuto label="city" Data={cityList} />
+          <SelectAuto label="Country" Data={countryList} />
+          <SelectAuto label="State" Data={stateList} />
+          <SelectAuto label="City" Data={cityList} />
         </div>
 
         <div className={Styles.fifthRow}>
           <Inputs
-            label="pincode"
+            label="Pincode"
             name="Pincode"
             type='text'
             onChange={formik.handleChange}
             value={formik.values.Pincode}
           />
           <Inputs
-            label="password"
+          required='required'
+            label="Password"
             name="Password"
             type={show?'text':'password'}
             onChange={formik.handleChange}
@@ -255,7 +263,8 @@ const Demo = () => {
             helperText={formik.touched.Password && formik.errors.Password}
           />
           <Inputs
-            label="confirmPassword"
+            required='required'
+            label="ConfirmPassword"
             name="ConfirmPassword"
             type={show?'text':'password'}
             onChange={formik.handleChange}
@@ -267,17 +276,7 @@ const Demo = () => {
         </div>
 
         <div className={Styles.sixthRow}>
-            <IconButton
-              className={Styles.upload}
-              color="primary"
-              aria-label="upload picture"
-              component="label"
-              onChange={(e) => console.log(e.target.files, "done")}
-            >
-            <Input hidden accept="image/*" type="file" />
-            <PhotoCamera sx={{ color: "#700606" }} />
-            <span className={Styles.texts}>upload image</span>
-            </IconButton>
+           <ImageConvert />
           </div>
 
         <div className={Styles.show}>
@@ -303,6 +302,7 @@ const Demo = () => {
             Submit
           </Button>
         </div>
+
         <div>
           <p>
             Have already an account?{" "}
@@ -319,4 +319,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default UserRegister;

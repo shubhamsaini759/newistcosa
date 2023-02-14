@@ -12,43 +12,43 @@ export default function SelectAuto(props) {
   const changeHandler = (event, value) => {
     console.log(value.CityId, "disspatch");
 
-    if (props.label === "batchId") {
+    if (props.label === "BatchId") {
       dispatch(tempIdActions.BatchId({ batchID: value.BatchID }));
-    } else if (props.label === "rollno") {
+    } else if (props.label === "Rollno") {
       dispatch(tempIdActions.RollId({ rollID: value.RollNumberID }));
-    } else if (props.label === "country") {
+    } else if (props.label === "Country") {
       dispatch(tempIdActions.CountryId({ countryID: value.countryId }));
-    } else if (props.label === "state") {
+    } else if (props.label === "State") {
       dispatch(tempIdActions.StateId({ stateID: value.StateId }));
-    } else if (props.label === "city") {
+    } else if (props.label === "City") {
       dispatch(tempIdActions.CityId({ cityID: value.CityId }));
     }
   };
 
   return (
     <Autocomplete
-      openText="helllo"
+  
       className={Styles.fields}
       disablePortal
       id={props.label}
       size="small"
       options={props.Data}
       getOptionLabel={(option) => {
-        if (props.label === "batchId") {
+        if (props.label === "BatchId") {
           return option.BatchID.toString();
-        } else if (props.label === "rollno") {
+        } else if (props.label === "R") {
           return option.RollNumberID.toString();
-        } else if (props.label === "country") {
+        } else if (props.label === "Country") {
           return option.countryName;
-        } else if (props.label === "state") {
+        } else if (props.label === "State") {
           return option.StateName;
-        } else if (props.label === "city") {
+        } else if (props.label === "City") {
           return option.CityName;
         }
       }}
       onChange={changeHandler}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label={props.label} />}
+      renderInput={(params) => <TextField required {...params} label={props.label} />}
     />
   );
 }
