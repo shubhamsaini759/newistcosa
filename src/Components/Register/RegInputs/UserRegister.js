@@ -25,6 +25,7 @@ import * as Yup from "yup";
 import ImageConvert from "../../GlobalComp/ImageConvert";
 import { Path } from "../../../Utils/api/endPoints";
 import api from "../../../Utils/api";
+import ImageCrop from "../../GlobalComp/ImageCrop";
 
 const UserRegister = () => {
   const tempId = useSelector((state) => state.tempIdReducer);
@@ -276,7 +277,7 @@ const UserRegister = () => {
         </div>
 
         <div className={Styles.sixthRow}>
-           <ImageConvert />
+            <ImageCrop />
           </div>
 
         <div className={Styles.show}>
