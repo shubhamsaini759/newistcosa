@@ -27,12 +27,11 @@ const getBase64 = (file) =>
 const Test = () => {
   const [fileList, setFileList] = useState([]);
 
-  const onChange = async ({ fileList: newFileList }) => {
+  const onChange =({ fileList: newFileList }) => {
     setFileList(newFileList);
-    
   };
 
-
+ 
   
 
   // const onPreview = async (file) => {
@@ -50,24 +49,27 @@ const Test = () => {
 
   const [previewImage, setPreviewImage] = useState("");
   
+ 
 
   const onPreview = async (file) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
+      console.log(file.preview,'url')
     }
 
-    setPreviewImage(file.url || (file.preview));
-   
+    // setPreviewImage(file.url || (file.preview));
+
   };
 
   return (
-    <ImgCrop grid rotate>
+    <ImgCrop grid rotate  >
       <Upload
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        action=""
         listType="picture-card"
         fileList={fileList}
         onChange={onChange}
         onPreview={onPreview}
+      
       >
         {fileList.length < 1 && '+ Upload'}
       </Upload>

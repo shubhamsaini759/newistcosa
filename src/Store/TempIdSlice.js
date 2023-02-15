@@ -61,7 +61,7 @@ export const TempIdSlice = createSlice({
     Dob(state, action) {
       state.DateOfBirth = action.payload.dob;
     },
-    Gender(state, action) {
+    GenderSelect(state, action) {
       state.Gender = action.payload.gen;
     },
     CountryCode(state, action) {

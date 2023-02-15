@@ -38,9 +38,9 @@ export const Inputs = (props) => {
         sx={{ "& .MuiInputBase-root": { width: 250, maxWidth: 250 } }}
         helperText={props.helperText}
         value={
-          props.label === "FullName"
+          props.label === "Full Name"
             ? props.value
-            : props.label === "Email"
+            : props.label === "E-mail"
             ? props.value
             : props.label === "Phone Number"
             ? props.value

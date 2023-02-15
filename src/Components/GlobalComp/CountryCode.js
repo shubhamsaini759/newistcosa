@@ -21,7 +21,7 @@ export default function CountryCode() {
       autoHighlight
       getOptionLabel={(option) => option.phone}
       size="small"
-      className={Styles.fields}
+      className={Styles.ccode}
       renderOption={(props, option) => (
         <Box
           component="li"

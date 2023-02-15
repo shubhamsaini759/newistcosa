@@ -16,6 +16,8 @@ export default function SelectAuto(props) {
       dispatch(tempIdActions.BatchId({ batchID: value.BatchID }));
     } else if (props.label === "Roll No") {
       dispatch(tempIdActions.RollId({ rollID: value.RollNumberID }));
+    }else if( props.label === 'Gender'){
+        dispatch(tempIdActions.GenderSelect({ gen : value }))
     } else if (props.label === "Country") {
       dispatch(tempIdActions.CountryId({ countryID: value.countryId }));
     } else if (props.label === "State") {
@@ -37,7 +39,9 @@ export default function SelectAuto(props) {
           return option.BatchID.toString();
         } else if (props.label === "Roll No") {
           return option.RollNumberID.toString();
-        } else if (props.label === "Country") {
+        }else if( props.label === 'Gender'){
+          return option
+        }else if (props.label === "Country") {
           return option.countryName;
         } else if (props.label === "State") {
           return option.StateName;
@@ -50,7 +54,9 @@ export default function SelectAuto(props) {
         <TextField
           required
           {...params}
-          sx={{ "& .MuiInputBase-root": { maxWidth: 250, width: 250 } }}
+          sx={{ 
+            width: 250
+           }}
           label={props.label}
         />
       )}

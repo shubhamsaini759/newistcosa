@@ -61,7 +61,6 @@
     justify-content: center;
     margin: 1rem 0rem;
     gap: 1rem;
-    align-items: center;
 }
 
 
@@ -143,12 +142,18 @@
     align-items: center;
 }
 
-
+.loginP{
+    display: flex;
+    justify-content: center;
+}
 
 
 /* selectAuto and Inputs globalComponent */
 
-.fields {
+.dob {
+    flex: auto;
+}
+.ccode{
     flex: 1;
 }
 
@@ -210,7 +215,7 @@
     }
 
 
-    .fields {
+    .dob {
         width: 100% !important;
     }
 

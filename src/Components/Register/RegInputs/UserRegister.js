@@ -33,6 +33,8 @@ const UserRegister = () => {
   const [stateList, setStateList] = useState([]);
   const [cityList, setCityList] = useState([]);
 
+  const [ genOption, setGenOption ] = useState(['Male','Female']);
+
   const [show, setShow] = useState(false);
   const [emailExist, setEmailExist] = useState("");
 
@@ -84,7 +86,6 @@ const UserRegister = () => {
   const formik = useFormik({
     initialValues: {
       FullName: "",
-      Gender: "",
       DateOfBirth: "",
       PhoneNumber: "",
       Email: "",
@@ -97,7 +98,6 @@ const UserRegister = () => {
         .min(3, "minimum 3 char required")
         .max(15, "max 15 char allowed")
         .required("required"),
-      Gender: Yup.string("string").required("required"),
       DateOfBirth: Yup.string("string").required("required"),
       CountryCode: Yup.string("string").optional("required"),
       PhoneNumber: Yup.number("only number allowes")
@@ -140,14 +140,14 @@ const UserRegister = () => {
   console.log(formik.errors);
 
   return (
-    <Container>
+    <div>
       <form onSubmit={formik.handleSubmit}>
         <div className={Styles.firstRow}>
           <SelectAuto name="BatchID" label="Batch Id" Data={batchList} />
           <SelectAuto name="RollNumberID" label="Roll No" Data={rollnumList} />
           <Inputs
             required="required"
-            label="FullName"
+            label="Full Name"
             name="FullName"
             type="text"
             onChange={formik.handleChange}
@@ -157,34 +157,13 @@ const UserRegister = () => {
         </div>
 
         <div className={Styles.secondRow}>
-          <FormControl className={Styles.gend} required>
-            <FormLabel className={Styles.gen}>Gender</FormLabel>
-            <RadioGroup
-              name="Gender"
-              value={formik.values.Gender}
-              className={Styles.GenLabel}
-              row
-              onChange={formik.handleChange}
-              // helperText={formik.touched.Gender && formik.errors.Gender}
-            >
-              <FormControlLabel
-                control={<Radio size="small" />}
-                label="Male"
-                value="Male"
-                checked
-              />
-              <FormControlLabel
-                control={<Radio size="small" />}
-                label="Female"
-                value="Female"
-              />
-            </RadioGroup>
-          </FormControl>
-
+          <SelectAuto  name="Gender" label = 'Gender' Data={genOption} />
+          
           <TextField
             required
+           
             type="date"
-            className={Styles.fields}
+            className={Styles.dob}
             size="small"
             label="Date Of Birth"
             placeholder=""
@@ -202,7 +181,7 @@ const UserRegister = () => {
         <div className={Styles.thirdRow}>
           <Inputs
             required="required"
-            label="Email"
+            label="E-mail"
             name="Email"
             type="text"
             onChange={formik.handleChange}
@@ -292,7 +271,7 @@ const UserRegister = () => {
           </Button>
         </div>
 
-        <div>
+        <div className={Styles.loginP}>
           <p>
             Have already an account?{" "}
             <span
@@ -304,7 +283,7 @@ const UserRegister = () => {
           </p>
         </div>
       </form>
-    </Container>
+    </div>
   );
 };
 
