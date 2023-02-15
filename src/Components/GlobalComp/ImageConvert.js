@@ -3,6 +3,7 @@ import { IconButton, Input } from "@mui/material";
 import React, { useState } from "react";
 
 import Styles from "../../Styles/Register/Demo.module.css";
+import ImageCrop from "./ImageCrop";
 
 const ImageConvert = () => {
   const [conImage, seConImage] = useState("");
@@ -11,7 +12,7 @@ const ImageConvert = () => {
     console.log(e.target.files[0]);
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
-    // console.log(base64)
+    console.log(base64)
     seConImage(base64);
   };
   const convertBase64 = (file) => {
@@ -31,6 +32,7 @@ const ImageConvert = () => {
 
   return (
     <>
+    <ImageCrop >
       <IconButton
         className={Styles.upload}
         color="primary"
@@ -43,6 +45,7 @@ const ImageConvert = () => {
         <span className={Styles.texts}>upload image</span>
       </IconButton>
       {conImage ? <img src={conImage} height="100px" /> : null}
+      </ImageCrop>
     </>
   );
 };
