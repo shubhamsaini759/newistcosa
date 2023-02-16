@@ -67,5 +67,11 @@ export const TempIdSlice = createSlice({
     CountryCode(state, action) {
       state.CountryCode = action.payload.countryCode;
     },
+    ImagePath(state,action){
+      state.ImagePath = action.payload.path
+    },
+    UploadImage(state,action){
+      state.UploadImage = action.payload.imageName
+    }
   },
 });

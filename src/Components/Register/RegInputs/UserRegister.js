@@ -101,8 +101,6 @@ const UserRegister = () => {
       DateOfBirth: Yup.string("string").required("required"),
       CountryCode: Yup.string("string").optional("required"),
       PhoneNumber: Yup.number("only number allowes")
-        .min(10, "please enter a valid num")
-        .max(10, "please enter a valid num")
         .required("required"),
       Email: Yup.string()
         .max(50, "enter min 50 char")
