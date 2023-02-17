@@ -1,0 +1,40 @@
+.StepThree{
+    display: flex;
+    flex-direction: column;
+    padding: 5% 0px ;
+
+}
+.firstRow{
+    display: flex;
+}
+.secondRow{
+    padding-top: 2%;
+    padding-left: 1.8%;
+    display: flex;
+}
+.thirdRow{
+    padding-top: 2%;
+    display: flex;
+    text-align: left;
+    padding-left: 1.8%;
+
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .StepThree{
+        text-align: left;
+    }
+    .firstRow{
+        flex-direction: column;
+        
+    }
+    .secondRow{
+        flex-direction: column;
+    }
+    .thirdRow{
+    flex-direction: column;
+    }
+
+}

@@ -1,0 +1,34 @@
+.StepTwo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5% 0px ;
+}
+.firstRow{
+    display: flex;
+}
+.secondRow{
+    padding-top: 2%;
+    display: flex;
+}
+.thirdRow{
+    padding-top: 2%;
+    display: flex;
+}
+.fourthRow{
+    padding-top: 2%;
+    padding-left: 2.3%;
+}
+
+@media screen and (max-width: 768px) {
+
+    .firstRow{
+        flex-direction: column;
+    }
+    .secondRow{
+        flex-direction: column;
+    }
+    .thirdRow{
+       flex-direction: column;
+    }
+}

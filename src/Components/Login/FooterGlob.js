@@ -15,7 +15,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 import { Tooltip } from "@mui/material";
 
-const Footer = () => {
+const FooterGlob = () => {
   return (
     <div className={Styles.footer}>
       <div className={Styles.upperLeft}>
@@ -80,4 +80,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterGlob;

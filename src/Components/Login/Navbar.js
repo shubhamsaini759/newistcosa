@@ -34,7 +34,7 @@ const Navbar = () => {
                 <Button variant='outlined' className={Styles.logb} size='small' sx={{ ml : 3 }} onClick={()=>navigate('/')} >Login</Button>
             </div>
             <div className={Styles.ButtonDrawer}>
-                    <Buttondraw />
+                    <Buttondraw anchor='top' />
             </div>
 
             <div className={Styles.bottomButtons} >

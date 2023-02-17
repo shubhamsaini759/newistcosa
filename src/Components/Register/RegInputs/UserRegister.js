@@ -23,6 +23,7 @@ import api from "../../../Utils/api";
 import ImageCrop from "../../GlobalComp/ImageCrop";
 import ImageConvert from "../../GlobalComp/ImageConvert";
 import Test from "../../GlobalComp/test";
+import { Cascader, InputNumber } from "antd";
 
 const UserRegister = () => {
   const tempId = useSelector((state) => state.tempIdReducer);
@@ -128,6 +129,7 @@ const UserRegister = () => {
         .put(Path.Register, detail)
         .then((result) => {
           console.log(result, "result");
+          // navigate('/')
         })
         .catch((err) => {
           console.log(err.response.data.Message, "error");
@@ -268,6 +270,7 @@ const UserRegister = () => {
             Submit
           </Button>
         </div>
+     
 
         <div className={Styles.loginP}>
           <p>

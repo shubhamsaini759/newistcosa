@@ -9,9 +9,9 @@ import { tempIdActions } from "../../Store";
 export default function SelectAuto(props) {
   const dispatch = useDispatch();
 
+  
   const changeHandler = (event, value) => {
     console.log(value.CityId, "disspatch");
-
     if (props.label === "Batch Id") {
       dispatch(tempIdActions.BatchId({ batchID: value.BatchID }));
     } else if (props.label === "Roll No") {
@@ -34,6 +34,9 @@ export default function SelectAuto(props) {
       id={props.label}
       size="small"
       options={props.Data}
+      isOptionEqualToValue={(option, newValue) => {
+        return option.id === newValue.id;
+    }}
       getOptionLabel={(option) => {
         if (props.label === "Batch Id") {
           return option.BatchID.toString();

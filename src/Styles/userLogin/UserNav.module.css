@@ -1,0 +1,9 @@
+.navRight{
+    align-items: center;
+    display: flex;
+    width: 27%;
+    justify-content: space-evenly;
+}
+.SideBar{
+    padding-right: 20px;
+}
