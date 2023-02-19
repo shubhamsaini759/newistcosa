@@ -1,0 +1,19 @@
+.Side {
+    display: flex;
+    flex: 1;
+}
+
+
+.sideBar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-right: 1px solid;
+
+}
+
+.holder {
+    flex: 1;
+    padding-bottom: 1rem;
+}

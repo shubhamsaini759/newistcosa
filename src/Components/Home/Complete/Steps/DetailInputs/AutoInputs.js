@@ -1,30 +1,64 @@
-import { AutoComplete, Input, Select } from 'antd'
-import React, { useState } from 'react'
+import { AutoComplete, Input, Select } from "antd";
+import React from "react";
 
+// const mockVal = (str, repeat = 1) => ({
+//   value: str.repeat(repeat),
+// });
 
 const AutoInputs = (props) => {
+  const renderTitle = (title) => <span>{title}</span>;
+  const renderItem = (title, id) => ({
+    value: title,
+    label: (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+        onClick={() => props.changeHandler({ id, value: title })}
+      >
+        {title}
+        {/* <span>{id}</span> */}
+      </div>
+    ),
+  });
 
-  console.log(props)
+  const options = [
+    {
+      label: renderTitle(props.label),
+      options: props.data?.map((item) => renderItem(item?.name, item?.id)),
+    },
+  ];
+
+  // const onSearch = (searchText) => {
+  //   renderItem(
+  //     !searchText
+  //       ? []
+  //       : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)]
+  //   );
+  // };
+
   return (
     <Input.Group compact>
       <Select
-      showArrow = {false}
-        defaultValue= {props.label}
+        showArrow={false}
+        defaultValue={props.label}
         style={{
           width: props.sw,
         }}
-      >
-        
-      </Select>
+      ></Select>
+
       <AutoComplete
         style={{
           width: props.aw,
         }}
         placeholder={props.label}
-      >
-      </AutoComplete>
+        options={options}
+        value={props.value.value}
+        // onSearch={onSearch}
+      ></AutoComplete>
     </Input.Group>
-  )
-}
+  );
+};
 
-export default AutoInputs
+export default AutoInputs;
