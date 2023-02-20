@@ -24,6 +24,7 @@ const DisableInputs = (props) => {
           width: props.aw,
         }}
         placeholder={props.label}
+        value={props.value}
       >
       </AutoComplete>
     </Input.Group>

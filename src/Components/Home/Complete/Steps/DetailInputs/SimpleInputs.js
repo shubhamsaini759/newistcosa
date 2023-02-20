@@ -7,7 +7,7 @@ const SimpleInputs = (props) => {
       <Select
         disabled
         showArrow={false}
-        defaultValue={props.label}
+        value={props.label}
         style={{
           width: props.sw,
         }}
@@ -17,6 +17,8 @@ const SimpleInputs = (props) => {
           width: props.aw,
         }}
         placeholder={props.label}
+        value={props.value}
+        onChange={(e)=>props.changeHandler(e.target.value)}
       ></AutoComplete>
     </Input.Group>
   );

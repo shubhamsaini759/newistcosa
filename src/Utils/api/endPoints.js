@@ -14,6 +14,14 @@ export const Path ={
 // Login Page
 
     // post
-        UserLogin : 'Account'
+        UserLogin : 'Account',
+
+
+// Dashboard
+    // get
+        userMoreDetail : 'User/EditUserMoreDetails/6301',
+
+    // put
+        userEditDetail : 'User/PutUserMoreDetails?userId=1009'
 
 } 

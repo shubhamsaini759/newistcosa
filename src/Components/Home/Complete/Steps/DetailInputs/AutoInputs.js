@@ -49,12 +49,13 @@ const AutoInputs = (props) => {
       ></Select>
 
       <AutoComplete
+      
         style={{
           width: props.aw,
         }}
         placeholder={props.label}
         options={options}
-        value={props.value.value}
+        value={props.value}
         // onSearch={onSearch}
       ></AutoComplete>
     </Input.Group>

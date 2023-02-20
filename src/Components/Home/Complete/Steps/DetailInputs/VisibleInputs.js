@@ -8,7 +8,7 @@ const VisibleInputs = (props) => {
       <Input.Password
         disabled={!!props.disabled}
         addonBefore={props.label}
-        placeholder="input password"
+        placeholder={props.label}
         visibilityToggle={{
           visible: passwordVisible,
           onVisibleChange: setPasswordVisible,
@@ -16,6 +16,7 @@ const VisibleInputs = (props) => {
         style={{
           width: "84%",
         }}
+        value={props.value}
       />
 
       <Switch
