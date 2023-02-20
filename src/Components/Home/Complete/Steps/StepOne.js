@@ -11,12 +11,14 @@ import { CountryList } from "../../../../Utils/api/CountryList";
 import { StateList } from "../../../../Utils/api/StateList";
 import { CityList } from "../../../../Utils/api/CityList";
 import { useLocation } from "react-router";
+import { useDispatch } from "react-redux";
+import { userEditActions } from "../../../../Store";
 
 const StepOne = () => {
-  const {state} = useLocation();
-  console.log(state.moreData,'location')
+  const { state } = useLocation();
+  console.log(state.moreData, "location");
 
-
+  const dispatch = useDispatch();
 
   const { data: countryData, isLoading: countryLoading } = useQuery(
     "CountryList",
@@ -37,21 +39,21 @@ const StepOne = () => {
 
   const [selected, setSelected] = useState({
     country: {
-      id: null,
-      value: "",
+      id: !!state?.moreData?.CountryID ? state?.moreData?.CountryID : null,
+      value: !!state?.moreData?.CountryName ? state?.moreData?.CountryName : "",
     },
     state: {
-      id: null,
-      value: "",
+      id: !!state?.moreData?.StateID ? state?.moreData?.StateID : null,
+      value: !!state?.moreData?.StateName ? state?.moreData?.StateName : "",
     },
     city: {
-      id: null,
-      value: "",
+      id: !!state?.moreData?.CityID ? state?.moreData?.CityID : null,
+      value: !!state?.moreData?.CityName ? state?.moreData?.CityName : "",
     },
   });
 
   const countryHandler = async (data) => {
-    await countryId(data? data.id : state.moreData.CountryID);
+    await countryId(data ? data.id : state.moreData.CountryID);
     setSelected({
       country: data,
       city: {
@@ -66,7 +68,7 @@ const StepOne = () => {
   };
 
   const stateHandler = async (data) => {
-    await stateId(data? data.id : state.moreData.StateID);
+    await stateId(data ? data.id : state.moreData.StateID);
     const countryDataClone = { ...selected.country };
     setSelected({
       country: countryDataClone,
@@ -86,6 +88,14 @@ const StepOne = () => {
       state: stateDataClone,
       city: data,
     });
+
+    dispatch(
+      userEditActions.countryCityState({
+        countryId: countryDataClone.id,
+        stateId: stateDataClone.id,
+        cityId: data.id,
+      })
+    );
   };
 
   return (
@@ -93,14 +103,41 @@ const StepOne = () => {
       {countryLoading || stateLoading || cityLoading ? <Loader /> : null}
       <div className={Styles.StepOne}>
         <div className={Styles.firstRow}>
-          <DisableInputs sw="24%" aw="66%" label="Batch Year" value={state.moreData.BatchID} />
-          <DisableInputs sw="24%" aw="66%" label="Roll Number" value={state.moreData.RollNumberID} />
-          <DisableInputs sw="24%" aw="66%" label="Full Name" value={state.moreData.FullName} />
+          <DisableInputs
+            sw="24%"
+            aw="66%"
+            label="Batch Year"
+            value={state.moreData.BatchID}
+          />
+          <DisableInputs
+            sw="24%"
+            aw="66%"
+            label="Roll Number"
+            value={state.moreData.RollNumberID}
+          />
+          <DisableInputs
+            sw="24%"
+            aw="66%"
+            label="Full Name"
+            value={state.moreData.FullName}
+          />
         </div>
         <div className={Styles.secondRow}>
-          <VisibleInputs sw="30%" aw="60%" disabled label="Email Address" value={state.moreData.Email} />
-          <VisibleInputs sw="30%" aw="60%" disabled label="Phone Number" value={state.moreData.PhoneNumber} />
-          <SimpleInputs sw="24%" aw="66%" label="Pincode" value=''  data='' />
+          <VisibleInputs
+            sw="30%"
+            aw="60%"
+            disabled
+            label="Email Address"
+            value={state.moreData.Email}
+          />
+          <VisibleInputs
+            sw="30%"
+            aw="60%"
+            disabled
+            label="Phone Number"
+            value={state.moreData.PhoneNumber}
+          />
+          <SimpleInputs sw="24%" aw="66%" label="Pincode" value="" data="" />
         </div>
         <div className={Styles.thirdRow}>
           <AutoInputs
@@ -108,7 +145,7 @@ const StepOne = () => {
             aw="66%"
             label="Country"
             data={countryData || [selected.country]}
-            value={selected.country.value || state.moreData.CountryName  }
+            value={selected.country.value}
             changeHandler={countryHandler}
           />
 
@@ -117,7 +154,7 @@ const StepOne = () => {
             aw="66%"
             label="State"
             data={stateData || [selected.state]}
-            value={selected.state.value || state.moreData.StateName}
+            value={selected.state.value}
             changeHandler={stateHandler}
           />
           <AutoInputs
@@ -125,7 +162,7 @@ const StepOne = () => {
             aw="66%"
             label="City"
             data={CityData || [selected.city]}
-            value={selected.city.value || state.moreData.CityName }
+            value={selected.city.value}
             changeHandler={cityHandler}
           />
         </div>
