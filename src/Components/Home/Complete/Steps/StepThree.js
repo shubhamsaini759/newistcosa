@@ -39,14 +39,35 @@ const StepThree = () => {
       </div>
       <div className={Styles.thirdRow}>
         <AutoInputs
-          sw="8%"
-          aw="22%"
+        sw="29%" aw="60%"
           label="Marital status"
           data={MaritalList}
           changeHandler={maritalHandler}
           value={selectedMarital}
         />
-      </div>
+          { 
+            selectedMarital === 'Married'? (
+            <>
+              <SimpleInputs sw="37%" aw="50%" label="Spaouse Name"  />
+              <StartDateInput label='Anniversary Date' sw="34%" aw="58%" />
+            </>
+            )
+            :
+            ""
+          }
+        
+        </div>
+        <div className={Styles.fourthRow}>
+        { 
+          selectedMarital === 'Married'? 
+          (
+              <TextAreaInput label="Family Details" tw="40%" sw="30%" />
+          ) 
+          : 
+          ""
+        }
+        </div>
+      
     </div>
   );
 };
