@@ -4,14 +4,14 @@ import Steppers from "./Steppers";
 import NavButon from "../../Login/Navbar/NavButon";
 
 // import Styles from "../../../Styles/userLogin/Complete.module.css";
-import Styles from '../../../Styles/userLogin/Sidebar.module.css'
+import Styles from "../../../Styles/userLogin/Sidebar.module.css";
 import FooterGlob from "../../Login/FooterGlob";
 import Sidebuton from "../SideBar/SideButtons/SideButon";
-
+import Dashboard from "../../Dashboard/Dashboard.js";
 const Complete = () => {
   return (
     <>
-      <UserNav />
+      {/* <UserNav />
 
       <div className={Styles.Side}>
         <div className={Styles.sideBar}>
@@ -21,7 +21,8 @@ const Complete = () => {
           <Steppers />
         </div>
       </div>
-      <FooterGlob />
+      <FooterGlob /> */}
+      <Dashboard />
     </>
   );
 };
