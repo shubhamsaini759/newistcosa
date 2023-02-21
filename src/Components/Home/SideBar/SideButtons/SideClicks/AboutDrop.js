@@ -1,13 +1,14 @@
 import React from "react";
 import { MenuItem, Select } from "@mui/material";
-import Styles from "../../../../Styles/Login/Navbar.module.css";
+import Styles from '../../../../../Styles/userLogin/Sidebar.module.css';
+import { NavLink } from "react-router-dom";
 
 const AboutDrop = () => {
   return (
     <>
       <Select className={Styles.ab} value="" size="small" displayEmpty>
         <MenuItem value="">
-         About
+          <NavLink to="">About</NavLink>
         </MenuItem>
         <MenuItem value={1}>Memorandum</MenuItem>
         <MenuItem value={2}>History</MenuItem>

@@ -19,6 +19,9 @@ const TextAreaInput = (props) => {
     <TextArea style={{
         width: props.tw,
      }} 
+
+     value={props.value}
+     onChange={(e)=>props.changeHandler(e.target.value)}
      />
     </Space.Compact>
   )

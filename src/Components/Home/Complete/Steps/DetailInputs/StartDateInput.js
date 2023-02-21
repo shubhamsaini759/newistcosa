@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DatePicker, Select, Space } from 'antd';
 
 
 const StartDateInput = (props) => {
+
+  const onChange = (date, dateString) => {
+    console.log(dateString)  
+  // props.changeHandler(dateString)
+  };
   return (
     <Space.Compact block>
         <Select
@@ -16,7 +21,10 @@ const StartDateInput = (props) => {
 
        <DatePicker style={{
         width: props.aw,
-        }} />
+        }}
+        value={props.value}
+        onChange={onChange }
+        />
     </Space.Compact>
   )
 }

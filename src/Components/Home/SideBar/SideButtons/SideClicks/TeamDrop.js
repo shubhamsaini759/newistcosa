@@ -1,6 +1,7 @@
 import React from "react";
 import { MenuItem, Select } from "@mui/material";
-import Styles from "../../../../Styles/Login/Navbar.module.css";
+import Styles from '../../../../../Styles/userLogin/Sidebar.module.css';
+
 import { NavLink } from "react-router-dom";
 
 const TeamDrop = () => {
@@ -14,7 +15,7 @@ const TeamDrop = () => {
         sx={{ border: "transparent" }}
       >
         <MenuItem value="">
-          Teams
+          <NavLink to="">Teams</NavLink>
         </MenuItem>
         <MenuItem value={1}>Executive Commutiee</MenuItem>
         <MenuItem value={2}>Coordinators</MenuItem>

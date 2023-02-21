@@ -1,26 +1,26 @@
 import React from "react";
 import { MenuItem, Select } from "@mui/material";
-import Styles from "../../../../Styles/Login/Navbar.module.css";
+import Styles from '../../../../../Styles/userLogin/Sidebar.module.css';
+
 import { NavLink } from "react-router-dom";
 
-const MemberDrop = () => {
+const OpportunityDrop = () => {
   return (
     <>
       <Select
         value=""
-        className={Styles.mem}
+        className={Styles.opp}
         size="small"
         displayEmpty
         sx={{ border: "transparent" }}
       >
         <MenuItem value="">
-         MemberShip
+          <NavLink to="">Opportunity</NavLink>
         </MenuItem>
-        <MenuItem value={1}>Lifetime Membership</MenuItem>
-        <MenuItem value={2}>Contributions</MenuItem>
+        <MenuItem value={1}>Career</MenuItem>
       </Select>
     </>
   );
 };
 
-export default MemberDrop;
+export default OpportunityDrop;

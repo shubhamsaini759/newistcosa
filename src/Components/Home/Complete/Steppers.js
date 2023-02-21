@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Button, message, Steps, theme } from "antd";
 import { useState } from "react";
@@ -11,6 +11,8 @@ import StepFour from "./Steps/StepFour";
 import { useMutation } from "react-query";
 import { userEditDetail } from "../../../Utils/api/UserMoreDetail/UserEditDetail";
 import api from "../../../Utils/api";
+import { useLocation } from "react-router-dom";
+import { userEditActions } from "../../../Store";
 
 const steps = [
   {
@@ -33,11 +35,24 @@ const steps = [
 
 const Steppers = () => {
   const EditedData = useSelector((state) => state.UserEditReducer);
+  const dispatch = useDispatch();
+  const { state } = useLocation();
+
+  console.log(EditedData, "edited");
+  console.log(state.moreData.RollNumberID, "location");
+
+  const [batchId,  setbatchId ] = useState(state.moreData.BatchID)
+  const [ rollNumberId,setRollNumberId] = useState(state.moreData.RollNumberID)
 
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
-  const next = () => {
+
+  const next = async() => {
+
     setCurrent(current + 1);
+    // const apiResponse = await mutateAsync(EditedData);
+    // console.log({ apiResponse });
+    console.log(EditedData,'next click')
   };
   const prev = () => {
     setCurrent(current - 1);
@@ -56,6 +71,7 @@ const Steppers = () => {
     marginTop: 16,
   };
 
+
   const { data, isLoading, mutateAsync } = useMutation(
     "userEditDetail",
     userEditDetail
@@ -64,11 +80,18 @@ const Steppers = () => {
   const [details, setDetails] = useState(null);
 
   const DoneHandler = async () => {
+
+    dispatch(userEditActions.batch({ batch : batchId }))
+    dispatch(userEditActions.roll({ roll : rollNumberId }))
+
     message.success("Processing complete!");
-    console.log(details, "detailsssssssss");
+    // console.log(details, "detailsssssssss");
+    console.log(EditedData,'done click')
+
 
     const apiResponse = await mutateAsync(EditedData);
     console.log({ apiResponse });
+    setDetails(apiResponse)
   };
 
   return (

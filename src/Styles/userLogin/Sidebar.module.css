@@ -1,0 +1,35 @@
+.Side {
+    display: flex;
+    flex: 1;
+}
+
+
+.sideBar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-right: 1px solid;
+
+}
+
+.holder {
+    flex: 1;
+    padding-bottom: 1rem;
+}
+
+.button a {
+    width: 100%;
+
+    text-decoration: none;
+}
+
+
+.active {
+    width: 100%;
+    background: brown;
+    border-radius: 0;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    color: white;
+}

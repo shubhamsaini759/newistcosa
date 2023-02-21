@@ -1,7 +1,6 @@
 import React from "react";
 import { MenuItem, Select } from "@mui/material";
 import Styles from "../../../../Styles/Login/Navbar.module.css";
-import { NavLink } from "react-router-dom";
 
 const OpportunityDrop = () => {
   return (
@@ -14,7 +13,7 @@ const OpportunityDrop = () => {
         sx={{ border: "transparent" }}
       >
         <MenuItem value="">
-          <NavLink to="">Opportunity</NavLink>
+        Opportunity
         </MenuItem>
         <MenuItem value={1}>Career</MenuItem>
       </Select>

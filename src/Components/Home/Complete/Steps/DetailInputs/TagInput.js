@@ -1,8 +1,5 @@
 import { Select, Space } from 'antd';
 
-const handleChange = (value) => {
-  console.log(`selected ${value}`);
-};
 
 
 const TagInput = (props) => (
@@ -22,7 +19,8 @@ const TagInput = (props) => (
             width: props.nsw,
             }}
             placeholder={props.label}
-            onChange={handleChange}
+            value={props.value}
+            onChange={(e)=>props.changeHandler(e)}
         />
   </Space.Compact>
 );

@@ -18,7 +18,7 @@ const SimpleInputs = (props) => {
         }}
         placeholder={props.label}
         value={props.value}
-        onChange={(e)=>props.changeHandler(e.target.value)}
+        onChange={(e)=>props.changeHandler(e)}
       ></AutoComplete>
     </Input.Group>
   );

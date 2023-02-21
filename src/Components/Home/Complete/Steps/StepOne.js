@@ -16,7 +16,8 @@ import { userEditActions } from "../../../../Store";
 
 const StepOne = () => {
   const { state } = useLocation();
-  console.log(state.moreData, "location");
+ 
+
 
   const dispatch = useDispatch();
 
@@ -24,6 +25,7 @@ const StepOne = () => {
     "CountryList",
     CountryList
   );
+  
 
   const {
     data: stateData,
@@ -51,7 +53,7 @@ const StepOne = () => {
       value: !!state?.moreData?.CityName ? state?.moreData?.CityName : "",
     },
   });
-
+  const [ pin, setPin ] = useState('')
   const countryHandler = async (data) => {
     await countryId(data ? data.id : state.moreData.CountryID);
     setSelected({
@@ -94,9 +96,15 @@ const StepOne = () => {
         countryId: countryDataClone.id,
         stateId: stateDataClone.id,
         cityId: data.id,
+       
       })
     );
   };
+
+  const PinHandler = (data) =>{
+    setPin(data)
+    dispatch( userEditActions.PinHandel({pin : data}) )
+  }
 
   return (
     <>
@@ -137,7 +145,7 @@ const StepOne = () => {
             label="Phone Number"
             value={state.moreData.PhoneNumber}
           />
-          <SimpleInputs sw="24%" aw="66%" label="Pincode" value="" data="" />
+          <SimpleInputs sw="24%" aw="66%" label="Pincode" value={pin}  changeHandler={PinHandler} />
         </div>
         <div className={Styles.thirdRow}>
           <AutoInputs
