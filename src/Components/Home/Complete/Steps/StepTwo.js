@@ -11,11 +11,16 @@ import { Professions } from "../../../../Utils/api/UserMoreDetail/StepTwoProfess
 import { useDispatch } from "react-redux";
 import { userEditActions } from "../../../../Store";
 import { useLocation } from "react-router-dom";
+import { Button } from "@mui/material";
+import { Modal } from "antd";
+import StepTwoModal from "./StepTwoModal/Index";
 
 const StepTwo = () => {
   const { state } = useLocation();
 
   const dispatch = useDispatch();
+
+  const [modal2Open, setModal2Open] = useState(false);
 
   const [Profession, SetProfession] = useState("");
   const [college, setCollege] = useState("");
@@ -138,6 +143,18 @@ const StepTwo = () => {
               value={recent}
               changeHandler={recentHandler}
             />
+              <Button type="primary" onClick={() => setModal2Open(true)}>
+              Add
+            </Button>
+            <Modal
+              title="Add Company"
+              centered
+              open={modal2Open}
+              onOk={() => setModal2Open(false)}
+              onCancel={() => setModal2Open(false)}
+            >
+              <StepTwoModal />
+            </Modal>
           </div>
           <div className={Styles.thirdRow}>
             <StartDateInput

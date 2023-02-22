@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import UserNav from "../../GlobalComp/userLogin/UserNav";
 import Steppers from "./Steppers";
 import NavButon from "../../Login/Navbar/NavButon";
@@ -7,8 +7,11 @@ import NavButon from "../../Login/Navbar/NavButon";
 import Styles from "../../../Styles/userLogin/Sidebar.module.css";
 import FooterGlob from "../../Login/FooterGlob";
 import Sidebuton from "../SideBar/SideButtons/SideButon";
-import Dashboard from "../../Dashboard/Dashboard.js";
+
+import SideButtons from "../../Dashboard/SideButtons";
+import Dashboards from "../../Dashboard/Dashboards";
 const Complete = () => {
+
   return (
     <>
       {/* <UserNav />
@@ -22,7 +25,9 @@ const Complete = () => {
         </div>
       </div>
       <FooterGlob /> */}
-      <Dashboard />
+      <Dashboards />
+
+      
     </>
   );
 };

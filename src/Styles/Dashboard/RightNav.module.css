@@ -1,0 +1,42 @@
+.rightSide{
+    display: flex;
+}
+.right{
+    display: flex;
+    align-items: center;
+}
+.search{
+    padding-top: 2rem;
+}
+.Premium{
+    padding-left: 4px;
+}
+.notifications{
+    padding-right: 7px;
+}
+.avatar{
+    padding-left:  4px;
+    padding-right: 10px;
+}
+
+.av{
+    display: flex;
+}
+.pre{
+    display: flex;
+}
+.noti{
+    display: flex;
+}
+.menu{
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .right{
+        display: none;
+    }
+    .menu{
+        display: block;
+    }
+}
