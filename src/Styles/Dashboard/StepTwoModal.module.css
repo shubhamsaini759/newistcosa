@@ -1,0 +1,31 @@
+.AddModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1;
+
+}
+
+.firstRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1;
+}
+
+.secondRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fourthRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.SixthRow {
+    display: flex;
+    justify-content: flex-end;
+}
