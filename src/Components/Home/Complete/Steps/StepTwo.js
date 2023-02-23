@@ -107,8 +107,8 @@ const StepTwo = () => {
     <div className={Styles.StepTwo}>
       <div className={Styles.firstRow}>
         <AutoInputs
-          sw="24%"
-          aw="71%"
+          sw="25%"
+          aw="75%"
           label="Profession"
           data={Professions}
           changeHandler={proChangeHandler}
@@ -120,15 +120,15 @@ const StepTwo = () => {
         <>
           <div className={Styles.secondRow}>
             <SimpleInputs
-              sw="22%"
-              aw="68%"
+              sw="25%"
+              aw="75%"
               label="College/University"
               value={college}
               changeHandler={collegeHandler}
             />
             <SimpleInputs
-              sw="22%"
-              aw="68%"
+              sw="25%"
+              aw="75%"
               label="Quaification"
               value={quali}
               changeHandler={qualiHandler}
@@ -136,8 +136,8 @@ const StepTwo = () => {
           </div>
           <div className={Styles.thirdRow}>
             <TagInput
-              sw="27%"
-              nsw="68%"
+              sw="25%"
+              nsw="75%"
               padd="8%"
               label="Skills"
               value={skill}
@@ -145,16 +145,16 @@ const StepTwo = () => {
             />
             <StartDateInput
               label="Start Year"
-              sw="28%"
+              sw="25%"
               padd="4.5%"
-              aw="62%"
+              aw="75%"
               value={degreeStart}
               changeHandler={startDegHandler}
             />
             <StartDateInput
               label="Completion Year"
-              sw="28%"
-              aw="62%"
+              sw="25%"
+              aw="75%"
               value={degreeComp}
               changeHandler={compDegHandler}
             />
@@ -164,16 +164,16 @@ const StepTwo = () => {
         <>
           <div className={Styles.secondRow}>
             <SimpleInputs
-              sw="23%"
-              aw="66%"
+              sw="25%"
+              aw="75%"
               label="Job Designation"
               value={designation}
               changeHandler={desigHandler}
             />
 
             <SimpleInputs
-              sw="27%"
-              aw="50%"
+              sw="25%"
+              aw="75%"
               label="Recent Company"
               value={recent}
               changeHandler={recentHandler}
@@ -199,17 +199,15 @@ const StepTwo = () => {
           <div className={Styles.thirdRow}>
             <StartDateInput
               label="From date"
-              sw="28%"
-              padd="4.5%"
-              aw="59%"
+              sw="25%"
+              aw="75%"
               value={start}
               changeHandler={startHandler}
             />
             <StartDateInput
               label="To date"
-              padd="4.5%"
-              sw="30%"
-              aw="65%"
+              sw="25%"
+              aw="75%"
               value={to}
               changeHandler={toHandler}
             />
@@ -218,8 +216,8 @@ const StepTwo = () => {
             <TextAreaInput
               length="500"
               label="Describe Your Work Profile"
-              tw="97%"
-              sw="20%"
+              tw="100%"
+              sw="75%"
               value={describe}
               changeHandler={describeHandler}
             />

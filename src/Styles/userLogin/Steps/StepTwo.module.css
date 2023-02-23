@@ -1,34 +1,49 @@
-.StepTwo{
+.StepTwo {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 5% 0px ;
+    padding: 5%;
+    gap: 1rem;
+
 }
-.firstRow{
+
+.firstRow {
     display: flex;
+    gap: 1rem;
+
 }
-.secondRow{
-    padding-top: 2%;
+
+.secondRow {
     display: flex;
+    gap: 1rem;
 }
-.thirdRow{
-    padding-top: 2%;
+
+.thirdRow {
     display: flex;
+    gap: 1rem;
+
 }
-.fourthRow{
+
+.fourthRow {
     padding-top: 2%;
-    padding-left: 2.3%;
+    gap: 1rem;
+
 }
 
 @media screen and (max-width: 768px) {
+    .StepTwo {
+        padding: 0.5rem;
+    }
 
-    .firstRow{
+    .firstRow {
         flex-direction: column;
     }
-    .secondRow{
+
+    .secondRow {
         flex-direction: column;
     }
-    .thirdRow{
-       flex-direction: column;
+
+    .thirdRow {
+        flex-direction: column;
     }
 }

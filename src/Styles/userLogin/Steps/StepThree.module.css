@@ -1,43 +1,51 @@
-.StepThree{
+.StepThree {
     display: flex;
     flex-direction: column;
-    padding: 5% 0px ;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+
+.firstRow {
+    display: flex;
+    gap: 1rem;
 
 }
-.firstRow{
+
+.secondRow {
     display: flex;
-}
-.secondRow{
-    padding-top: 2%;
-    padding-left: 1.8%;
-    display: flex;
-}
-.thirdRow{
-    padding-top: 2%;
-    display: flex;
+    gap: 1rem;
 
 }
-.fourthRow{
-    padding-top: 2%;
-    padding-left: 1.8%;
 
+.thirdRow {
     display: flex;
+    gap: 1rem;
+
+}
+
+.fourthRow {
+    display: flex;
+    gap: 1rem;
+
 }
 
 
 @media screen and (max-width: 768px) {
-    .StepThree{
+    .StepThree {
         text-align: left;
     }
-    .firstRow{
+
+    .firstRow {
         flex-direction: column;
-        
+
     }
-    .secondRow{
+
+    .secondRow {
         flex-direction: column;
     }
-    .thirdRow{
-    flex-direction: column;
+
+    .thirdRow {
+        flex-direction: column;
     }
 
 }

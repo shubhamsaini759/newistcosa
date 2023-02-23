@@ -3,7 +3,9 @@
   padding: 0;
 }
 
-
+.select>div:first-child {
+  width: 100%;
+}
 
 
 /* 

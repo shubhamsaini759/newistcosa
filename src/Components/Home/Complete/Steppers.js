@@ -12,7 +12,7 @@ import { useMutation } from "react-query";
 import { userEditDetail } from "../../../Utils/api/UserMoreDetail/UserEditDetail";
 import api from "../../../Utils/api";
 import { useLocation } from "react-router-dom";
-import { userEditActions } from "../../../Store";
+import { editToastActions, userEditActions } from "../../../Store";
 
 const steps = [
   {
@@ -41,14 +41,13 @@ const Steppers = () => {
   console.log(EditedData, "edited");
   console.log(state.moreData.RollNumberID, "location");
 
-  const [batchId,  setbatchId ] = useState(state.moreData.BatchID)
-  const [ rollNumberId,setRollNumberId] = useState(state.moreData.RollNumberID)
+  const [batchId, setbatchId] = useState(state.moreData.BatchID);
+  const [rollNumberId, setRollNumberId] = useState(state.moreData.RollNumberID);
 
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
 
-  const next = async() => {
-
+  const next = async () => {
     setCurrent(current + 1);
     // const apiResponse = await mutateAsync(EditedData);
     // console.log({ apiResponse });
@@ -71,26 +70,26 @@ const Steppers = () => {
     marginTop: 16,
   };
 
-
-  const { data, isLoading, mutateAsync } = useMutation("userEditDetail",userEditDetail);
-
-  const [details, setDetails] = useState(null);
+  const { data, isLoading, mutateAsync } = useMutation(
+    "userEditDetail",
+    userEditDetail
+  );
 
   const DoneHandler = async () => {
-
-    dispatch(userEditActions.batch({ batch : batchId }))
-    dispatch(userEditActions.roll({ roll : rollNumberId }))
-    dispatch(userEditActions.userId({ userID : rollNumberId }))
-
+    dispatch(userEditActions.batch({ batch: batchId }));
+    dispatch(userEditActions.roll({ roll: rollNumberId }));
+    dispatch(userEditActions.userId({ userID: rollNumberId }));
 
     message.success("Processing complete!");
     // console.log(details, "detailsssssssss");
-    console.log(EditedData,'done click')
-
+    console.log(EditedData, "done click");
 
     const apiResponse = await mutateAsync(EditedData);
-    console.log({ apiResponse },'api');
-    // setDetails(apiResponse)
+    console.log({ apiResponse }, "api");
+
+    if (apiResponse?.message === "success") {
+      dispatch(editToastActions.resetFlag());
+    }
   };
 
   return (

@@ -1,12 +1,25 @@
-.sideMenu{
+.sideMenu {
     display: none;
 }
-.details{
+
+.details {
     padding: 0 50px;
 }
-.logo{
+
+.logo {
     padding-left: 1.6rem;
 }
+
+.alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert>div {
+    flex: none !important;
+}
+
 /* .right{
     padding-top: 1.6rem;
     display: flex;
@@ -14,21 +27,23 @@
 } */
 
 @media screen and (max-width: 992px) {
-    .sideMenu{
+    .sideMenu {
         display: block;
     }
-    .sider{
+
+    .sider {
         display: none;
     }
-    .logo{
+
+    .logo {
         padding-left: 0;
     }
-    
+
 }
 
 @media screen and (max-width: 600px) {
-    .details{
+    .details {
         padding: 0;
     }
-    
+
 }
