@@ -3,7 +3,6 @@ import AutoInputs from "./DetailInputs/AutoInputs";
 import Styles from "../../../../Styles/userLogin/Steps/StepTwo.module.css";
 import TagInput from "./DetailInputs/TagInput";
 
-import DateInput from "./DetailInputs/DateInput";
 import StartDateInput from "./DetailInputs/StartDateInput";
 import TextAreaInput from "./DetailInputs/TextAreaInput";
 import SimpleInputs from "./DetailInputs/SimpleInputs";
