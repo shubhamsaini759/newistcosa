@@ -1,11 +1,11 @@
-import { Layout, Menu, theme } from "antd";
+import { Alert, Layout, Menu, theme } from "antd";
 
-import React from "react";
-import Steppers from "../Home/Complete/Steppers";
+import React, { useState } from "react";
 import SideButtons from "./SideButtons";
 import Styles from '../../Styles/Dashboard/Dashboards.module.css'
 import RightNav from "./RightNav";
 import LeftNav from "./LeftNav";
+import {  Outlet } from "react-router-dom";
 
 
 
@@ -13,18 +13,31 @@ import LeftNav from "./LeftNav";
 const { Header, Content, Footer, Sider } = Layout;
 
 
-
 const Dashboards = () => {
 
+  const[ flag, setFlag ] = useState(true);
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
-
+  
+  const EditMoreDetails = () =>{
+    console.log('detailmore')
+  }
 
   return (
     <Layout>
+    {
+      flag? <Alert
+      message='Your Profile is Incomplete, Please Complete Your Profile'
+      banner
+      closable
+      onClick={EditMoreDetails}
+      style={{ cursor:'pointer'}}
+    />: ''
+    }
+    
       <Header className="header" style={{display : 'flex', alignItems : 'center',justifyContent:'space-between', backgroundColor:'white' }} >
           <div style={{ display: 'flex',alignItems : 'center',}}>
               <LeftNav />
@@ -39,7 +52,7 @@ const Dashboards = () => {
             <SideButtons />
           </Sider>
           <Content style={{ padding: "0 24px",minHeight: "100vh",}}>
-            <Steppers />
+            <Outlet />
           </Content>
         </Layout>
       </Content>

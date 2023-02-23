@@ -1,11 +1,6 @@
 import {
   Button,
   Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
   TextField,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -16,14 +11,11 @@ import { useNavigate } from "react-router-dom";
 import CountryCode from "../../GlobalComp/CountryCode";
 import { useSelector } from "react-redux";
 import { useFormik } from "formik";
-import { Container } from "react-bootstrap";
 import * as Yup from "yup";
 import { Path } from "../../../Utils/api/endPoints";
 import api from "../../../Utils/api";
-import ImageCrop from "../../GlobalComp/ImageCrop";
-import ImageConvert from "../../GlobalComp/ImageConvert";
+
 import Test from "../../GlobalComp/test";
-import { Cascader, InputNumber } from "antd";
 
 const UserRegister = () => {
   const tempId = useSelector((state) => state.tempIdReducer);

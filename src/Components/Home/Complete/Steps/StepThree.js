@@ -95,8 +95,8 @@ const StepThree = () => {
         <SimpleInputs sw="24%" aw="66%" label="Whatsapp No." value={num} changeHandler={numHandler}  />
       </div>
       <div className={Styles.secondRow}>
-        <TextAreaInput label="Residential Address" tw="80%" sw="30%" value={address} changeHandler={addHandler} />
-        <TextAreaInput label="About Myself" tw="80%" sw="30%" value={about} changeHandler={aboutHandler} />
+        <TextAreaInput label="Residential Address" length='200' tw="80%" sw="30%" value={address} changeHandler={addHandler} />
+        <TextAreaInput label="About Myself" length='200' tw="80%" sw="30%" value={about} changeHandler={aboutHandler} />
       </div>
       <div className={Styles.thirdRow}>
         <AutoInputs

@@ -19,7 +19,8 @@ const TextAreaInput = (props) => {
     <TextArea style={{
         width: props.tw,
      }} 
-
+     maxLength={props.length}
+     
      value={props.value}
      onChange={(e)=>props.changeHandler(e.target.value)}
      />

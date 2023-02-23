@@ -8,19 +8,31 @@ import StartDateInput from "./DetailInputs/StartDateInput";
 import TextAreaInput from "./DetailInputs/TextAreaInput";
 import SimpleInputs from "./DetailInputs/SimpleInputs";
 import { Professions } from "../../../../Utils/api/UserMoreDetail/StepTwoProfession/ProfessionList";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userEditActions } from "../../../../Store";
 import { useLocation } from "react-router-dom";
 import { Button } from "@mui/material";
 import { Modal } from "antd";
 import StepTwoModal from "./StepTwoModal/Index";
+import { useMutation } from "react-query";
+import { AddCompany } from "../../../../Utils/api/UserMoreDetail/StepTwoProfession/AddCompany";
 
 const StepTwo = () => {
   const { state } = useLocation();
 
   const dispatch = useDispatch();
+  const CompanyDetails = useSelector((state) => state.addCompanyReducer);
+
+  const { data, mutateAsync } = useMutation("AddCompany", AddCompany);
 
   const [modal2Open, setModal2Open] = useState(false);
+
+  const OkHandler = async () => {
+    setModal2Open(false);
+    console.log(CompanyDetails);
+    const result = await mutateAsync(CompanyDetails);
+    console.log(result, "detailsssssssssss");
+  };
 
   const [Profession, SetProfession] = useState("");
   const [college, setCollege] = useState("");
@@ -31,6 +43,8 @@ const StepTwo = () => {
   const [start, setStart] = useState("");
   const [to, setTo] = useState("");
   const [describe, setDescribe] = useState("");
+  const [degreeStart, setDegreeStart] = useState("");
+  const [degreeComp, setDegreeComp] = useState("");
 
   const proChangeHandler = (data) => {
     SetProfession(data.value);
@@ -42,7 +56,7 @@ const StepTwo = () => {
     dispatch(userEditActions.collegeHandel({ college: data }));
   };
   const qualiHandler = (data) => {
-    setQuali(data)
+    setQuali(data);
     dispatch(userEditActions.qualiHandel({ quali: data }));
   };
 
@@ -77,6 +91,17 @@ const StepTwo = () => {
   const describeHandler = (data) => {
     setDescribe(data);
     dispatch(userEditActions.describeHandel({ describe: data }));
+  };
+
+  const startDegHandler = (data) => {
+    console.log(data);
+    setDegreeStart(data);
+    dispatch(userEditActions.Joining({ join: data }));
+  };
+  const compDegHandler = (data) => {
+    console.log(data);
+    setDegreeComp(data);
+    dispatch(userEditActions.comp({ comp: data }));
   };
 
   return (
@@ -114,16 +139,25 @@ const StepTwo = () => {
             <TagInput
               sw="27%"
               nsw="68%"
-              padd="5%"
+              padd="8%"
               label="Skills"
               value={skill}
               changeHandler={skillHandler}
             />
-            <DateInput
-              sw="27%"
-              rw="68%"
-              padd="5%"
-              label="Start & Completion Year"
+            <StartDateInput
+              label="Start Year"
+              sw="28%"
+              padd="4.5%"
+              aw="62%"
+              value={degreeStart}
+              changeHandler={startDegHandler}
+            />
+            <StartDateInput
+              label="Completion Year"
+              sw="28%"
+              aw="62%"
+              value={degreeComp}
+              changeHandler={compDegHandler}
             />
           </div>
         </>
@@ -137,7 +171,7 @@ const StepTwo = () => {
               value={designation}
               changeHandler={desigHandler}
             />
-            
+
             <SimpleInputs
               sw="27%"
               aw="50%"
@@ -145,16 +179,20 @@ const StepTwo = () => {
               value={recent}
               changeHandler={recentHandler}
             />
-            <Button variant='contained' size='small'  onClick={() => setModal2Open(true)}>
+            <Button
+              variant="contained"
+              size="small"
+              onClick={() => setModal2Open(true)}
+            >
               Add
             </Button>
-                <Modal
-                  title="Add Company"
-                  centered
-                  open={modal2Open}
-                  onOk={() => setModal2Open(false)}
-                  onCancel={() => setModal2Open(false)}
-                >
+            <Modal
+              title="Add Company"
+              centered
+              open={modal2Open}
+              onOk={OkHandler}
+              onCancel={() => setModal2Open(false)}
+            >
               <StepTwoModal />
             </Modal>
           </div>
@@ -179,6 +217,7 @@ const StepTwo = () => {
           </div>
           <div className={Styles.fourthRow}>
             <TextAreaInput
+              length="500"
               label="Describe Your Work Profile"
               tw="97%"
               sw="20%"

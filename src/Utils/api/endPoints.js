@@ -22,6 +22,8 @@ export const Path ={
         userMoreDetail : 'User/EditUserMoreDetails/1009',
 
     // put
-        userEditDetail : 'User/PutUserMoreDetails?userId=1009'
+        userEditDetail : 'User/PutUserMoreDetails?userId=1009',
 
+    // post
+        addCompany : 'Company'
 } 

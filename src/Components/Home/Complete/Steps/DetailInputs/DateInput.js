@@ -17,7 +17,6 @@ const DateInput = (props) => {
 
         <RangePicker
         onChange={(e)=>console.log(e)}
-        
         style={{
             width: props.rw,
             }} />

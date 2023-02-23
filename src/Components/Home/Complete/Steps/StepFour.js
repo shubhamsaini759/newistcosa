@@ -56,8 +56,8 @@ const StepFour = () => {
         <SimpleInputs sw="30%" aw="45%" label="ISTC Friends/ Roomates" value={room} changeHandler={roomHandler} />
       </div>
       <div className={Styles.secondRow}>
-        <TextAreaInput label="Your Memories About ISTC" tw="75%" sw="35%" value={memories} changeHandler={memoriesHandler} />
-        <TextAreaInput label="Your Comments For ISTCOSA" tw="75%" sw="35%" value={comments} changeHandler={commentHandler} />
+        <TextAreaInput label="Your Memories About ISTC" tw="75%" sw="35%" length='2000' value={memories} changeHandler={memoriesHandler} />
+        <TextAreaInput label="Your Comments For ISTCOSA" tw="75%" sw="35%" length='2000' value={comments} changeHandler={commentHandler} />
       </div>
       <div className={Styles.thirdRow}>
         <TextAreaInput
@@ -66,6 +66,7 @@ const StepFour = () => {
           sw="35%"
           value={Keyword}
           changeHandler={keywordHandler}
+          length='2000'
         />
       </div>
     </div>

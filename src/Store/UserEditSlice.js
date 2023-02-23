@@ -6,6 +6,7 @@ export const UserEditSlice = createSlice({
     RollNumberID : '',
     BatchID : '',
     CountryID: "",
+    FullName: "",
     StateID: "",
     CityID: "",
     PinCode: "",
@@ -34,6 +35,10 @@ export const UserEditSlice = createSlice({
     ISTCAbout: "",
     Comments: "",
     SearchKeyword: "",
+    UserID : '',
+    UpdatedDate : null,
+    CreatedDate : null,
+    DeletedDate : null,
   },
   reducers: {
     countryCityState(state, { payload }) {
@@ -47,6 +52,9 @@ export const UserEditSlice = createSlice({
     },
     roll(state,{payload}){
       state.RollNumberID = payload.roll
+    },
+    fullName(state,{payload}){
+      state.FullName = payload.fullName
     },
     PinHandel(state, { payload }){
       state.PinCode = payload.pin
@@ -63,8 +71,14 @@ export const UserEditSlice = createSlice({
     skillHandel(state,{payload}){
       state.Skills = payload.skill
     },
+    Joining(state,{payload}){
+      state.JoiningYear = payload.join
+    },
+    comp(state,{payload}){
+      state.ExpectedCompletionYear = payload.comp
+    },
     desigHandel(state,{payload}){
-      state.desigHandel = payload.designation
+      state.Designation = payload.designation
     },
     recentHandel(state, {payload}){
       state.CompanyName = payload.recent
@@ -119,6 +133,9 @@ export const UserEditSlice = createSlice({
     },
     keywordHandle(state,{payload}){
       state.SearchKeyword = payload.keyword
+    },
+    userId(state,{payload}){
+      state.UserID = payload.userID
     }
 
   },

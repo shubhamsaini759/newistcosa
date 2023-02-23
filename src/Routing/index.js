@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Complete from "../Components/Home/Complete/Complete";
+import Steppers from "../Components/Home/Complete/Steppers";
 import Dashboard from "../Pages/Dashboard";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
@@ -15,8 +16,9 @@ const Routing = () => {
         {/* <Route path='/home' element={<Protected Component = {Dashboard} /> } />
               <Route path='/Information' element={<Protected Component = {Complete} /> } />  */}
 
-        <Route path="/home" element={<Dashboard />} />
-        <Route path="/Information" element={<Complete />} />
+        <Route path="/home" element={<Dashboard />} >
+            <Route path="edit" element={<Steppers />} />
+        </Route>
       </Routes>
     </>
   );

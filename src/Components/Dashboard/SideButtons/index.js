@@ -1,7 +1,20 @@
 import { Menu } from "antd";
 import React from "react";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+import { UserMoreDetail } from "../../../Utils/api/UserMoreDetail";
 
 const SideButtons = () => {
+
+  const navigate = useNavigate();
+  const { data : moreData , isLoading } = useQuery( 'UserMOreDetail', UserMoreDetail)
+
+
+  const EditHandler = () =>{
+    navigate('/home/edit',{state : {moreData}})
+  }
+
+
   return (
     <>
       <Menu
@@ -12,7 +25,7 @@ const SideButtons = () => {
           height: "100%",
         }}
       >
-        <Menu.Item>
+        <Menu.Item onClick={EditHandler} >
           {/* <LaptopOutlined /> */}
           Home
         </Menu.Item>

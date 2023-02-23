@@ -52,7 +52,7 @@ const Steppers = () => {
     setCurrent(current + 1);
     // const apiResponse = await mutateAsync(EditedData);
     // console.log({ apiResponse });
-    console.log(EditedData,'next click')
+    // console.log(EditedData,'next click')
   };
   const prev = () => {
     setCurrent(current - 1);
@@ -72,10 +72,7 @@ const Steppers = () => {
   };
 
 
-  const { data, isLoading, mutateAsync } = useMutation(
-    "userEditDetail",
-    userEditDetail
-  );
+  const { data, isLoading, mutateAsync } = useMutation("userEditDetail",userEditDetail);
 
   const [details, setDetails] = useState(null);
 
@@ -83,6 +80,8 @@ const Steppers = () => {
 
     dispatch(userEditActions.batch({ batch : batchId }))
     dispatch(userEditActions.roll({ roll : rollNumberId }))
+    dispatch(userEditActions.userId({ userID : rollNumberId }))
+
 
     message.success("Processing complete!");
     // console.log(details, "detailsssssssss");
@@ -90,8 +89,8 @@ const Steppers = () => {
 
 
     const apiResponse = await mutateAsync(EditedData);
-    console.log({ apiResponse });
-    setDetails(apiResponse)
+    console.log({ apiResponse },'api');
+    // setDetails(apiResponse)
   };
 
   return (

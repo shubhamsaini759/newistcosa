@@ -21,6 +21,12 @@ const StepOne = () => {
 
   const dispatch = useDispatch();
 
+
+  const [batchId,  setbatchId ] = useState(state.moreData.BatchID)
+  const [ rollNumberId,setRollNumberId] = useState(state.moreData.RollNumberID)
+  const [ fullName,setFullName] = useState(state.moreData.FullName)
+
+  
   const { data: countryData, isLoading: countryLoading } = useQuery(
     "CountryList",
     CountryList
@@ -97,7 +103,13 @@ const StepOne = () => {
         stateId: stateDataClone.id,
         cityId: data.id,
        
-      })
+      }),
+      dispatch(userEditActions.batch({ batch : batchId })),
+      dispatch(userEditActions.roll({ roll : rollNumberId })),
+      dispatch(userEditActions.userId({ userID : rollNumberId })),
+      dispatch(userEditActions.fullName({ fullName : fullName })),
+
+      
     );
   };
 
