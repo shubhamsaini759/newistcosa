@@ -42,6 +42,7 @@ const StepTwo = () => {
     dispatch(userEditActions.collegeHandel({ college: data }));
   };
   const qualiHandler = (data) => {
+    setQuali(data)
     dispatch(userEditActions.qualiHandel({ quali: data }));
   };
 
@@ -130,38 +131,40 @@ const StepTwo = () => {
         <>
           <div className={Styles.secondRow}>
             <SimpleInputs
-              sw="25%"
-              aw="65%"
+              sw="23%"
+              aw="66%"
               label="Job Designation"
               value={designation}
               changeHandler={desigHandler}
             />
+            
             <SimpleInputs
-              sw="25%"
-              aw="65%"
+              sw="27%"
+              aw="50%"
               label="Recent Company"
               value={recent}
               changeHandler={recentHandler}
             />
-              <Button type="primary" onClick={() => setModal2Open(true)}>
+            <Button variant='contained' size='small'  onClick={() => setModal2Open(true)}>
               Add
             </Button>
-            <Modal
-              title="Add Company"
-              centered
-              open={modal2Open}
-              onOk={() => setModal2Open(false)}
-              onCancel={() => setModal2Open(false)}
-            >
+                <Modal
+                  title="Add Company"
+                  centered
+                  open={modal2Open}
+                  onOk={() => setModal2Open(false)}
+                  onCancel={() => setModal2Open(false)}
+                >
               <StepTwoModal />
             </Modal>
           </div>
+
           <div className={Styles.thirdRow}>
             <StartDateInput
               label="From date"
-              sw="30%"
+              sw="28%"
               padd="4.5%"
-              aw="65%"
+              aw="59%"
               value={start}
               changeHandler={startHandler}
             />

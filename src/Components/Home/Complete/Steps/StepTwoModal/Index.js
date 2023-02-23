@@ -1,3 +1,4 @@
+import { Stack } from "@mui/material";
 import { Button } from "antd";
 import React, { useState } from "react";
 import { useMutation, useQuery } from "react-query";
@@ -93,45 +94,46 @@ const StepTwoModal = () => {
   };
 
   return (
-    <div className={Styles.AddModal}>
-      <div className={Styles.firstRow}>
-        <SimpleInputs label="Company Name" />
-        <SimpleInputs label="Contact Number" />
-      </div>
-      <div className={Styles.secondRow}>
-        <SimpleInputs label="Compnay Email" />
-      </div>
-      <div className={Styles.thirdRow}>
-        <TextAreaInput label="Company Address" />
-      </div>
-      <div className={Styles.fourthRow}>
-        <AutoInputs
-          sw="24%"
-          aw="66%"
-          label="Country"
-          data={countryData || [CompanyAdd.country]}
-          value={CompanyAdd.country.value}
-          changeHandler={countryHandler}
-        />
+    <>
+        <Stack direction='column' spacing={{xs : 1,sm: 1,lg : 1}} >
+            <SimpleInputs label="Company Name" />
+            <SimpleInputs label="Contact Number" />
+            <SimpleInputs label="Compnay Email" />
+        </Stack>
+        <Stack spacing={{xs : 1,sm: 1,lg : 1}} style={{ paddingTop : '8px', paddingBottom : '8px' }} >
+            <TextAreaInput sw='30%' tw='90%' label="Company Address" />
+        </Stack>
 
-        <AutoInputs
-          sw="24%"
-          aw="66%"
-          label="State"
-          data={stateData || [CompanyAdd.state]}
-          value={CompanyAdd.state.value}
-          changeHandler={stateHandler}
-        />
-        <AutoInputs
-          sw="24%"
-          aw="66%"
-          label="City"
-          data={CityData || [CompanyAdd.city]}
-          value={CompanyAdd.city.value}
-          changeHandler={cityHandler}
-        />
-      </div>
-    </div>
+        <Stack direction='column' spacing={{xs : 1,sm: 1,lg : 1}} >
+            <AutoInputs
+                    sw="24%"
+                    aw="66%"
+                    label="Country"
+                    data={countryData || [CompanyAdd.country]}
+                    value={CompanyAdd.country.value}
+                    changeHandler={countryHandler}
+                />
+        
+                <AutoInputs
+                    sw="24%"
+                    aw="66%"
+                    label="State"
+                    data={stateData || [CompanyAdd.state]}
+                    value={CompanyAdd.state.value}
+                    changeHandler={stateHandler}
+                />
+
+                <AutoInputs
+                    sw="24%"
+                    aw="66%"
+                    label="City"
+                    data={CityData || [CompanyAdd.city]}
+                    value={CompanyAdd.city.value}
+                    changeHandler={cityHandler}
+                />
+        </Stack>
+    
+    </>
   );
 };
 
