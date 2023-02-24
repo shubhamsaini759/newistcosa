@@ -1,10 +1,11 @@
 import React from "react";
 import { Input, Switch } from "antd";
+import Styles from '../../../../../Styles/userLogin/Steps/InputCol.module.css'
 
 const VisibleInputs = (props) => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
   return (
-    <Input.Group compact>
+    <Input.Group className={Styles.inputcol} compact>
       <Input.Password
         disabled={!!props.disabled}
         addonBefore={props.label}

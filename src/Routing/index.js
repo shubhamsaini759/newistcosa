@@ -16,7 +16,7 @@ const Routing = () => {
         {/* <Route path='/home' element={<Protected Component = {Dashboard} /> } />
               <Route path='/Information' element={<Protected Component = {Complete} /> } />  */}
 
-        <Route path="/home" element={<Dashboard />} >
+            <Route path="/home" element={<Dashboard />} >
             <Route path="edit" element={<Steppers />} />
         </Route>
       </Routes>

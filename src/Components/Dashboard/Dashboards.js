@@ -1,12 +1,11 @@
 import { Alert, Layout, Menu, theme } from "antd";
 
-import React, { useState } from "react";
+import React from "react";
 import SideButtons from "./SideButtons";
 import Styles from "../../Styles/Dashboard/Dashboards.module.css";
 import RightNav from "./RightNav";
 import LeftNav from "./LeftNav";
 import { Outlet, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useQuery } from "react-query";
 import { UserMoreDetail } from "../../Utils/api/UserMoreDetail";
 import { useSelector } from "react-redux";
@@ -55,7 +54,7 @@ const Dashboards = () => {
           backgroundColor: "white",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center" , }}>
           <LeftNav />
         </div>
         <div className={Styles.right}>
@@ -76,7 +75,7 @@ const Dashboards = () => {
           </Content>
         </Layout>
       </Content>
-      <Footer style={{ textAlign: "center" }}>ISTCOSA CopyRight ©2023</Footer>
+      <Footer style={{ textAlign: "center" }}>© CopyRight 2022 ISTCOSA. All Right Reserved</Footer>
     </Layout>
   );
 };

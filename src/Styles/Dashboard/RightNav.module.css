@@ -39,4 +39,23 @@
     .menu{
         display: block;
     }
+
+    .av{
+        display: flex;
+        gap : 0.6rem;
+    }
+    .av p{
+        padding-top: 0.4rem;
+    }
+    .pre{
+        display: flex;
+        gap : 0.6rem;
+
+    }
+    .noti{
+        display: flex;
+        gap : 0.6rem;
+
+    }
+   
 }

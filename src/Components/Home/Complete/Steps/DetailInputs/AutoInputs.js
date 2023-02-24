@@ -37,6 +37,7 @@ const AutoInputs = (props) => {
   //       : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)]
   //   );
   // };
+  console.log(options,props.label)
 
   return (
     <Input.Group compact>

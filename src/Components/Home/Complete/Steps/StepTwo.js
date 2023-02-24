@@ -13,15 +13,20 @@ import { useLocation } from "react-router-dom";
 import { Button } from "@mui/material";
 import { Modal } from "antd";
 import StepTwoModal from "./StepTwoModal/Index";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { AddCompany } from "../../../../Utils/api/UserMoreDetail/StepTwoProfession/AddCompany";
+import { CompanyList } from "../../../../Utils/api/UserMoreDetail/CompanyList";
 
 const StepTwo = () => {
   const { state } = useLocation();
 
   const dispatch = useDispatch();
+
+  const { data : companyList } = useQuery('CompanyList',CompanyList)
   const CompanyDetails = useSelector((state) => state.addCompanyReducer);
 
+
+  console.log(companyList,'list')
   const { data, mutateAsync } = useMutation("AddCompany", AddCompany);
 
   const [modal2Open, setModal2Open] = useState(false);
@@ -70,8 +75,9 @@ const StepTwo = () => {
   };
 
   const recentHandler = (data) => {
-    setRecent(data);
-    dispatch(userEditActions.recentHandel({ recent: data }));
+    console.log(data.value)
+    setRecent(data.value);
+    dispatch(userEditActions.recentHandel({ recent: data.value }));
   };
 
   const startHandler = (data) => {
@@ -109,7 +115,7 @@ const StepTwo = () => {
         <AutoInputs
           sw="25%"
           aw="75%"
-          label="Profession"
+          label="* Profession"
           data={Professions}
           changeHandler={proChangeHandler}
           value={Profession}
@@ -160,7 +166,7 @@ const StepTwo = () => {
             />
           </div>
         </>
-      ) : Profession === "Government Sector" ? (
+      ) : Profession === "Government Sector" ||Profession ===  "Private Sector" ||Profession ===  "Self Employed" ||Profession ===  "Entrepreneur / Own Business" ||Profession ===  "Retired" ||Profession ===  "Others" ? (
         <>
           <div className={Styles.secondRow}>
             <SimpleInputs
@@ -171,15 +177,17 @@ const StepTwo = () => {
               changeHandler={desigHandler}
             />
 
-            <SimpleInputs
+            <AutoInputs
               sw="25%"
               aw="75%"
               label="Recent Company"
+              data={companyList}
               value={recent}
               changeHandler={recentHandler}
             />
             <Button
               variant="contained"
+              style={{ backgroundColor :'#6f0100' }} 
               size="small"
               onClick={() => setModal2Open(true)}
             >

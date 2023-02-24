@@ -124,45 +124,45 @@ const StepOne = () => {
       <div className={Styles.StepOne}>
         <div className={Styles.firstRow}>
           <DisableInputs
-            sw="24%"
-            aw="66%"
+            sw="25%"
+            aw="75%"
             label="Batch Year"
             value={state.moreData.BatchID}
           />
           <DisableInputs
-            sw="24%"
-            aw="66%"
+            sw="25%"
+            aw="75%"
             label="Roll Number"
             value={state.moreData.RollNumberID}
           />
           <DisableInputs
-            sw="24%"
-            aw="66%"
+            sw="25%"
+            aw="75%"
             label="Full Name"
             value={state.moreData.FullName}
           />
         </div>
         <div className={Styles.secondRow}>
           <VisibleInputs
-            sw="30%"
-            aw="60%"
+            sw="25%"
+            aw="75%"
             disabled
             label="Email Address"
             value={state.moreData.Email}
           />
           <VisibleInputs
-            sw="30%"
-            aw="60%"
+            sw="25%"
+            aw="75%"
             disabled
             label="Phone Number"
             value={state.moreData.PhoneNumber}
           />
-          <SimpleInputs sw="24%" aw="66%" label="Pincode" value={pin}  changeHandler={PinHandler} />
+          <SimpleInputs sw="25%" aw="75%" label="Pincode" value={pin}  changeHandler={PinHandler} />
         </div>
         <div className={Styles.thirdRow}>
           <AutoInputs
-            sw="24%"
-            aw="66%"
+            sw="25%"
+            aw="75%"
             label="Country"
             data={countryData || [selected.country]}
             value={selected.country.value}
@@ -170,16 +170,16 @@ const StepOne = () => {
           />
 
           <AutoInputs
-            sw="24%"
-            aw="66%"
+            sw="25%"
+            aw="75%"
             label="State"
             data={stateData || [selected.state]}
             value={selected.state.value}
             changeHandler={stateHandler}
           />
           <AutoInputs
-            sw="24%"
-            aw="66%"
+            sw="25%"
+            aw="75%"
             label="City"
             data={CityData || [selected.city]}
             value={selected.city.value}

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const EditToastSlice = createSlice({
   name: "toastEdit",
   initialState: {
-    flag: false,
+    flag: true,
   },
   reducers: {
     setFlag(state) {

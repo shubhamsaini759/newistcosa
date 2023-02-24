@@ -84,7 +84,7 @@ const StepThree = () => {
         <AutoInputs
           sw="25%"
           aw="75%"
-          label="Gender"
+          label="* Gender"
           data={Gender}
           changeHandler={GenHandler}
           value={selectedGen}
@@ -92,7 +92,7 @@ const StepThree = () => {
         <StartDateInput
           sw="25%"
           aw="75%"
-          label="D.O.B"
+          label="* D.O.B"
           value={dob}
           changeHandler={dobHandler}
         />
