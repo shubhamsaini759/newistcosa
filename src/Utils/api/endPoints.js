@@ -20,7 +20,8 @@ export const Path ={
 // Dashboard
     // get
         userMoreDetail : 'User/EditUserMoreDetails/1009',
-
+        companyList : 'Company',
+ 
     // put
         userEditDetail : 'User/PutUserMoreDetails?userId=1009',
 
