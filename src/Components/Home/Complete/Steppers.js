@@ -99,7 +99,7 @@ const Steppers = () => {
   console.log(error,'errorrrrrrrrrrr')
 
 
-    if (apiResponse?.Message === "success") {
+    if (apiResponse?.data === "Success") {
       dispatch(editToastActions.resetFlag());
       navigate('/home');
       success();

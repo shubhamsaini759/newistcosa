@@ -22,11 +22,13 @@ const StepTwo = () => {
 
   const dispatch = useDispatch();
 
-  const { data : companyList } = useQuery('CompanyList',CompanyList)
+  // const { data : companyList } = useQuery('CompanyList',CompanyList)
+  // console.log(companyList,'list')
+
+
   const CompanyDetails = useSelector((state) => state.addCompanyReducer);
 
 
-  console.log(companyList,'list')
   const { data, mutateAsync } = useMutation("AddCompany", AddCompany);
 
   const [modal2Open, setModal2Open] = useState(false);
@@ -75,9 +77,9 @@ const StepTwo = () => {
   };
 
   const recentHandler = (data) => {
-    console.log(data.value)
-    setRecent(data.value);
-    dispatch(userEditActions.recentHandel({ recent: data.value }));
+    console.log(data)
+    setRecent(data);
+    dispatch(userEditActions.recentHandel({ recent: data }));
   };
 
   const startHandler = (data) => {
@@ -177,11 +179,11 @@ const StepTwo = () => {
               changeHandler={desigHandler}
             />
 
-            <AutoInputs
+            <SimpleInputs
               sw="25%"
               aw="75%"
               label="Recent Company"
-              data={companyList}
+              // data={companyList}
               value={recent}
               changeHandler={recentHandler}
             />
