@@ -1,41 +1,29 @@
-import { AutoComplete, Form } from 'antd'
-import React from 'react'
-
-
-const list = [
-  {
-    id : 'one',
-    value : 'oneone'
-  },
-  {
-    id : 'two',
-    value : 'twotwo'
-  }
-]
-
+import { AutoComplete, Form } from "antd";
+import React from "react";
 
 const AutoInputs = (props) => {
   return (
     <>
-    <Form.Item label={props.label} name={props.label} rules={[
-        {
-            required : true,
-            message : 'Please Select a Value'
-        }
-    ]}
-    style={{width : '100%'}}
-    >
-        <AutoComplete 
-          options={list} 
+      <Form.Item
+        label={props.label}
+        name={props.label}
+        rules={[
+          {
+            required: true,
+            message: "Please Select a Value",
+          },
+        ]}
+        style={{ width: "100%" }}
+      >
+        <AutoComplete
+          options={props.list}
           filterOption={true}
-          onSelect={(value,id)=> console.log(value,id) }
+          onSelect={(_, id) => props.handler(props.uid, id)}
           size={props.size}
         />
-    </Form.Item>
-
-
+      </Form.Item>
     </>
-  )
-}
+  );
+};
 
-export default AutoInputs
+export default AutoInputs;

@@ -1,4 +1,4 @@
-import { AutoComplete, Input, Select } from "antd";
+import { AutoComplete, Form, Input, Select } from "antd";
 import React from "react";
 
 // const mockVal = (str, repeat = 1) => ({
@@ -37,29 +37,50 @@ const AutoInputs = (props) => {
   //       : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)]
   //   );
   // };
-  console.log(options,props.label)
+  console.log(options, props.label);
 
   return (
-    <Input.Group compact>
-      <Select
-        showArrow={false}
-        defaultValue={props.label}
-        style={{
-          width: props.sw,
-        }}
-      ></Select>
+    // <Input.Group compact>
+    //   <Select
+    //     showArrow={false}
+    //     defaultValue={props.label}
+    //     style={{
+    //       width: props.sw,
+    //     }}
+    //   ></Select>
 
-      <AutoComplete
-        style={{
-          width: props.aw,
-        }}
-        placeholder={props.label}
-        options={options}
-        value={props.value}
-        className="select"
-        // onSearch={onSearch}
-      ></AutoComplete>
-    </Input.Group>
+    //   <AutoComplete
+    //     style={{
+    //       width: props.aw,
+    //     }}
+    //     placeholder={props.label}
+    //     options={options}
+    //     value={props.value}
+    //     className="select"
+    //     // onSearch={onSearch}
+    //   ></AutoComplete>
+    // </Input.Group>
+
+    <Form name="form_item_path" layout="vertical" style={{ width: "100%" }}>
+      <Form.Item
+        name={props.label}
+        label={props.label}
+        rules={[
+          {
+            required: true,
+            message: "Please input Intro",
+          },
+        ]}
+      >
+        <AutoComplete
+          placeholder={props.label}
+          options={options}
+          value={props.value}
+          className="select"
+          // onSearch={onSearch}
+        ></AutoComplete>
+      </Form.Item>
+    </Form>
   );
 };
 

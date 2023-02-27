@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, message, Steps, theme } from "antd";
+import { Button, Form, message, Steps, theme } from "antd";
 import { useState } from "react";
 import StepOne from "./Steps/StepOne";
 import StepTwo from "./Steps/StepTwo";
@@ -45,11 +45,67 @@ const Steppers = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
 
-  const next = async () => {
-  console.log(EditedData, "next check");
+  const [messageApi, contextHolder] = message.useMessage();
 
+  const errorMsg = (msg) => {
+    messageApi.open({
+      type: "error",
+      content: msg,
+    });
+  };
+
+  const next = async () => {
+    if (current === 0) {
+      let flag1 = false;
+      if (!!EditedData.CityID === false) {
+        errorMsg("City cannot be empty");
+        flag1 = true;
+      }
+
+      if (flag1) return;
+    }
+
+    if (current === 1) {
+      let flag2 = false;
+      if (!!EditedData.Profession === false) {
+        if (!!EditedData.Profession === "Student") {
+          if (!!EditedData.University === false) {
+            errorMsg("Unversity cannot be empty");
+            flag2 = true;
+          } else if (!!EditedData.Degree === false) {
+            errorMsg("Qualification cannot be empty");
+            flag2 = true;
+          } else if (!!EditedData.JoiningYear === false) {
+            errorMsg("Qualification cannot be empty");
+            flag2 = true;
+          }
+        } else if (
+          !!EditedData.Profession === "Government Sector" ||
+          !!EditedData.Profession === "Private Sector" ||
+          !!EditedData.Profession === "Self Employed" ||
+          !!EditedData.Profession === "Entrepreneur / Own Business" ||
+          !!EditedData.Profession === "Retired" ||
+          !!EditedData.Profession === "Others"
+        ) {
+          if (!!EditedData.Designation === false) {
+            errorMsg("Designation cannot be empty");
+            flag2 = true;
+          } else if (!!EditedData.CompanyName === false) {
+            errorMsg("CompanyName cannot be empty");
+            flag2 = true;
+          } else if (!!EditedData.FromDate === false) {
+            errorMsg("FromDate cannot be empty");
+            flag2 = true;
+          }
+        }
+      }
+
+      if (flag2) return;
+    }
+    console.log(EditedData, "next check");
     setCurrent(current + 1);
   };
+
   const prev = () => {
     setCurrent(current - 1);
   };
@@ -69,21 +125,18 @@ const Steppers = () => {
     marginTop: 16,
   };
 
-  const [messageApi, contextHolder] = message.useMessage();
-
   const success = () => {
     messageApi.open({
-      type: 'success',
-      content: 'Profile is Updated Successfully',
+      type: "success",
+      content: "Profile is Updated Successfully",
       duration: 5,
     });
   };
 
-  const { data, isLoading, error , mutateAsync } = useMutation(
+  const { data, isLoading, error, mutateAsync } = useMutation(
     "userEditDetail",
     userEditDetail
   );
-
 
   const DoneHandler = async () => {
     dispatch(userEditActions.batch({ batch: batchId }));
@@ -96,14 +149,12 @@ const Steppers = () => {
     const apiResponse = await mutateAsync(EditedData);
     console.log({ apiResponse }, "api");
 
-  console.log(error,'errorrrrrrrrrrr')
-
+    console.log(error, "errorrrrrrrrrrr");
 
     if (apiResponse?.data === "Success") {
       dispatch(editToastActions.resetFlag());
-      navigate('/home');
+      navigate("/home");
       success();
-
     }
   };
 
@@ -131,12 +182,20 @@ const Steppers = () => {
           </Button>
         )}
         {current < steps.length - 1 && (
-          <Button type="primary" style={{ backgroundColor :'#6f0100' }} onClick={next}>
+          <Button
+            type="primary"
+            style={{ backgroundColor: "#6f0100" }}
+            onClick={next}
+          >
             Next
           </Button>
         )}
         {current === steps.length - 1 && (
-          <Button type="primary" style={{ backgroundColor :'#6f0100' }} onClick={DoneHandler}>
+          <Button
+            type="primary"
+            style={{ backgroundColor: "#6f0100" }}
+            onClick={DoneHandler}
+          >
             Done
           </Button>
         )}
