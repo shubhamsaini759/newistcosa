@@ -33,7 +33,6 @@ const[ personalProfile, setPersonalProfile ] = useState({
     ResidentialAddress : '',
     Marital : '',
     SpouseName : '',
-
 });
 
 const genderHandler = (e) => {
@@ -43,7 +42,7 @@ const genderHandler = (e) => {
 
 
 return (
-<Form layout="vertical" Style={{ width:'100%' }} >
+<Form layout="vertical" style={{ width:'100%' }} >
     <div className={Styles.firstRow}>
         <Inputs label='Full Name' name='Fullname' value={personalProfile.FullName} />
         <Inputs label='Batch Name' name='Batchname' value={personalProfile.BatchName} />

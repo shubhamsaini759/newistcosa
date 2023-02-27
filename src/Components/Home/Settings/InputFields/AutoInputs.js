@@ -1,6 +1,19 @@
 import { AutoComplete, Form } from 'antd'
 import React from 'react'
 
+
+const list = [
+  {
+    id : 'one',
+    value : 'oneone'
+  },
+  {
+    id : 'two',
+    value : 'twotwo'
+  }
+]
+
+
 const AutoInputs = (props) => {
   return (
     <>
@@ -12,7 +25,12 @@ const AutoInputs = (props) => {
     ]}
     style={{width : '100%'}}
     >
-        <AutoComplete options='' size={props.size}  />
+        <AutoComplete 
+          options={list} 
+          filterOption={true}
+          onSelect={(value,id)=> console.log(value,id) }
+          size={props.size}
+        />
     </Form.Item>
 
 

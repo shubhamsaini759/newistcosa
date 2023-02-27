@@ -37,6 +37,7 @@ const ProfessionalInfo = () => {
   
   const columns = [
     {
+      
       title: 'Designation',
       dataIndex: 'Designation',
       
