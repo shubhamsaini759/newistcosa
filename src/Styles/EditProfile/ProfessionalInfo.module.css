@@ -1,0 +1,8 @@
+.addCompany{
+    display: flex;
+    justify-content: center;
+}
+.addButton{
+    width: 8rem;
+    height: 4rem;
+}

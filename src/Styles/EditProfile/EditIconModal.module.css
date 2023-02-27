@@ -1,0 +1,34 @@
+.secondRow{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.thirdRow{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.fifthRow{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+}
+.seventhRow{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+}
+
+@media screen and (max-width: 768px) {
+    .secondRow{
+        flex-direction: column;
+    }
+    .thirdRow{
+        flex-direction: column;
+    }
+    .fifthRow{
+        flex-direction: column;
+    }
+}

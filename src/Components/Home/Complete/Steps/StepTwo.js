@@ -22,8 +22,8 @@ const StepTwo = () => {
 
   const dispatch = useDispatch();
 
-  // const { data : companyList } = useQuery('CompanyList',CompanyList)
-  // console.log(companyList,'list')
+  const { data : companyList } = useQuery('CompanyList',CompanyList)
+  console.log(companyList,'list')
 
 
   const CompanyDetails = useSelector((state) => state.addCompanyReducer);
@@ -187,6 +187,7 @@ const StepTwo = () => {
               value={recent}
               changeHandler={recentHandler}
             />
+
             <Button
               variant="contained"
               style={{ backgroundColor :'#6f0100' }} 
@@ -214,6 +215,7 @@ const StepTwo = () => {
               value={start}
               changeHandler={startHandler}
             />
+
             <StartDateInput
               label="To date"
               sw="25%"
@@ -221,6 +223,7 @@ const StepTwo = () => {
               value={to}
               changeHandler={toHandler}
             />
+
           </div>
           <div className={Styles.fourthRow}>
             <TextAreaInput

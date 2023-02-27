@@ -31,7 +31,7 @@ const StepOne = () => {
     "CountryList",
     CountryList
   );
-  
+  console.log(countryData,'cpountryyyyyyyyyyy')
 
   const {
     data: stateData,
@@ -61,6 +61,7 @@ const StepOne = () => {
   });
   const [ pin, setPin ] = useState('')
   const countryHandler = async (data) => {
+    console.log(data,'datavalue')
     await countryId(data ? data.id : state.moreData.CountryID);
     setSelected({
       country: data,

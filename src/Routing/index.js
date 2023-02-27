@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Complete from "../Components/Home/Complete/Complete";
 import Steppers from "../Components/Home/Complete/Steppers";
+import EditProfile from "../Components/Home/Settings/EditProfile";
 import Dashboard from "../Pages/Dashboard";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
@@ -18,6 +19,7 @@ const Routing = () => {
 
             <Route path="/home" element={<Dashboard />} >
             <Route path="edit" element={<Steppers />} />
+            <Route path='settings/editprofile' element={<EditProfile /> } />
         </Route>
       </Routes>
     </>

@@ -10,5 +10,7 @@ export const CompanyList = async () =>{
         name: x?.CompanyName,
         id: x?.CompanyID,
     }));
+        console.log(transformedData,'listttttttttttt')
     return transformedData;
+
 }

@@ -1,0 +1,56 @@
+.collapseDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.firstRow{
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+.secondRow{
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+.thirdRow{
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+.fourthRow{
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+.fifthRow{
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+.seventhRow{
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .firstRow{
+        flex-direction: column;
+    }
+    .secondRow{
+        flex-direction: column;
+    }
+    .thirdRow{
+        flex-direction: column;
+    }
+    .fourthRow{
+        flex-direction: column;
+    }
+    .fifthRow{
+        flex-direction: column;
+    }
+    .seventhRow{
+        flex-direction: column;
+    }
+}
