@@ -9,7 +9,7 @@ import TextAreaInputs from '../../GlobalComp/InputFields/TextAreaInputs'
 const SecondStep = () => {
     const [ profession, setProfession ] = useState('student')
   return (
-    <Form layout="vertical" className={Styles.SecondStep} style={{ width: "100%" }}>
+    <Form layout="vertical" className={Styles.SecondStep} style={{ width: "100%",padding: '1rem' }}>
 
         <div className={Styles.firstRow}>
             <ProfessionList label='Profession' />

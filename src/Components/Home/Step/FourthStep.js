@@ -6,7 +6,7 @@ import TextAreaInputs from '../../GlobalComp/InputFields/TextAreaInputs'
 
 const FourthStep = () => {
   return (
-    <Form layout="vertical" className={Styles.SecondStep} style={{ width: "100%" }}>
+    <Form layout="vertical" className={Styles.SecondStep} style={{ width: "100%",padding: '1rem' }}>
         <div className={Styles.firstRow} >
             <Inputs label='Your ISTC Nick Name' />
             <Inputs label='ISTC Friends / Hostel Room Mates' />

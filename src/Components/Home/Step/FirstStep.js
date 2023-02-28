@@ -7,7 +7,7 @@ import Styles from '../../../Styles/Step/FirstStep.module.css'
 
 const FirstStep = () => {
   return (
-    <Form layout="vertical" style={{ width: "100%" }}>
+    <Form layout="vertical" style={{ width: "100%",padding: '1rem' }}>
         <div className={Styles.firtsRow}>
             <Inputs label='Batch No.' />
             <Inputs label='Roll No.' />
