@@ -16,18 +16,15 @@ const Dashboards = () => {
   const flag = useSelector((state) => state.editToastReducer.flag);
 
   const navigate = useNavigate();
-  const { data: moreData, isLoading } = useQuery(
-    "UserMOreDetail",
-    UserMoreDetail
-  );
+  const { data: userData } = useQuery("UserMOreDetail", UserMoreDetail);
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   const EditMoreDetails = () => {
-    console.log("detailmore");
-    navigate("/home/edit", { state: { moreData } });
+    console.log(userData, "detailmore");
+    navigate("complete", { state: { userData } });
   };
 
   return (
@@ -54,7 +51,7 @@ const Dashboards = () => {
           backgroundColor: "white",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center" , }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <LeftNav />
         </div>
         <div className={Styles.right}>
@@ -75,7 +72,9 @@ const Dashboards = () => {
           </Content>
         </Layout>
       </Content>
-      <Footer style={{ textAlign: "center" }}>© CopyRight 2022 ISTCOSA. All Right Reserved</Footer>
+      <Footer style={{ textAlign: "center" }}>
+        © CopyRight 2022 ISTCOSA. All Right Reserved
+      </Footer>
     </Layout>
   );
 };

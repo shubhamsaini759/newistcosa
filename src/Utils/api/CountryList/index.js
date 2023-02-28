@@ -6,7 +6,7 @@ export const CountryList = async () => {
   // const url = await api .get(Path.Country);
   const url = await axios.get("http://13.233.130.119/CommonType/GetByCountry");
   const transformedData = url?.data?.map((x) => ({
-    name: x?.countryName,
+    value: x?.countryName,
     id: x?.countryId,
   }));
   return transformedData;

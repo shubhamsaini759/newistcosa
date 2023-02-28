@@ -8,7 +8,7 @@ export const CityList = async (id) => {
     "http://13.233.130.119/CommonType/GetByCity?StateId= " + id
   );
   const transformedData = url?.data?.map((x) => ({
-    name: x?.CityName,
+    value: x?.CityName,
     id: x?.CityId,
   }));
   return transformedData;

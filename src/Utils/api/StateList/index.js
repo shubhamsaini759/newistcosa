@@ -9,7 +9,7 @@ export const StateList = async (id) => {
   );
 
   const transformedData = url?.data?.map((x) => ({
-    name: x?.StateName,
+    value: x?.StateName,
     id: x?.StateId,
   }));
   return transformedData;

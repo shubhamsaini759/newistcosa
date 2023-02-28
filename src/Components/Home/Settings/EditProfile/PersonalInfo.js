@@ -150,7 +150,7 @@ const PersonalInfo = () => {
         <Dates label="Aniversary Date" />
       </div>
       <div className={Styles.eighthRow}>
-        <TextAreaInputs label="Child Details" length='200' />
+        <TextAreaInputs label="Child Details" />
       </div>
 
       <div style={{ display: "flex", justifyContent: "flex-end" }}>

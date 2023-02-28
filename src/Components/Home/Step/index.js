@@ -1,28 +1,9 @@
-import { Button, message, Steps, theme } from 'antd';
-import { useState } from 'react';
-import FirstStep from './FirstStep';
-import FourthStep from './FourthStep';
-import SecondStep from './SecondStep';
-import ThirdStep from './ThirdStep';
-
-const steps = [
-  {
-    title: 'First',
-    content: <FirstStep  /> ,
-  },
-  {
-    title: 'Second',
-    content: <SecondStep /> ,
-  },
-  {
-    title: 'Third',
-    content: <ThirdStep /> ,
-  },
-  {
-    title: 'Last',
-    content: <FourthStep /> ,
-  },
-];
+import { Button, message, Steps, theme } from "antd";
+import { useState } from "react";
+import FirstStep from "./FirstStep";
+import FourthStep from "./FourthStep";
+import SecondStep from "./SecondStep";
+import ThirdStep from "./ThirdStep";
 
 const Step = () => {
   const { token } = theme.useToken();
@@ -36,14 +17,33 @@ const Step = () => {
     setCurrent(current - 1);
   };
 
+  const steps = [
+    {
+      title: "First",
+      content: <FirstStep next={next} />,
+    },
+    {
+      title: "Second",
+      content: <SecondStep prev={prev} next={next} />,
+    },
+    {
+      title: "Third",
+      content: <ThirdStep prev={prev} next={next} />,
+    },
+    {
+      title: "Last",
+      content: <FourthStep prev={prev} />,
+    },
+  ];
+
   const items = steps.map((item) => ({
     key: item.title,
     title: item.title,
   }));
 
   const contentStyle = {
-    lineHeight: '260px',
-    textAlign: 'center',
+    lineHeight: "260px",
+    textAlign: "center",
     color: token.colorTextTertiary,
     backgroundColor: token.colorFillAlter,
     borderRadius: token.borderRadiusLG,
@@ -55,32 +55,35 @@ const Step = () => {
     <>
       <Steps current={current} items={items} />
       <div style={contentStyle}>{steps[current].content}</div>
-      <div
+      {/* <div
         style={{
           marginTop: 24,
         }}
-      >
-        {current < steps.length - 1 && (
+      > */}
+      {/* {current < steps.length - 1 && (
           <Button type="primary" onClick={() => next()}>
             Next
           </Button>
         )}
         {current === steps.length - 1 && (
-          <Button type="primary" onClick={() => message.success('Processing complete!')}>
+          <Button
+            type="primary"
+            onClick={() => message.success("Processing complete!")}
+          >
             Done
           </Button>
         )}
         {current > 0 && (
           <Button
             style={{
-              margin: '0 8px',
+              margin: "0 8px",
             }}
             onClick={() => prev()}
           >
             Previous
           </Button>
-        )}
-      </div>
+        )} */}
+      {/* </div> */}
     </>
   );
 };
