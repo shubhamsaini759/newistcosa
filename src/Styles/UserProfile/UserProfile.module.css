@@ -1,0 +1,109 @@
+/*      User Profile   */
+
+.body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.dividers{
+    padding-top: 2%;
+    font-weight: 700 !important;
+}
+
+/*      Top Profile    */
+
+.left{
+    display: flex;
+    width : 100%;
+
+}
+.Topleft{
+    width: 40%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.photos{
+    
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.4rem;
+
+}
+
+.name p {
+    font-weight: 500;
+    font-size: large;
+}
+.member{
+    margin-top: -1rem;
+    padding-bottom: 1rem;
+   
+}
+.editPro{
+
+    padding-bottom: 1rem;
+}
+
+.topRight{
+    padding-left: 20%;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+
+/*    Bottom Profile   */
+
+.myself{
+    word-wrap: break-word;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+    padding: 2%;
+    background-color: whitesmoke;
+}
+.experience{
+    word-wrap: break-word;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+    padding: 2%;
+    background-color: whitesmoke;
+
+    
+}
+.aboutIstcosa{
+    word-wrap: break-word;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+    padding: 2%;
+    background-color: whitesmoke;
+
+}
+.commentsIstcosa{
+    word-wrap: break-word;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+    padding: 2%;
+    background-color: whitesmoke;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .left{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .Topleft{
+        width: auto;
+    }
+    .topRight{
+        padding: 0;
+    }
+   
+}

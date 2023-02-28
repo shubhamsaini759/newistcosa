@@ -1,0 +1,44 @@
+.secondRow{
+    display: flex;
+    align-items: center;
+    gap : 1rem;
+}
+.thirdRow{
+    display: flex;
+    gap: 1rem;
+}
+.fifthRow{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+}
+.ofirstRow{
+    display: flex;
+    gap: 1rem;
+}
+.osecondRow{
+    display: flex;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+   
+    .secondRow{
+        flex-direction: column;
+    
+    }
+    .thirdRow{
+        flex-direction: column;
+    
+    }
+  
+    .ofirstRow{
+        flex-direction: column;
+     
+    }
+    .osecondRow{
+        flex-direction: column;
+       
+    }
+}

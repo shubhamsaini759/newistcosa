@@ -31,7 +31,7 @@ const Gender = (props) => {
 
         <Form.Item
             name={props.label}
-            label={props.label}
+            label='Gender'
             style={{width : '100%'}}
             rules={[
             {

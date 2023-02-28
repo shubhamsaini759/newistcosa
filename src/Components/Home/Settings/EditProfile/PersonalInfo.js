@@ -1,16 +1,17 @@
 import { Button, Form } from "antd";
 import React, { useState } from "react";
-import Inputs from "../InputFields/Inputs";
 import Styles from "../../../../Styles/EditProfile/PersonalProfile.module.css";
-import Gender from "../InputFields/Gender";
-import NumberInputs from "../InputFields/NumberInputs";
-import EmailInputs from "../InputFields/EmailInputs";
-import Dates from "../InputFields/Dates";
-import AutoInputs from "../InputFields/AutoInputs";
-import TextAreaInputs from "../InputFields/TextAreaInputs";
-import Marital from "../InputFields/Marital";
+
 import { useQuery } from "react-query";
 import { CountryList } from "../../../../Utils/api/CountryList";
+import Inputs from "../../../GlobalComp/InputFields/Inputs";
+import Gender from "../../../GlobalComp/InputFields/Gender";
+import Dates from "../../../GlobalComp/InputFields/Dates";
+import NumberInputs from "../../../GlobalComp/InputFields/NumberInputs";
+import EmailInputs from "../../../GlobalComp/InputFields/EmailInputs";
+import AutoInputs from "../../../GlobalComp/InputFields/AutoInputs";
+import TextAreaInputs from "../../../GlobalComp/InputFields/TextAreaInputs";
+import Marital from "../../../GlobalComp/InputFields/Marital";
 
 const PersonalInfo = () => {
   const [personalProfile, setPersonalProfile] = useState({
@@ -149,7 +150,7 @@ const PersonalInfo = () => {
         <Dates label="Aniversary Date" />
       </div>
       <div className={Styles.eighthRow}>
-        <TextAreaInputs label="Child Details" />
+        <TextAreaInputs label="Child Details" length='200' />
       </div>
 
       <div style={{ display: "flex", justifyContent: "flex-end" }}>

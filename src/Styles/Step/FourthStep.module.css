@@ -1,0 +1,25 @@
+.firstRow{
+    display: flex;
+    gap: 1rem;
+}
+.secondRow{
+    display: flex;
+    gap: 1rem;
+}
+
+.fourthRow{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .firstRow{
+        flex-direction: column;
+    }
+    .secondRow{
+        flex-direction: column;
+    
+    }
+   
+}

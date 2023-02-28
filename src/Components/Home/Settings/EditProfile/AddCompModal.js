@@ -1,13 +1,14 @@
 import { Button, Form, Modal } from 'antd';
 import { useState } from 'react';
-import AutoInputs from '../InputFields/AutoInputs';
-import Inputs from '../InputFields/Inputs';
-import ProfessionList from '../InputFields/ProfessionList';
 import Styles from '../../../../Styles/EditProfile/EditIconModal.module.css'
-import NumberInputs from '../InputFields/NumberInputs';
-import EmailInputs from '../InputFields/EmailInputs';
-import TextAreaInputs from '../InputFields/TextAreaInputs';
-import Dates from '../InputFields/Dates';
+import AutoInputs from '../../../GlobalComp/InputFields/AutoInputs';
+import Dates from '../../../GlobalComp/InputFields/Dates';
+import EmailInputs from '../../../GlobalComp/InputFields/EmailInputs';
+import Inputs from '../../../GlobalComp/InputFields/Inputs';
+import NumberInputs from '../../../GlobalComp/InputFields/NumberInputs';
+import ProfessionList from '../../../GlobalComp/InputFields/ProfessionList';
+import TextAreaInputs from '../../../GlobalComp/InputFields/TextAreaInputs';
+
 
 const AddCompModal = (props) => {
 

@@ -10,9 +10,7 @@ const SideButtons = () => {
 
 
 
-    const homeHandler = () =>{
-      navigate('/home')
-    }
+ 
 
 
   return (
@@ -25,11 +23,11 @@ const SideButtons = () => {
           height: "100%",
         }}
       >
-        <Menu.Item onClick={homeHandler}>
+        <Menu.Item >
           {/* <LaptopOutlined /> */}
           Dashboard 
         </Menu.Item>
-        <Menu.Item onClick={homeHandler}>
+        <Menu.Item onClick={()=>navigate('complete')}>
           {/* <LaptopOutlined /> */}
           Home 
         </Menu.Item>
@@ -53,6 +51,7 @@ const SideButtons = () => {
         </Menu.SubMenu>
       
         <Menu.SubMenu title="Settings">
+          <Menu.Item onClick={()=>navigate('settings/userprofile')}>User Profile</Menu.Item>
           <Menu.Item onClick={()=>navigate('settings/editprofile')}>Edit Profile</Menu.Item>
         </Menu.SubMenu>
       </Menu>

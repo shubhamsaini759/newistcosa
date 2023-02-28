@@ -32,7 +32,7 @@ const Marital = (props) => {
     
     <Form.Item
         name={props.label}
-        label={props.label}
+        label='Marital Status'
         style={{width : '100%'}}
         rules={[
         {
