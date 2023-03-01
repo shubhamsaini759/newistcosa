@@ -1,19 +1,25 @@
 import React from 'react'
+import { useQuery } from 'react-query';
 import Styles from '../../../../Styles/UserProfile/UserProfile.module.css'
+import { UserProfileDetails } from '../../../../Utils/api/UserProfile';
 
 import ProfileLeft from './ProfileLeft';
 import ProfileRight from './ProfileRight';
 
 
 const UserProfile = () => {
+
+  const { data : userProfile } = useQuery('UserProfileDetails',UserProfileDetails);
+  console.log(userProfile,'profile')
+
   return (
     <div className={Styles.body}>
       <div className={Styles.left} >
-          <ProfileLeft />
+          <ProfileLeft data={userProfile} />
       </div>
 
       <div className={Styles.right}>
-          <ProfileRight />
+          <ProfileRight data={userProfile} />
       </div>
 
     </div>

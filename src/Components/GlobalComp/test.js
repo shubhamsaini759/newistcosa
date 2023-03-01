@@ -24,6 +24,7 @@ const Test = () => {
   const [detail, setDetail] = useState('');
 
   const onChange = ({ fileList: newFileList }) => {
+    
     setFileList(newFileList);
     convertBase64(newFileList[0]);
     dispatch(tempIdActions.UploadImage({ imageName : newFileList[0].name }))

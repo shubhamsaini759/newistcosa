@@ -40,7 +40,7 @@ const Gender = (props) => {
             },
             ]}
         >
-        <Select placeholder="select your gender" value={props.value} onChange={(e)=>props.onChange(e)} >
+        <Select placeholder="select your gender" value={props.value} onChange={(e)=>props.handler(e)} >
           <Option value="Male">Male</Option>
           <Option value="Female">Female</Option>
           <Option value="Other">Other</Option>

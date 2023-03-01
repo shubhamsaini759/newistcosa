@@ -24,7 +24,7 @@ const Dashboards = () => {
 
   const EditMoreDetails = () => {
     console.log(userData, "detailmore");
-    navigate("complete", { state: { userData } });
+    navigate("edit", { state: { userData } });
   };
 
   return (

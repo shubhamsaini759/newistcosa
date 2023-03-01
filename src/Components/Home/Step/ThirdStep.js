@@ -11,7 +11,6 @@ import NumberInputs from "../../GlobalComp/InputFields/NumberInputs";
 import TextAreaInputs from "../../GlobalComp/InputFields/TextAreaInputs";
 
 const ThirdStep = (props) => {
-  const { state } = useLocation();
 
   const [marital, setMarital] = useState("");
 

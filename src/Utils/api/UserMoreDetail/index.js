@@ -9,5 +9,6 @@ export const UserMoreDetail = async () => {
   );
 
   const transformedData = url?.data;
+  console.log(transformedData,'userapidetail')
   return transformedData;
 };

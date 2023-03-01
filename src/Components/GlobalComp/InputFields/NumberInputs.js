@@ -14,7 +14,10 @@ const NumberInputs = (props) => {
             <InputNumber
             size={props.size} 
             style={{ width :'100%' }}
-            value={props.value} />
+            value={props.value} 
+            onChange={(e)=>props.handler(e.target.value)}
+            
+            />
         </Form.Item>
     </>
   )

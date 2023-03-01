@@ -16,6 +16,7 @@ const Inputs = (props) => {
         ]}
       >
         <Input
+          disabled = {props.disabled}
           value={props.value}
           size={props.size}
           onChange={(e) => props.handler(e.target.value)}

@@ -5,6 +5,7 @@ const EmailInputs = (props) => {
   return (
     <>
         <Form.Item
+          
             name={props.name}
             label={props.label}
             style={{ width : '100%'}}
@@ -18,7 +19,7 @@ const EmailInputs = (props) => {
             }
             ]}
         >
-            <Input value={props.value} size={props.size}  />
+            <Input disabled={props.disabled} value={props.value} size={props.size}  />
         </Form.Item>
     </>
   )

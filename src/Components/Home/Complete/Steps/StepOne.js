@@ -22,9 +22,9 @@ const StepOne = () => {
   const dispatch = useDispatch();
 
 
-  const [batchId,  setbatchId ] = useState(state.moreData.BatchID)
-  const [ rollNumberId,setRollNumberId] = useState(state.moreData.RollNumberID)
-  const [ fullName,setFullName] = useState(state.moreData.FullName)
+  const [batchId,  setbatchId ] = useState(state.userData.BatchID)
+  const [ rollNumberId,setRollNumberId] = useState(state.userData.RollNumberID)
+  const [ fullName,setFullName] = useState(state.userData.FullName)
 
   
   const { data: countryData, isLoading: countryLoading } = useQuery(
@@ -47,22 +47,22 @@ const StepOne = () => {
 
   const [selected, setSelected] = useState({
     country: {
-      id: !!state?.moreData?.CountryID ? state?.moreData?.CountryID : null,
-      value: !!state?.moreData?.CountryName ? state?.moreData?.CountryName : "",
+      id: !!state?.userData?.CountryID ? state?.userData?.CountryID : null,
+      value: !!state?.userData?.CountryName ? state?.userData?.CountryName : "",
     },
     state: {
-      id: !!state?.moreData?.StateID ? state?.moreData?.StateID : null,
-      value: !!state?.moreData?.StateName ? state?.moreData?.StateName : "",
+      id: !!state?.userData?.StateID ? state?.userData?.StateID : null,
+      value: !!state?.userData?.StateName ? state?.userData?.StateName : "",
     },
     city: {
-      id: !!state?.moreData?.CityID ? state?.moreData?.CityID : null,
-      value: !!state?.moreData?.CityName ? state?.moreData?.CityName : "",
+      id: !!state?.userData?.CityID ? state?.userData?.CityID : null,
+      value: !!state?.userData?.CityName ? state?.userData?.CityName : "",
     },
   });
   const [ pin, setPin ] = useState('')
   const countryHandler = async (data) => {
     console.log(data,'datavalue')
-    await countryId(data ? data.id : state.moreData.CountryID);
+    await countryId(data ? data.id : state.userData.CountryID);
     setSelected({
       country: data,
       city: {
@@ -77,7 +77,7 @@ const StepOne = () => {
   };
 
   const stateHandler = async (data) => {
-    await stateId(data ? data.id : state.moreData.StateID);
+    await stateId(data ? data.id : state.userData.StateID);
     const countryDataClone = { ...selected.country };
     setSelected({
       country: countryDataClone,
@@ -128,19 +128,19 @@ const StepOne = () => {
             sw="25%"
             aw="75%"
             label="Batch Year"
-            value={state.moreData.BatchID}
+            value={state.userData.BatchID}
           />
           <DisableInputs
             sw="25%"
             aw="75%"
             label="Roll Number"
-            value={state.moreData.RollNumberID}
+            value={state.userData.RollNumberID}
           />
           <DisableInputs
             sw="25%"
             aw="75%"
             label="Full Name"
-            value={state.moreData.FullName}
+            value={state.userData.FullName}
           />
         </div>
         <div className={Styles.secondRow}>
@@ -149,14 +149,14 @@ const StepOne = () => {
             aw="75%"
             disabled
             label="Email Address"
-            value={state.moreData.Email}
+            value={state.userData.Email}
           />
           <VisibleInputs
             sw="25%"
             aw="75%"
             disabled
             label="Phone Number"
-            value={state.moreData.PhoneNumber}
+            value={state.userData.PhoneNumber}
           />
           <SimpleInputs sw="25%" aw="75%" label="Pincode" value={pin}  changeHandler={PinHandler} />
         </div>

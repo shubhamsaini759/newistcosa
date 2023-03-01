@@ -6,7 +6,7 @@ const AutoInputs = (props) => {
     <>
       <Form.Item
         label={props.label}
-        name={props.label}
+        name={props.name}
         rules={[
           {
             required: true,
@@ -20,7 +20,6 @@ const AutoInputs = (props) => {
           filterOption={true}
           onSelect={(_, id) => props.handler(props.uid, id)}
           size={props.size}
-          defaultValue={props.value}
         />
       </Form.Item>
     </>

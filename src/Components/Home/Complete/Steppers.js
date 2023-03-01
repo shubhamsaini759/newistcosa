@@ -37,10 +37,10 @@ const Steppers = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  console.log(state.moreData.RollNumberID, "location");
+  console.log(state.userData.RollNumberID, "location");
 
-  const [batchId, setbatchId] = useState(state.moreData.BatchID);
-  const [rollNumberId, setRollNumberId] = useState(state.moreData.RollNumberID);
+  const [batchId, setbatchId] = useState(state.userData.BatchID);
+  const [rollNumberId, setRollNumberId] = useState(state.userData.RollNumberID);
 
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);

@@ -21,9 +21,10 @@ export const Path ={
     // get
         userMoreDetail : 'User/EditUserMoreDetails/1009',
         companyList : 'Company',
+        userProfile : 'User/UserProfile/6301',
  
     // put
-        userEditDetail : 'User/PutUserMoreDetails?userId=1009',
+        userEditDetail : 'User/PutUserMoreDetails?userId=6301',
 
     // post
         addCompany : 'Company'
