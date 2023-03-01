@@ -13,27 +13,22 @@ import { UserMoreDetail } from "../../../Utils/api/UserMoreDetail";
 import axios from "axios";
 
 const FirstStep = (props) => {
-  const form = Form.useForm();
+  const [form] = Form.useForm();
 
-  const {data : userdata } = useQuery('UserMoreDetail',UserMoreDetail);
-  console.log(userdata,'wecgwuiegiwuhfuilwgeuil')
-
- 
+  const { data: userdata } = useQuery("UserMoreDetail", UserMoreDetail);
+  console.log(userdata, "wecgwuiegiwuhfuilwgeuil");
 
   const val = {
-    BatchID : '',
-    RollNumberID : '',
-    FullName : '',
-    Email : '',
-    PhoneNumber : '',
-    Pincode : '',
-    Country : '',
-    State : '',
-    City : ''
-  }
-
-
-
+    BatchID: "",
+    RollNumberID: "",
+    FullName: "",
+    Email: "",
+    PhoneNumber: "",
+    Pincode: "",
+    Country: "",
+    State: "",
+    City: "",
+  };
 
   const { data: countryList } = useQuery("CountryList", CountryList);
   const { data: stateList, mutateAsync: countryId } = useMutation(
@@ -50,60 +45,52 @@ const FirstStep = (props) => {
   };
   const countryHandler = async (_, data) => {
     await countryId(data.id);
-    
   };
 
   const stateHandler = async (_, data) => {
     await stateId(data.id);
-   
   };
 
   const cityHandler = async (_, data) => {
     await stateId(data.id);
-   
   };
-
 
   return (
     <Form
+      form={form}
       layout="vertical"
       style={{ width: "100%", padding: "1rem" }}
       onFinish={props.next}
-      form={form}
       initialValues={val}
     >
       <div className={Styles.firtsRow}>
-        <Inputs label="Batch No." name='BatchID' disabled={true} />
-        <Inputs label="Roll No." name='RollNumberID' disabled={true} />
-        <Inputs label="Full name" name='FullName' disabled={true} />
+        <Inputs label="Batch No." name="BatchID" disabled={true} />
+        <Inputs label="Roll No." name="RollNumberID" disabled={true} />
+        <Inputs label="Full name" name="FullName" disabled={true} />
       </div>
       <div className={Styles.secondRow}>
-        <Inputs label="Email" name='Email' disabled={true} />
-        <Inputs label="Phone Number" name='PhoneNumber' disabled={true} />
-        <Inputs
-          label="Pincode"
-          handler={pincodeHandler}
-          name='Pincode'
-        />
+        <Inputs label="Email" name="Email" disabled={true} />
+        <Inputs label="Phone Number" name="PhoneNumber" disabled={true} />
+        <Inputs label="Pincode" handler={pincodeHandler} name="Pincode" />
       </div>
       <div className={Styles.thirdRow}>
         <AutoInputs
           label="Country"
           list={countryList}
           handler={countryHandler}
-          name='Country'
+          name="Country"
         />
         <AutoInputs
           label="State"
           list={stateList}
           handler={stateHandler}
-          name='State'
+          name="State"
         />
         <AutoInputs
           label="City"
           list={cityList}
           handler={cityHandler}
-          name='City'
+          name="City"
         />
       </div>
       <div className={Styles.fourthRow}>
