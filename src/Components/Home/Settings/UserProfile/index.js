@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect } from 'react'
 import { useQuery } from 'react-query';
 import Styles from '../../../../Styles/UserProfile/UserProfile.module.css'
 import { UserProfileDetails } from '../../../../Utils/api/UserProfile';
@@ -11,6 +12,8 @@ const UserProfile = () => {
 
   const { data : userProfile } = useQuery('UserProfileDetails',UserProfileDetails);
   console.log(userProfile,'profile')
+
+  
 
   return (
     <div className={Styles.body}>

@@ -1,5 +1,5 @@
 import { Button, Form } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Inputs from "../../GlobalComp/InputFields/Inputs";
 import AutoInputs from "../../GlobalComp/InputFields/AutoInputs";
 
@@ -10,12 +10,15 @@ import { CountryList } from "../../../Utils/api/CountryList";
 import { StateList } from "../../../Utils/api/StateList";
 import { CityList } from "../../../Utils/api/CityList";
 import { UserMoreDetail } from "../../../Utils/api/UserMoreDetail";
+import axios from "axios";
 
 const FirstStep = (props) => {
   const form = Form.useForm();
 
   const {data : userdata } = useQuery('UserMoreDetail',UserMoreDetail);
   console.log(userdata,'wecgwuiegiwuhfuilwgeuil')
+
+ 
 
   const val = {
     BatchID : '',
