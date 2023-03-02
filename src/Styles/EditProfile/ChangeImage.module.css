@@ -1,0 +1,21 @@
+.defination{
+    height: 5rem;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+
+    display: flex;
+    align-items: center;
+}
+.defination p{
+    padding-left: 2rem;
+    font-size: x-large;
+    font-weight: 700;
+    color: saddlebrown;
+}
+.ImageBox{
+    margin-top: 2rem;
+    height: auto;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    padding: 2rem;
+}

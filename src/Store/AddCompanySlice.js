@@ -3,31 +3,45 @@ import { createSlice } from "@reduxjs/toolkit";
 export const AddCompanySlice = createSlice({
   name: "addCompanySlice",
   initialState: {
+    Profession : '',
+    Designation : '',
     CompanyName: "",
     CompanyAddress: "",
     EmailAddress: "",
     ContactNumber: "",
-    CityID: "1",
-    StateID: "13",
-    CountryID: "1",
+    FromDate : '',
+    ToDate : '',
+    Responsibility :'',
+   
   },
   reducers: {
-    Name(state, { payload }) {
-      state.CompanyName = payload.name;
+    profession(state, {payload}){
+      state.Profession = payload.profession
     },
-    Number(state, { payload }) {
-      state.ContactNumber = payload.number;
+    designation(state, {payload}){
+      state.Designation = payload.designation
     },
-    Email(state, { payload }) {
-      state.EmailAddress = payload.email;
+    company(state, {payload}){
+      state.CompanyName = payload.company
     },
-    Address(state, { payload }) {
-      state.CompanyAddress = payload.address;
+    contact(state,{payload}){
+      state.ContactNumber = payload.contact
     },
-    countryCityState(state, { payload }) {
-      state.CountryID = payload.countryId;
-      state.StateID = payload.stateId;
-      state.CityID = payload.cityId;
+    email(state, {payload}){
+      state.EmailAddress = payload.email
     },
+    address(state, {payload}){
+      state.CompanyAddress = payload.address
+    },
+    fromD(state, {payload}){
+      state.FromDate = payload.fromD
+    },
+    toD(state,{payload}){
+      state.ToDate = payload.toD
+    },
+    res(state, {payload}){
+      state.Responsibility = payload.res
+    }
+
   },
 });

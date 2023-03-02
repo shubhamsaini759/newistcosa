@@ -9,10 +9,6 @@ const SideButtons = () => {
     const navigate = useNavigate();
 
 
-
- 
-
-
   return (
     <>
       <Menu
@@ -27,7 +23,7 @@ const SideButtons = () => {
           {/* <LaptopOutlined /> */}
           Dashboard 
         </Menu.Item>
-        <Menu.Item onClick={()=>navigate('complete')}>
+        <Menu.Item >
           {/* <LaptopOutlined /> */}
           Home 
         </Menu.Item>
@@ -53,6 +49,8 @@ const SideButtons = () => {
         <Menu.SubMenu title="Settings">
           <Menu.Item onClick={()=>navigate('settings/userprofile')}>User Profile</Menu.Item>
           <Menu.Item onClick={()=>navigate('settings/editprofile')}>Edit Profile</Menu.Item>
+          <Menu.Item onClick={()=>navigate('settings/changeimage')}>Change Image</Menu.Item>
+          <Menu.Item onClick={()=>navigate('settings/changepassword')}>Change Password</Menu.Item>
         </Menu.SubMenu>
       </Menu>
     </>

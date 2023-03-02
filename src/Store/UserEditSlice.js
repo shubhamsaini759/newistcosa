@@ -14,6 +14,7 @@ export const UserEditSlice = createSlice({
     University: "",
     Degree: "",
     Skills: "",
+    PhoneNumber : '',
     JoiningYear: "",
     ExpectedCompletionYear: "",
     Designation: "",
@@ -41,101 +42,104 @@ export const UserEditSlice = createSlice({
     DeletedDate : null,
   },
   reducers: {
-    countryCityState(state, { payload }) {
-      state.CountryID = payload.countryId;
-      state.StateID = payload.stateId;
-      state.CityID = payload.cityId;
-      
+    batchId(state, {payload}){
+      state.BatchID = payload.batchId
     },
-    batch(state,{payload}){
-      state.BatchID = payload.batch
+    rollNumber(state, {payload}){
+      state.RollNumberID = payload.rollNumber
     },
-    roll(state,{payload}){
-      state.RollNumberID = payload.roll
+    FullName(state, {payload}){
+      state.FullName = payload.FullName
     },
-    fullName(state,{payload}){
-      state.FullName = payload.fullName
-    },
-    PinHandel(state, { payload }){
+    pincode(state, {payload}){
       state.PinCode = payload.pin
     },
-    ProfessionHandel(state,{ payload }){
+    country(state, {payload}){
+      state.CountryID = payload.country
+    },
+    state( state, {payload}){
+      state.StateID = payload.state
+    },
+    city(state, {payload}){
+      state.CityID = payload.city
+    },
+    uni(state, {payload}){
+      state.University = payload.uni
+    },
+    profession(state, {payload}){
       state.Profession = payload.profession
     },
-    collegeHandel(state, { payload }){
-      state.University = payload.college
+    degree(state, {payload}){
+      state.Degree = payload.degree
     },
-    qualiHandel(state, {payload}){
-      state.Degree = payload.quali
-    },
-    skillHandel(state,{payload}){
+    skill( state, {payload}){
       state.Skills = payload.skill
     },
-    Joining(state,{payload}){
-      state.JoiningYear = payload.join
+    phone(state, {payload}){
+      state.phone = payload.phone
     },
-    comp(state,{payload}){
-      state.ExpectedCompletionYear = payload.comp
+    joining( state, {payload}){
+      state.JoiningYear = payload.joining
     },
-    desigHandel(state,{payload}){
-      state.Designation = payload.designation
+    complete( state, {payload}){
+      state.ExpectedCompletionYear = payload.complete
     },
-    recentHandel(state, {payload}){
-      state.CompanyName = payload.recent
+    job(state,{payload}){
+      state.Designation = payload.job
     },
-    startHandel(state,{payload}){
-      state.FromDate = payload.start
+    company( state, {payload}){
+      state.CompanyName = payload.company
     },
-    toHandel(state, {payload}){
+    fromD( state, {payload}){
+      state.FromDate = payload.from
+    },
+    toD(state, {payload}){
       state.ToDate = payload.to
     },
-    describeHandel(state, {payload}){
+    describe( state, {payload}){
       state.Responsibility = payload.describe
     },
-    GendeHandle(state, {payload}){
-      state.Gender = payload.gen
+    gender(state, {payload}){
+      state.Gender = payload.gender
     },
-    MaritalHandle(state, {payload}){
-      state.MaritalStatus = payload.marital
-    },
-    NumHandle(state, { payload}){
-      state.WhatsappNumber = payload.number
-    },
-    DobHandle(state, {payload}){
+    dob( state, {payload}){
       state.DateOfBirth = payload.dob
     },
-    addHandle(state, {payload}){
-      state.Address = payload.add
+    whatsapp(state,{payload}){
+      state.WhatsappNumber = payload.whatsapp
     },
-    aboutHandle(state, { payload}){
+    address(state, {payload}){
+      state.Address = payload.address
+    },
+    about( state, {payload}){
       state.AboutYourSelf = payload.about
     },
-    spouseHandle(state, {payload}){
+    marital(state, {payload}){
+      state.MaritalStatus = payload.marital
+    },
+    spouse(state, {payload}){
       state.SpouseName = payload.spouse
     },
-    aniHandle(state, {payload}){
-      state.AniversaryDate = payload.ani
+    aniversary(state, {payload}){
+      state.AniversaryDate = payload.aniversary
     },
-    familyHandle(state,{payload}){
-      state.ChildDetails = payload.family
+    child(state, {payload}){
+      state.ChildDetails = payload.child
     },
-    nickHandle(state,{payload}){
+    nick(state, {payload}){
       state.ISTCNickName = payload.nick
     },
-    roomHandle(state,{payload}){
+    room(state, {payload}){
       state.ISTCFriendRoommate = payload.room
     },
-    memoriesHandle(state,{payload}){
-      state.ISTCAbout = payload.memories
+    aboutIstc(state, {payload}){
+      state.ISTCAbout = payload.aboutIstc
     },
-    commentHandle(state,{payload}){
-      state.Comments = payload.comment
+    comments(state, {payload}){
+      state.Comments = payload.comments
     },
-    keywordHandle(state,{payload}){
-      state.SearchKeyword = payload.keyword
-    },
-    userId(state,{payload}){
-      state.UserID = payload.userID
+    keywords(state, {payload}){
+      state.SearchKeyword = payload.keywords
     }
 
   },

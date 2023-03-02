@@ -14,9 +14,18 @@ import TextAreaInputs from "../../../GlobalComp/InputFields/TextAreaInputs";
 import Marital from "../../../GlobalComp/InputFields/Marital";
 import { StateList } from "../../../../Utils/api/StateList";
 import { CityList } from "../../../../Utils/api/CityList";
+import { useDispatch, useSelector } from "react-redux";
+import { userEditActions } from "../../../../Store";
 
 const PersonalInfo = (props) => {
   const [form] = Form.useForm();
+  const dispatch = useDispatch();
+
+  const perosnaldata = useSelector((state)=> state.UserEditReducer);
+
+  const submitHandler = () =>{
+    console.log(perosnaldata,'personaldata')
+  }
 
   console.log(props, "daatatatatat");
   const val = {
@@ -57,6 +66,8 @@ const PersonalInfo = (props) => {
 
   const countryHandler = async (_, data) => {
     console.log(data.id, "select");
+    dispatch(userEditActions.country({ country : data?.id }))
+
     await countryId(data.id);
     data
       ? form.setFieldsValue({
@@ -69,6 +80,8 @@ const PersonalInfo = (props) => {
 
   const stateHandler = async (_, data) => {
     console.log(data.id, "stateid");
+    dispatch(userEditActions.state({ state : data?.id }))
+
     await stateId(data.id);
     data
       ? form.setFieldsValue({
@@ -79,6 +92,8 @@ const PersonalInfo = (props) => {
   };
 
   const cityHandler = (_, data) => {
+    dispatch(userEditActions.city({ city : data?.id }))
+
     data
       ? form.setFieldValue({
           City: data.value,
@@ -87,53 +102,83 @@ const PersonalInfo = (props) => {
   };
 
   const nameHandler = (data) => {
+    dispatch(userEditActions.FullName({FullName : data}) )
     console.log(data);
   };
 
   const genderHandler = (data) => {
+    dispatch(userEditActions.gender({gender : data}) )
+
     console.log(data);
   };
 
   const whatsappHandler = (data) => {
+    dispatch(userEditActions.whatsapp({whatsapp : data}) )
+
     console.log(data);
   };
   const numberHandler = (data) => {
+    dispatch(userEditActions.phone({phone : data}) )
+
     console.log(data);
   };
   const pincodeHandler = (data) => {
+    dispatch(userEditActions.pincode({ pin : data }))
+
     console.log(data);
   };
 
   const nicknameHandler = (data) => {
+    dispatch(userEditActions.nick({ nick : data }) )
+
     console.log(data);
   };
   const roommatesHandler = (data) => {
+    dispatch(userEditActions.room({ room : data }) )
+
     console.log(data);
   };
   const commentHandler = (data) => {
+    dispatch(userEditActions.comments({ comments : data }) )
+
     console.log(data);
   };
   const istcAboutHandler = (data) => {
+    dispatch(userEditActions.aboutIstc({ aboutIstc : data }) )
+
     console.log(data);
   };
   const myselfHandler = (data) => {
+    dispatch(userEditActions.about({about : data}) )
+
     console.log(data);
   };
   const keywordhandler = (data) => {
+    dispatch(userEditActions.keywords({ keywords : data }) )
+
     console.log(data);
   };
   const addressHandler = (data) => {
     console.log(data);
+    dispatch(userEditActions.address({address : data}) )
+
   };
   const maritalHandler = (data) => {
     console.log(data);
+    dispatch(userEditActions.marital({marital : data}) )
+
   };
   const spouseHandler = (data) => {
+    dispatch(userEditActions.spouse({spouse : data}) )
+
     console.log(data);
   };
   const childHandler = (data) => {
+    dispatch(userEditActions.child({child : data}) )
+
     console.log(data);
   };
+  
   const DateFormatter = (date) => {
     if (!!date) {
       const d = new Date(date);
@@ -283,7 +328,7 @@ const PersonalInfo = (props) => {
       </div>
 
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" onClick={submitHandler}>
           Submit
         </Button>
       </div>

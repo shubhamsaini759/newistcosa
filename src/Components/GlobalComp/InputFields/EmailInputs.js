@@ -19,7 +19,7 @@ const EmailInputs = (props) => {
             }
             ]}
         >
-            <Input disabled={props.disabled} value={props.value} size={props.size}  />
+            <Input disabled={props.disabled} onChange={(e)=>props.handler(e.target.value)} size={props.size}  />
         </Form.Item>
     </>
   )

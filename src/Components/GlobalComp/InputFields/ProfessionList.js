@@ -17,7 +17,7 @@ const ProfessionList = (props) => {
         ]}
     >
         <Select placeholder="Profession" value={props.value} onChange={(e)=>props.onChange(e)} size={props.size} >
-            <Option value="Student">Student</Option>
+            <Option value="student">Student</Option>
             <Option value="Government Sector">Government Sector</Option>
             <Option value="Private Sector">Private Sector</Option>
             <Option value="Entrepreneur / Own Business">Entrepreneur / Own Business</Option>

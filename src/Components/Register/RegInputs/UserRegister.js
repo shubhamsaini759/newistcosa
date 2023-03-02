@@ -236,7 +236,7 @@ const UserRegister = () => {
 
         <div className={Styles.sixthRow}>
           <div>
-          <Test />
+            <Test />
           </div>
           <div>
             <Checkbox

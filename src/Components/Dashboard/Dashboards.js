@@ -14,17 +14,18 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const Dashboards = () => {
   const flag = useSelector((state) => state.editToastReducer.flag);
+  const { data: userData } = useQuery("UserMOreDetail", UserMoreDetail);
+  console.log(userData,'dshboard')
 
   const navigate = useNavigate();
-  const { data: userData } = useQuery("UserMOreDetail", UserMoreDetail);
-
+ 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   const EditMoreDetails = () => {
-    console.log(userData, "detailmore");
-    navigate("edit", { state: { userData } });
+
+    navigate("complete",{state : userData});
   };
 
   return (

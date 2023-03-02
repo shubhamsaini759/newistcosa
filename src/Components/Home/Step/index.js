@@ -1,5 +1,8 @@
 import { Button, message, Steps, theme } from "antd";
 import { useState } from "react";
+import { useQuery } from "react-query";
+import { useLocation } from "react-router-dom";
+import { UserMoreDetail } from "../../../Utils/api/UserMoreDetail";
 import FirstStep from "./FirstStep";
 import FourthStep from "./FourthStep";
 import SecondStep from "./SecondStep";
@@ -9,7 +12,14 @@ const Step = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
 
+  const {state} = useLocation();
+
+  console.log(state,'hwefgvwegfiulwegfiuwqehiuh')
+
   const next = () => {
+
+ 
+
     setCurrent(current + 1);
   };
 
@@ -20,7 +30,7 @@ const Step = () => {
   const steps = [
     {
       title: "First",
-      content: <FirstStep next={next} />,
+      content: <FirstStep next={next} userData={state} />,
     },
     {
       title: "Second",
@@ -28,7 +38,7 @@ const Step = () => {
     },
     {
       title: "Third",
-      content: <ThirdStep prev={prev} next={next} />,
+      content: <ThirdStep prev={prev} next={next} userData={state} />,
     },
     {
       title: "Last",
