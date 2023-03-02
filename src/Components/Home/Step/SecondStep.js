@@ -1,4 +1,4 @@
-import { Button, Form } from "antd";
+import { Button, Form, Modal } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userEditActions } from "../../../Store";
@@ -7,10 +7,13 @@ import Dates from "../../GlobalComp/InputFields/Dates";
 import Inputs from "../../GlobalComp/InputFields/Inputs";
 import ProfessionList from "../../GlobalComp/InputFields/ProfessionList";
 import TextAreaInputs from "../../GlobalComp/InputFields/TextAreaInputs";
+import EditIconModal from "../Settings/EditProfile/EditIconModal";
 
 const SecondStep = (props) => {
   const [form] = Form.useForm();
   const disaptch = useDispatch();
+
+ 
 
   const val = {
     Profession: "",
@@ -27,6 +30,18 @@ const SecondStep = (props) => {
   };
 
   const [profession, setProfession] = useState('');
+  const [ addCompany, setAddCompany ] = useState(false);
+
+  const addDoneHandler = (e) =>{
+    setAddCompany(e);
+  }
+  const addCancelHandler = (e) =>{
+    setAddCompany(e);
+  }
+  const addCompanyHandler = () =>{
+    setAddCompany(true);
+  }
+
 
 
   const uniHandler = (data) =>{
@@ -108,6 +123,9 @@ const SecondStep = (props) => {
   }
 
 
+
+
+
   return (
     <Form
       form={form}
@@ -138,18 +156,29 @@ const SecondStep = (props) => {
         <>
           <div className={Styles.secondRow}>
             <Inputs label="Job Designation" name='Designation' handler={jobHandler} />
-            <Inputs label="Recent company" name='CompanyName handler={companyHandler} />
-            <Button>Add</Button>
+            <Inputs label="Recent company" name='CompanyName' handler={companyHandler} />
+            <Button onClick={addCompanyHandler} >Add</Button>
+
+            <Modal
+              title="Add Company"
+              centered
+              open={addCompany}
+              onCancel={() => setAddCompany(false)}
+              footer={null}
+            >
+              <EditIconModal onDone={addDoneHandler} onCancel={addCancelHandler} />
+          </Modal>
           </div>
           <div className={Styles.thirdRow}>
             <Dates label="From Date" name='FromDate handler={fromHandler} />
             <Dates label="To Date" name='ToDate handler={toHandler} />
           </div>
           <div className={Styles.fourthRow}>
-            <TextAreaInputs label="Describe Your work profile" length="200" name='Responsibility handler={describeHandler}/>
+            <TextAreaInputs label="Describe Your work profile" length="200" name='Responsibility' handler={describeHandler}/>
           </div>
         </>
-      )}
+      )
+      }
 
       <div className={Styles.fifthRow}>
         <Button htmlType="submit" onClick={props.prev}>

@@ -1,6 +1,8 @@
 import { Button, Form, Modal } from 'antd';
 import { useState } from 'react';
+import { useQuery } from 'react-query';
 import Styles from '../../../../Styles/EditProfile/EditIconModal.module.css'
+import { CompanyList } from '../../../../Utils/api/UserMoreDetail/CompanyList';
 import AutoInputs from '../../../GlobalComp/InputFields/AutoInputs';
 import Dates from '../../../GlobalComp/InputFields/Dates';
 import EmailInputs from '../../../GlobalComp/InputFields/EmailInputs';
@@ -11,6 +13,8 @@ import TextAreaInputs from '../../../GlobalComp/InputFields/TextAreaInputs';
 
 
 const AddCompModal = (props) => {
+
+    const { data : companyList } = useQuery('CompanyList',CompanyList)
 
     const [ editIcon, setEditIcon ] = useState({
         Profession : '',
@@ -35,7 +39,7 @@ const AddCompModal = (props) => {
         </div>
         <div className={Styles.secondRow}>
             <Inputs label='Recent Designation' size='small' />
-            <AutoInputs label='Company Name' size='small' />
+            <AutoInputs label='Company Name' size='small' list={companyList} />
         </div>
         <div className={Styles.thirdRow}>
             <NumberInputs  label='Contact Number' size='small' />
