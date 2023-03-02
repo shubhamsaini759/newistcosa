@@ -16,7 +16,8 @@ const Dates = (props) => {
           size={props.size}
           style={{ width: "100%" }}
           value={!!props.value ? dayjs(props.value, dateFormat) : ""}
-          onChange={(e)=>props.handler(e)}
+          onChange={(e) => props.handler(e)}
+          format={dateFormat}
         />
       </Form.Item>
     </>

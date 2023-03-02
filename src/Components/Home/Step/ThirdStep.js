@@ -11,19 +11,19 @@ import NumberInputs from "../../GlobalComp/InputFields/NumberInputs";
 import TextAreaInputs from "../../GlobalComp/InputFields/TextAreaInputs";
 import { useDispatch } from "react-redux";
 import { userEditActions } from "../../../Store";
+import { DateFormatter } from "../../../Utils/Helpers";
 
 const ThirdStep = (props) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
   const dateFormat = "MM-DD-YYYY";
 
-  console.log(props.userData.userData,'thirdPart');
+  console.log(props.userData.userData, "thirdPart");
 
+  const val = {
+    Gender: `${props?.userData?.Gender}`,
 
-  const val ={ 
-    Gender: `${props?.userData?.userData?.Gender}`,
-    DateOfBirth: "",
-    WhatsappNumber: `${props?.userData?.userData?.WhatsappNumber}`,
+    WhatsappNumber: `${props?.userData?.WhatsappNumber}`,
     Address: "",
     AboutYourSelf: "",
     MaritalStatus: "",
@@ -31,84 +31,86 @@ const ThirdStep = (props) => {
     AniversaryDate: "",
     ChildDetails: "",
   };
-  const [marital, setMarital] = useState('');
 
-  const genderHandler = (data) =>{
-    dispatch(userEditActions.gender({gender : data}) )
-    console.log(data)
+  const [dob, setDob] = useState(DateFormatter(props?.userData?.DateOfBirth));
+
+  const [marital, setMarital] = useState("");
+
+  const genderHandler = (data) => {
+    dispatch(userEditActions.gender({ gender: data }));
+    console.log(data);
     form.setFieldsValue({
-      Gender : data
-    })
-  }
+      Gender: data,
+    });
+  };
 
-  const dobHandler = (data) =>{
-    dispatch(userEditActions.dob({dob : data}) )
+  const dobHandler = (data) => {
+    const formattedDate = DateFormatter(data);
+    dispatch(userEditActions.dob({ dob: formattedDate }));
 
-    console.log(data)
+    setDob(formattedDate);
+
+    // form.setFieldsValue({
+    //   DateOfBirth: formattedDate,
+    // });
+  };
+  const whatsHandler = (data) => {
+    dispatch(userEditActions.whatsapp({ whatsapp: data }));
+
+    console.log(data);
     form.setFieldsValue({
-      DateOfBirth : dayjs(data, dateFormat)
-    })
-  }
-  const whatsHandler = (data) =>{
-    dispatch(userEditActions.whatsapp({whatsapp : data}) )
+      WhatsappNumber: data,
+    });
+  };
+  const addressHnadler = (data) => {
+    dispatch(userEditActions.address({ address: data }));
 
-    console.log(data)
+    console.log(data);
     form.setFieldsValue({
-      WhatsappNumber : data
-    })
-  }
-  const addressHnadler = (data) =>{
-    dispatch(userEditActions.address({address : data}) )
+      Address: data,
+    });
+  };
+  const aboutHandler = (data) => {
+    dispatch(userEditActions.about({ about: data }));
 
-    console.log(data)
+    console.log(data);
     form.setFieldsValue({
-      Address : data
-    })
-  }
-  const aboutHandler = (data) =>{
-    dispatch(userEditActions.about({about : data}) )
-
-    console.log(data)
-    form.setFieldsValue({
-      AboutYourSelf : data
-    })
-  }
-  const maritalHandler = (data) =>{
-    console.log(data)
-    setMarital(data)
-    dispatch(userEditActions.marital({marital : data}) )
+      AboutYourSelf: data,
+    });
+  };
+  const maritalHandler = (data) => {
+    console.log(data);
+    setMarital(data);
+    dispatch(userEditActions.marital({ marital: data }));
 
     form.setFieldsValue({
-      MaritalStatus : data
-    })
-  }
-  const spouseHandler = (data) =>{
-    dispatch(userEditActions.spouse({spouse : data}) )
+      MaritalStatus: data,
+    });
+  };
+  const spouseHandler = (data) => {
+    dispatch(userEditActions.spouse({ spouse: data }));
 
-    console.log(data)
+    console.log(data);
     form.setFieldsValue({
-      SpouseName : data
-    })
-  }
-  const aniHandler = (data) =>{
-    dispatch(userEditActions.aniversary({aniversary : data}) )
+      SpouseName: data,
+    });
+  };
+  const aniHandler = (data) => {
+    dispatch(userEditActions.aniversary({ aniversary: data }));
 
-    console.log(data)
+    console.log(data);
     form.setFieldsValue({
-      AniversaryDate : data
-    })
-  }
-  const ChildHandler = (data) =>{
-    dispatch(userEditActions.child({child : data}) )
+      AniversaryDate: data,
+    });
+  };
+  const ChildHandler = (data) => {
+    dispatch(userEditActions.child({ child: data }));
 
-    console.log(data)
+    console.log(data);
     form.setFieldsValue({
-      ChildDetails : data
-    })
-  }
-
-
-
+      ChildDetails: data,
+    });
+  };
 
   return (
     <Form
@@ -120,29 +122,61 @@ const ThirdStep = (props) => {
     >
       <div className={Styles.firstRow}>
         <Gender name={Gender} handler={genderHandler} />
-        <Dates label="Date of Birth" name='DateOfBirth' handler={dobHandler} />
-        <NumberInputs label="Whatsapp Number" name='WhatsappNumber' handler={whatsHandler} />
+        <Dates
+          label="Date of Birth"
+          name="DateOfBirth"
+          value={dob}
+          handler={dobHandler}
+        />
+        <NumberInputs
+          label="Whatsapp Number"
+          name="WhatsappNumber"
+          handler={whatsHandler}
+        />
       </div>
       <div className={Styles.secondRow}>
-        <TextAreaInputs label="Residential Address" length="200" name='Address' handler={addressHnadler} />
-        <TextAreaInputs label="About Myself" length="200" name='AboutYourSelf' handler={aboutHandler}  />
+        <TextAreaInputs
+          label="Residential Address"
+          length="200"
+          name="Address"
+          handler={addressHnadler}
+        />
+        <TextAreaInputs
+          label="About Myself"
+          length="200"
+          name="AboutYourSelf"
+          handler={aboutHandler}
+        />
       </div>
       <div className={Styles.thirdRow}>
-        <Marital onChange={maritalHandler} name='MaritalStatus'  />
+        <Marital onChange={maritalHandler} name="MaritalStatus" />
 
-        {marital === 'Married' ? (
+        {marital === "Married" ? (
           <>
-            <Inputs label="Spouse Name" name='SpouseName' handler={spouseHandler} />
-            <Dates label="Aniversary Date" name='AniversaryDate' handler={aniHandler} />
+            <Inputs
+              label="Spouse Name"
+              name="SpouseName"
+              handler={spouseHandler}
+            />
+            <Dates
+              label="Aniversary Date"
+              name="AniversaryDate"
+              handler={aniHandler}
+            />
           </>
         ) : (
           ""
         )}
       </div>
       <div>
-        {marital === 'Married' ? (
+        {marital === "Married" ? (
           <>
-            <TextAreaInputs label="Family Details" length="400" name='ChildDetails' handler={ChildHandler} />
+            <TextAreaInputs
+              label="Family Details"
+              length="400"
+              name="ChildDetails"
+              handler={ChildHandler}
+            />
           </>
         ) : (
           ""

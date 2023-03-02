@@ -15,71 +15,89 @@ import { useDispatch } from "react-redux";
 
 const FirstStep = (props) => {
   const [form] = Form.useForm();
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
 
   const { data: countryList } = useQuery("CountryList", CountryList);
-  const { data: stateList, mutateAsync: countryId } = useMutation("StateList",StateList);
-  const { data: cityList, mutateAsync: stateId } = useMutation("CityList",CityList);
+  const { data: stateList, mutateAsync: countryId } = useMutation(
+    "StateList",
+    StateList
+  );
+  const { data: cityList, mutateAsync: stateId } = useMutation(
+    "CityList",
+    CityList
+  );
 
-  console.log(props.userData.userData,'userdata');
+  console.log(props.userData.userData, "userdata");
 
   const val = {
-    BatchID: `${props?.userData?.userdata?.BatchID}`,
-    RollNumberID: `${props?.userData?.userdata?.RollNumberID}`,
-    FullName: `${props?.userData?.userdata?.FullName}`,
-    Email: `${props?.userData?.userdata?.Email}`,
-    PhoneNumber: `${props?.userData?.userdata?.PhoneNumber}`,
-    Pincode: `${props?.userData?.userdata?.PinCode}`,
-    Country: `${props?.userData?.userdata?.CountryName}`,
-    State: `${props?.userData?.userdata?.StateName}`,
-    City: `${props?.userData?.userdata?.CityName}`,
+    BatchID: `${props?.userData?.BatchID}`,
+    RollNumberID: `${props?.userData?.RollNumberID}`,
+    FullName: `${props?.userData?.FullName}`,
+    Email: `${props?.userData?.Email}`,
+    PhoneNumber: `${props?.userData?.PhoneNumber}`,
+    Pincode: `${props?.userData?.PinCode}`,
+    Country: `${props?.userData?.CountryName}`,
+    State: `${props?.userData?.StateName}`,
+    City: `${props?.userData?.CityName}`,
   };
 
-  const nextHandler = () =>{
-    dispatch(userEditActions.batchId({ batchId  : props?.userData?.userdata?.BatchID  }))
-    dispatch(userEditActions.rollNumber({ rollNumber  : props?.userData?.userdata?.RollNumberID  }))
-    dispatch(userEditActions.FullName({ FullName  : props?.userData?.userdata?.FullName  }))
-    dispatch(userEditActions.phone({ phone  : props?.userData?.userdata?.PhoneNumber  }))
-
-  }
+  const nextHandler = () => {
+    dispatch(userEditActions.batchId({ batchId: props?.userData?.BatchID }));
+    dispatch(
+      userEditActions.rollNumber({ rollNumber: props?.userData?.RollNumberID })
+    );
+    dispatch(userEditActions.FullName({ FullName: props?.userData?.FullName }));
+    dispatch(userEditActions.phone({ phone: props?.userData?.PhoneNumber }));
+  };
 
   const pincodeHandler = (data) => {
     console.log(data, "pincode");
-    dispatch(userEditActions.pincode({ pin : data? data : props?.userData?.userdata?.PinCode  }))
+    dispatch(
+      userEditActions.pincode({ pin: data ? data : props?.userData?.PinCode })
+    );
   };
 
   const countryHandler = async (_, data) => {
     await countryId(data.id);
-    dispatch(userEditActions.country({ country : data?.id ? data?.id : props?.userData?.userdata?.CountryID }))
-    
+    dispatch(
+      userEditActions.country({
+        country: data?.id ? data?.id : props?.userData?.CountryID,
+      })
+    );
+
     form.setFieldsValue({
-      Country : data.value,
-      State : '',
-      City : ''
-    })
+      Country: data.value,
+      State: "",
+      City: "",
+    });
   };
 
   const stateHandler = async (_, data) => {
     await stateId(data.id);
-    dispatch(userEditActions.state({ state : data?.id ? data?.id : props?.userData?.userdata?.StateID }))
+    dispatch(
+      userEditActions.state({
+        state: data?.id ? data?.id : props?.userData?.StateID,
+      })
+    );
 
     form.setFieldsValue({
-      State : data.value,
-      City : ''
-    })
+      State: data.value,
+      City: "",
+    });
   };
 
   const cityHandler = async (_, data) => {
     await stateId(data.id);
-    dispatch(userEditActions.city({ city : data?.id ? data?.id : props?.userData?.userdata?.CityID }))
+    dispatch(
+      userEditActions.city({
+        city: data?.id ? data?.id : props?.userData?.CityID,
+      })
+    );
 
     form.setFieldsValue({
-      City : data.value,
-    })
+      City: data.value,
+    });
   };
-
-
-
 
   return (
     <Form
@@ -119,7 +137,7 @@ const FirstStep = (props) => {
           name="City"
         />
       </div>
-   
+
       <div className={Styles.fourthRow}>
         <Button type="primary" htmlType="submit" onClick={nextHandler}>
           Next

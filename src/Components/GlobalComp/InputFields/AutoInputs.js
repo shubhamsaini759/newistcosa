@@ -2,7 +2,7 @@ import { AutoComplete, Form } from "antd";
 import React from "react";
 
 const AutoInputs = (props) => {
-  console.log(props)
+  console.log(props);
   return (
     <>
       <Form.Item
