@@ -20,7 +20,7 @@ const ProfessionList = (props) => {
             <Option value="student">Student</Option>
             <Option value="Government Sector">Government Sector</Option>
             <Option value="Private Sector">Private Sector</Option>
-            <Option value="Entrepreneur / Own Business">Entrepreneur / Own Business</Option>
+            <Option value="Entrepreneur/Own Business">Entrepreneur / Own Business</Option>
             <Option value="Retired">Retired</Option>
             <Option value="Others">Others</Option>
         </Select>

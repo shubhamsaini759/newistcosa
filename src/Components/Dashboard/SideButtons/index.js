@@ -1,8 +1,6 @@
 import { Menu } from "antd";
 import React from "react";
-import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { UserMoreDetail } from "../../../Utils/api/UserMoreDetail";
 
 const SideButtons = () => {
 
@@ -19,7 +17,7 @@ const SideButtons = () => {
           height: "100%",
         }}
       >
-        <Menu.Item >
+        <Menu.Item onClick={()=>navigate('/home')} >
           {/* <LaptopOutlined /> */}
           Dashboard 
         </Menu.Item>

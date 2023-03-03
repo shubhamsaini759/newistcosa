@@ -69,6 +69,7 @@
     background-color: whitesmoke;
 }
 .experience{
+    
     word-wrap: break-word;
     border: 1px solid whitesmoke;
     border-radius: 1rem;
@@ -76,6 +77,12 @@
     background-color: whitesmoke;
 
     
+}
+.expDetails{
+    display: flex;
+}
+.expinfo{
+    width: 50%;
 }
 .aboutIstcosa{
     word-wrap: break-word;
@@ -105,5 +112,10 @@
     .topRight{
         padding: 0;
     }
-   
+    .expDetails{
+        flex-direction: column;
+    }
+    .expinfo{
+        width: auto;
+    }
 }

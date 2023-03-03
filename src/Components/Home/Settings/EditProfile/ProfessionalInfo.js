@@ -143,7 +143,7 @@ const ProfessionalInfo = () => {
         onCancel={() => setModal(false)}
         footer={null}
       >
-        <EditIconModal onDone={editDoneHandler} onCancel={editCancelHandler} />
+        <AddCompModal onDone={editDoneHandler} onCancel={editCancelHandler} />
       </Modal>
 
       <div className={Styles.addCompany}>

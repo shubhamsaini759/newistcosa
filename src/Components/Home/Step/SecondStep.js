@@ -1,9 +1,12 @@
 import { Button, Form, Modal } from "antd";
 import React, { useState } from "react";
+import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
 import { userEditActions } from "../../../Store";
 import Styles from "../../../Styles/Step/SecondStep.module.css";
+import { CompanyList } from "../../../Utils/api/UserMoreDetail/CompanyList";
 import { DateFormatter } from "../../../Utils/Helpers";
+import AutoInputs from "../../GlobalComp/InputFields/AutoInputs";
 import Dates from "../../GlobalComp/InputFields/Dates";
 import Inputs from "../../GlobalComp/InputFields/Inputs";
 import ProfessionList from "../../GlobalComp/InputFields/ProfessionList";
@@ -13,6 +16,8 @@ import EditIconModal from "../Settings/EditProfile/EditIconModal";
 const SecondStep = (props) => {
   const [form] = Form.useForm();
   const disaptch = useDispatch();
+
+  const { data : compList } = useQuery('CompanyList',CompanyList)
 
  const [ join, setJoin ] = useState('');
  const [ completion, setCompletion ] = useState('');
@@ -156,7 +161,7 @@ const SecondStep = (props) => {
         <>
           <div className={Styles.secondRow}>
             <Inputs label="Job Designation" name='Designation' handler={jobHandler} />
-            <Inputs label="Recent company" name='CompanyName' handler={companyHandler} />
+            <AutoInputs label="Recent company" name='CompanyName' list={compList} handler={companyHandler} />
             <Button onClick={addCompanyHandler} >Add</Button>
 
             <Modal
