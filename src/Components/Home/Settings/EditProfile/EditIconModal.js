@@ -37,7 +37,6 @@ const EditIconModal = (props) => {
 
     const professionHandler = (e) =>{
         dispatch(addCompanyActions.profession({ profession : e}) )
-        console.log(e)
         form.setFieldsValue({
             Profession : e
         })
@@ -108,7 +107,6 @@ const EditIconModal = (props) => {
 
     const doneHandler = () =>{
         props.onDone(false)
-        console.log(AddedCompany,'addedcompany')
     }
 
 

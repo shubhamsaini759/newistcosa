@@ -19,6 +19,7 @@ const ProfileLeft = (props) => {
   useEffect(() => {
     const x = new Date(props?.data?.DateOfBirth).toDateString();
     setDob(x.slice(4, 15));
+    
   }, []);
 
   return (

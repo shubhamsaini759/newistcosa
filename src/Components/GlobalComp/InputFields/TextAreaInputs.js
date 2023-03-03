@@ -9,7 +9,7 @@ const TextAreaInputs = (props) => {
         label={props.label}
         style={{width : '100%'}}
     >
-        <Input.TextArea showCount onChange={(e)=>props.handler(e.target.value)} maxLength={props.length} size={props.size}  />
+        <Input.TextArea showCount onChange={(e)=>props.handler(e.target.value)} value={props.value} maxLength={props.length} size={props.size}  />
     </Form.Item>
    </>
   )

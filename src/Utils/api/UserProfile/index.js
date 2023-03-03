@@ -6,6 +6,5 @@ import { Path } from "../endPoints"
 export const UserProfileDetails = async () =>{
     const url = await api.get(Path.userProfile);
     const transformedData = url?.data;
-    console.log(transformedData,'userProfile')
     return transformedData;
 }

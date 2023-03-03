@@ -15,7 +15,6 @@ const { Header, Content, Footer, Sider } = Layout;
 const Dashboards = () => {
   const flag = useSelector((state) => state.editToastReducer.flag);
   const { data: userData } = useQuery("UserMOreDetail", UserMoreDetail);
-  console.log(userData,'dshboard')
 
   const navigate = useNavigate();
  

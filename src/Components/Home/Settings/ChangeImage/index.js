@@ -1,6 +1,5 @@
 import React from 'react'
 import Styles from '../../../../Styles/EditProfile/ChangeImage.module.css'
-import Test from '../../../GlobalComp/test'
 import ImageChanger from './ImageChanger'
 
 const ChangeImage = () => {

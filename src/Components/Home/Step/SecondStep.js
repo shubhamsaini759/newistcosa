@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userEditActions } from "../../../Store";
 import Styles from "../../../Styles/Step/SecondStep.module.css";
+import { DateFormatter } from "../../../Utils/Helpers";
 import Dates from "../../GlobalComp/InputFields/Dates";
 import Inputs from "../../GlobalComp/InputFields/Inputs";
 import ProfessionList from "../../GlobalComp/InputFields/ProfessionList";
@@ -13,7 +14,10 @@ const SecondStep = (props) => {
   const [form] = Form.useForm();
   const disaptch = useDispatch();
 
- 
+ const [ join, setJoin ] = useState('');
+ const [ completion, setCompletion ] = useState('');
+ const [ fromDate, setFromDate ] = useState('');
+ const [ toDate, setToDate ] = useState('');
 
   const val = {
     Profession: "",
@@ -73,18 +77,16 @@ const SecondStep = (props) => {
     })
   }
   const joiningHandler = (data) =>{
-    disaptch(userEditActions.joining({joining : data}) )
+    const formattedDate = DateFormatter(data)
+    disaptch(userEditActions.joining({joining : formattedDate}) )
 
-    form.setFieldsValue({
-      JoiningYear : data
-    })
+    setJoin(formattedDate)
   }
   const completeHandler = (data) =>{
-    disaptch(userEditActions.complete({complete : data}) )
+    const formattedDate = DateFormatter(data)
+    disaptch(userEditActions.complete({complete : formattedDate}) )
 
-    form.setFieldsValue({
-      ExpectedCompletionYear : data
-    })
+    setCompletion(formattedDate)
   }
   const jobHandler = (data) =>{
     disaptch(userEditActions.job({job : data}) )
@@ -101,18 +103,16 @@ const SecondStep = (props) => {
     })
   }
   const fromHandler = (data) =>{
-    disaptch(userEditActions.fromD({from : data}) )
+    const formattedDate = DateFormatter(data)
+    disaptch(userEditActions.fromD({from : formattedDate}) )
 
-    form.setFieldsValue({
-      FromDate : data
-    })
+    setFromDate(formattedDate)
   }
   const toHandler = (data) =>{
-    disaptch(userEditActions.toD({to : data}) )
+    const formattedDate = DateFormatter(data)
+    disaptch(userEditActions.toD({to : formattedDate}) )
 
-    form.setFieldsValue({
-      ToDate : data
-    })
+    setToDate(formattedDate)
   }
   const describeHandler = (data) =>{
     disaptch(userEditActions.describe({describe : data}) )
@@ -148,8 +148,8 @@ const SecondStep = (props) => {
           </div>
           <div className={Styles.osecondRow}>
             <Inputs label="Skills" name='Skills' handler={skillHandler} />
-            <Dates label="Joining Year" name='JoiningYear' handler={joiningHandler} />
-            <Dates label="Expected Complition Year" name='ExpectedCompletionYear' handler={completeHandler} />
+            <Dates label="Joining Year" name='JoiningYear' value={join} handler={joiningHandler} />
+            <Dates label="Expected Complition Year" name='ExpectedCompletionYear' value={completion} handler={completeHandler} />
           </div>
         </>
       ) : (
@@ -170,8 +170,8 @@ const SecondStep = (props) => {
           </Modal>
           </div>
           <div className={Styles.thirdRow}>
-            <Dates label="From Date" name='FromDate handler={fromHandler} />
-            <Dates label="To Date" name='ToDate handler={toHandler} />
+            <Dates label="From Date" name='FromDate' value={fromDate} handler={fromHandler} />
+            <Dates label="To Date" name='ToDate' value={toDate} handler={toHandler} />
           </div>
           <div className={Styles.fourthRow}>
             <TextAreaInputs label="Describe Your work profile" length="200" name='Responsibility' handler={describeHandler}/>

@@ -11,7 +11,6 @@ import ProfileRight from './ProfileRight';
 const UserProfile = () => {
 
   const { data : userProfile } = useQuery('UserProfileDetails',UserProfileDetails);
-  console.log(userProfile,'profile')
 
   
 

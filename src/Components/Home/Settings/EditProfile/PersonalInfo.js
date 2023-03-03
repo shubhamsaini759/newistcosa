@@ -17,18 +17,25 @@ import { CityList } from "../../../../Utils/api/CityList";
 import { useDispatch, useSelector } from "react-redux";
 import { userEditActions } from "../../../../Store";
 import { DateFormatter } from "../../../../Utils/Helpers";
+import { userEditDetail } from "../../../../Utils/api/UserMoreDetail/UserEditDetail";
 
 const PersonalInfo = (props) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
 
   const perosnaldata = useSelector((state) => state.UserEditReducer);
+  const { data : editDetails, mutateAsync : edited  } =  useMutation('userEditDetail',userEditDetail)
 
-  const submitHandler = () => {
+  const [ dob, setDob ] = useState('');
+  const [ marital,setMarital ] = useState('');
+
+  const submitHandler = async () => {
     console.log(perosnaldata, "personaldata");
+    await edited(perosnaldata);
+    console.log(editDetails)
+
   };
 
-  console.log(props, "daatatatatat");
   const val = {
     Fullname: `${props?.userData?.FullName}`,
     BatchName: `${props?.userData?.BatchID}`,
@@ -48,7 +55,7 @@ const PersonalInfo = (props) => {
     IstcAbout: `${props?.userData?.ISTCAbout}`,
     AboutMyself: `${props?.userData?.AboutYourSelf}`,
     SearchKeyword: `${props?.userData?.SearchKeyword}`,
-    ResidentialAddress: ``,
+    ResidentialAddress: `${props?.userData?.Address}`,
     Marital: `${props?.userData?.MaritalStatus}`,
     SpouseName: `${props?.userData?.SpouseName}`,
     AniversaryDate: `${props?.userData?.AniversaryDate}`,
@@ -66,8 +73,7 @@ const PersonalInfo = (props) => {
   );
 
   const countryHandler = async (_, data) => {
-    console.log(data.id, "select");
-    dispatch(userEditActions.country({ country: data?.id }));
+    dispatch(userEditActions.country({ country: data?.id ? data.id : props?.userData?.CountryID}));
 
     await countryId(data.id);
     data
@@ -80,8 +86,7 @@ const PersonalInfo = (props) => {
   };
 
   const stateHandler = async (_, data) => {
-    console.log(data.id, "stateid");
-    dispatch(userEditActions.state({ state: data?.id }));
+    dispatch(userEditActions.state({ state: data?.id ? data.id : props?.userData?.StateID }));
 
     await stateId(data.id);
     data
@@ -93,7 +98,7 @@ const PersonalInfo = (props) => {
   };
 
   const cityHandler = (_, data) => {
-    dispatch(userEditActions.city({ city: data?.id }));
+    dispatch(userEditActions.city({ city: data?.id ? data.id : props?.userData?.CityID}));
 
     data
       ? form.setFieldValue({
@@ -104,81 +109,73 @@ const PersonalInfo = (props) => {
 
   const nameHandler = (data) => {
     dispatch(userEditActions.FullName({ FullName: data }));
-    console.log(data);
   };
 
   const genderHandler = (data) => {
     dispatch(userEditActions.gender({ gender: data }));
 
-    console.log(data);
   };
+
+  const dobHandler = (data) =>{
+    const formattedDate = DateFormatter(data)
+    dispatch(userEditActions.dob({dob : formattedDate}))
+    setDob(formattedDate)
+  }
 
   const whatsappHandler = (data) => {
     dispatch(userEditActions.whatsapp({ whatsapp: data }));
 
-    console.log(data);
   };
   const numberHandler = (data) => {
     dispatch(userEditActions.phone({ phone: data }));
 
-    console.log(data);
   };
   const pincodeHandler = (data) => {
     dispatch(userEditActions.pincode({ pin: data }));
 
-    console.log(data);
   };
 
   const nicknameHandler = (data) => {
     dispatch(userEditActions.nick({ nick: data }));
 
-    console.log(data);
   };
   const roommatesHandler = (data) => {
     dispatch(userEditActions.room({ room: data }));
 
-    console.log(data);
   };
   const commentHandler = (data) => {
     dispatch(userEditActions.comments({ comments: data }));
 
-    console.log(data);
   };
   const istcAboutHandler = (data) => {
     dispatch(userEditActions.aboutIstc({ aboutIstc: data }));
 
-    console.log(data);
   };
   const myselfHandler = (data) => {
     dispatch(userEditActions.about({ about: data }));
 
-    console.log(data);
   };
   const keywordhandler = (data) => {
     dispatch(userEditActions.keywords({ keywords: data }));
 
-    console.log(data);
   };
   const addressHandler = (data) => {
-    console.log(data);
     dispatch(userEditActions.address({ address: data }));
   };
   const maritalHandler = (data) => {
-    console.log(data);
+    setMarital(data)
     dispatch(userEditActions.marital({ marital: data }));
+
   };
   const spouseHandler = (data) => {
     dispatch(userEditActions.spouse({ spouse: data }));
 
-    console.log(data);
   };
   const childHandler = (data) => {
     dispatch(userEditActions.child({ child: data }));
 
-    console.log(data);
   };
 
-  const apiDate = DateFormatter(props?.userData?.DateOfBirth);
 
   return (
     <Form
@@ -208,7 +205,8 @@ const PersonalInfo = (props) => {
           name="DateOfbirth"
           label="Date of Birth"
           rules={[{ required: true, message: "Please select your DOB" }]}
-          value={apiDate}
+          value={dob}
+          handler={dobHandler}
         />
       </div>
       <div className={Styles.thirdRow}>
@@ -299,19 +297,30 @@ const PersonalInfo = (props) => {
         <Marital
           label="Marital Status"
           name="Marital"
-          handler={maritalHandler}
+          onChange={maritalHandler}
         />
-        <Inputs label="Spouse Name" name="SpouseName" handler={spouseHandler} />
-        <Dates label="Aniversary Date" name="AniversaryDate" />
+        {
+          marital === 'Married' ?
+            <>
+              <Inputs label="Spouse Name" name="SpouseName" handler={spouseHandler} />
+              <Dates label="Aniversary Date" name="AniversaryDate" />
+            </> : ''
+        }
+        
       </div>
-      <div className={Styles.eighthRow}>
-        <TextAreaInputs
-          label="Child Details"
-          name="ChildDetails"
-          length={200}
-          handler={childHandler}
-        />
-      </div>
+      {
+          marital === 'Married' ?
+          <div className={Styles.eighthRow}>
+            <TextAreaInputs
+              label="Child Details"
+              name="ChildDetails"
+              length={200}
+              handler={childHandler}
+            />
+          </div>
+          :
+          ""
+      }
 
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <Button type="primary" htmlType="submit" onClick={submitHandler}>

@@ -14,12 +14,7 @@ const Step = () => {
 
   const {state} = useLocation();
 
-  console.log(state,'hwefgvwegfiulwegfiuwqehiuh')
-
   const next = () => {
-
- 
-
     setCurrent(current + 1);
   };
 
@@ -29,19 +24,19 @@ const Step = () => {
 
   const steps = [
     {
-      title: "First",
+      title: "Registration",
       content: <FirstStep next={next} userData={state} />,
     },
     {
-      title: "Second",
+      title: "Professional Information",
       content: <SecondStep prev={prev} next={next} />,
     },
     {
-      title: "Third",
+      title: "Personal Information",
       content: <ThirdStep prev={prev} next={next} userData={state} />,
     },
     {
-      title: "Last",
+      title: "ISTC Memories",
       content: <FourthStep prev={prev} />,
     },
   ];

@@ -18,7 +18,6 @@ const ThirdStep = (props) => {
   const dispatch = useDispatch();
   const dateFormat = "MM-DD-YYYY";
 
-  console.log(props.userData.userData, "thirdPart");
 
   const val = {
     Gender: `${props?.userData?.Gender}`,
@@ -35,10 +34,10 @@ const ThirdStep = (props) => {
   const [dob, setDob] = useState(DateFormatter(props?.userData?.DateOfBirth));
 
   const [marital, setMarital] = useState("");
+  const [ ani, setAni ] = useState('');
 
   const genderHandler = (data) => {
     dispatch(userEditActions.gender({ gender: data }));
-    console.log(data);
     form.setFieldsValue({
       Gender: data,
     });
@@ -57,7 +56,6 @@ const ThirdStep = (props) => {
   const whatsHandler = (data) => {
     dispatch(userEditActions.whatsapp({ whatsapp: data }));
 
-    console.log(data);
     form.setFieldsValue({
       WhatsappNumber: data,
     });
@@ -65,7 +63,6 @@ const ThirdStep = (props) => {
   const addressHnadler = (data) => {
     dispatch(userEditActions.address({ address: data }));
 
-    console.log(data);
     form.setFieldsValue({
       Address: data,
     });
@@ -73,13 +70,11 @@ const ThirdStep = (props) => {
   const aboutHandler = (data) => {
     dispatch(userEditActions.about({ about: data }));
 
-    console.log(data);
     form.setFieldsValue({
       AboutYourSelf: data,
     });
   };
   const maritalHandler = (data) => {
-    console.log(data);
     setMarital(data);
     dispatch(userEditActions.marital({ marital: data }));
 
@@ -90,23 +85,19 @@ const ThirdStep = (props) => {
   const spouseHandler = (data) => {
     dispatch(userEditActions.spouse({ spouse: data }));
 
-    console.log(data);
     form.setFieldsValue({
       SpouseName: data,
     });
   };
   const aniHandler = (data) => {
-    dispatch(userEditActions.aniversary({ aniversary: data }));
+    const formattedDate = DateFormatter(data)
+    dispatch(userEditActions.aniversary({ aniversary: formattedDate }));
 
-    console.log(data);
-    form.setFieldsValue({
-      AniversaryDate: data,
-    });
+    setAni(formattedDate)
   };
   const ChildHandler = (data) => {
     dispatch(userEditActions.child({ child: data }));
 
-    console.log(data);
     form.setFieldsValue({
       ChildDetails: data,
     });
@@ -161,6 +152,7 @@ const ThirdStep = (props) => {
             <Dates
               label="Aniversary Date"
               name="AniversaryDate"
+              value={ani}
               handler={aniHandler}
             />
           </>

@@ -27,7 +27,6 @@ const FirstStep = (props) => {
     CityList
   );
 
-  console.log(props.userData.userData, "userdata");
 
   const val = {
     BatchID: `${props?.userData?.BatchID}`,
@@ -51,7 +50,6 @@ const FirstStep = (props) => {
   };
 
   const pincodeHandler = (data) => {
-    console.log(data, "pincode");
     dispatch(
       userEditActions.pincode({ pin: data ? data : props?.userData?.PinCode })
     );

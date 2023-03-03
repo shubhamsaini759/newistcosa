@@ -1,8 +1,10 @@
 import { Button, Form } from "antd";
 import React, { useState } from "react";
+import { useMutation } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { userEditActions } from "../../../Store";
 import Styles from "../../../Styles/Step/FourthStep.module.css";
+import { userEditDetail } from "../../../Utils/api/UserMoreDetail/UserEditDetail";
 import Inputs from "../../GlobalComp/InputFields/Inputs";
 import TextAreaInputs from "../../GlobalComp/InputFields/TextAreaInputs";
 
@@ -10,10 +12,12 @@ const FourthStep = (props) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
   const StepData = useSelector((state)=> state.UserEditReducer);
-  
+  const { data : sendData, mutateAsync : completeData  } = useMutation('userEditDetail',userEditDetail)
 
-  const DoneHandler = () =>{
+  const DoneHandler = async () =>{
     console.log(StepData,'stepData')
+    await completeData(StepData);
+    console.log(sendData,'completeApiResult')
   }
 
   const val = {
@@ -26,7 +30,6 @@ const FourthStep = (props) => {
 
   const nickHandler = (data) =>{
     dispatch(userEditActions.nick({ nick : data }) )
-    console.log(data)
     form.setFieldsValue({
       ISTCNickName : data
     })
@@ -35,7 +38,6 @@ const FourthStep = (props) => {
   const roomHandler = (data) =>{
     dispatch(userEditActions.room({ room : data }) )
 
-    console.log(data)
     form.setFieldsValue({
       ISTCFriendRoommate : data
     })
@@ -43,13 +45,11 @@ const FourthStep = (props) => {
   const aboutHandler = (data) =>{
     dispatch(userEditActions.aboutIstc({ aboutIstc : data }) )
 
-    console.log(data)
     form.setFieldsValue({
       ISTCAbout : data
     })
   }
   const commentHandler = (data) =>{
-    console.log(data)
     dispatch(userEditActions.comments({ comments : data }) )
 
     form.setFieldsValue({
@@ -59,7 +59,6 @@ const FourthStep = (props) => {
   const keywordHandler = (data) =>{
     dispatch(userEditActions.keywords({ keywords : data }) )
 
-    console.log(data)
     form.setFieldsValue({
       Comments : data
     })
