@@ -40,7 +40,7 @@ const Test = () => {
     dispatch(tempIdActions.ImagePath({ path : detail}))
 
   },[detail])
-
+  
 
 
 

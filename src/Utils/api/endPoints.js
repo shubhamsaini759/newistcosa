@@ -19,12 +19,12 @@ export const Path ={
 
 // Dashboard
     // get
-        userMoreDetail : 'User/EditUserMoreDetails/6301',
+        userMoreDetail : 'User/EditUserMoreDetails/1006',
         companyList : 'Company',
-        userProfile : 'User/UserProfile/6301',
+        userProfile : 'User/UserProfile/1006',
  
     // put
-        userEditDetail : 'User/PutUserMoreDetails?userId=1009',
+        userEditDetail : 'User/PutUserMoreDetails?userId=1006',
 
     // post
         addCompany : 'Company',

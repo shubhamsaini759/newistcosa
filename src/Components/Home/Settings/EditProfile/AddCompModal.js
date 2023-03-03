@@ -18,7 +18,7 @@ const AddCompModal = (props) => {
   const dispatch = useDispatch();
 
   const professionaldetail = useSelector((state)=> state.professionalInfoReducer);
-  const { data : professionalDetails , mutateAsync : details } = useMutation('ProfessionalInfo',ProfessionalInfo);
+  const { data : professionalDetails, error , mutateAsync : details } = useMutation('ProfessionalInfo',ProfessionalInfo);
   const { data : profileData } = useQuery('UserProfileDetails',UserProfileDetails);
   const { data : companyList } = useQuery('CompanyList',CompanyList);
 
@@ -73,11 +73,9 @@ const AddCompModal = (props) => {
     props.onCancel(false);
   };
 
-  const doneHandler =async () => {
+  const doneHandler = async () => {
     await details(professionaldetail)
     props.onDone(false);
-    console.log(professionaldetail,'console')
-    console.log(professionalDetails,'apiResponse')
   };
 
 

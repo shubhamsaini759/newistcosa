@@ -7,10 +7,10 @@ export const ProfessionalInfoSlice = createSlice({
         Profession: "",
         Designation: "",
         CompanyName: "",
-        CompanyID : "",
+        CompanyID : null,
         Responsibility: "",
         UserID: "",
-        Active: "",
+        Active: null,
         FromDate: "",
         ToDate: ""
     },

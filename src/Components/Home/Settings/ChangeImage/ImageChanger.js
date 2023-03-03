@@ -3,6 +3,11 @@ import ImgCrop from "antd-img-crop";
 
 
 import { Modal, Upload } from 'antd';
+import { useMutation, useQuery } from "react-query";
+import { ImageChange } from "../../../../Utils/api/UserMoreDetail/ImageChange";
+import { useDispatch } from "react-redux";
+import { ImageChangeActions } from "../../../../Store";
+import { UserMoreDetail } from "../../../../Utils/api/UserMoreDetail";
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -17,6 +22,9 @@ const getBase64 = (file) =>
 
 const ImageChanger = () => {
 
+  const dispatch = useDispatch();
+  const { data : imageData, mutateAsync : imageDetail } = useMutation('ImageChange',ImageChange)
+  const { data : userDetail } = useQuery('UserMoreDetail',UserMoreDetail)
 
 
   const [fileList, setFileList] = useState([ {
@@ -40,7 +48,9 @@ const ImageChanger = () => {
 
   useEffect(()=>{
     console.log(detail)
-
+    dispatch(ImageChangeActions.path({ path : detail}) )
+    dispatch(ImageChangeActions.ids({ ids : userDetail?.RollNumberID}) )
+    
   },[detail])
 
 
