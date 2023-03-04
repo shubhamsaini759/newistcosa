@@ -50,7 +50,7 @@ const ProfileLeft = (props) => {
         )}
 
         <div className={Styles.editPro}>
-          <NavLink to="settings/changeimage">
+          <NavLink to="/home/settings/editprofile">
             <Button type="dashed">
               <EditOutlined fontSize="small" /> Edit Profile
             </Button>

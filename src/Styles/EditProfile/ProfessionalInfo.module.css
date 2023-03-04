@@ -1,8 +1,14 @@
-.addCompany{
+.addCompany {
     display: flex;
     justify-content: center;
 }
-.addButton{
+
+.addButton {
     width: 8rem;
     height: 4rem;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
 }

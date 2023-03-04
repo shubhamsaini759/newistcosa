@@ -68,25 +68,27 @@ const ProfessionalInfo = () => {
       Todate: "32/03/2020",
       CompanyName: "London No. 1 Lake Park",
       Add: [
-        <Tooltip title="Edit" color="Green">
-          <EditOutlined
-            fontSize="small"
-            style={{ paddingLeft: 5, cursor: "pointer" }}
-            onClick={EditIconHandler}
-          />
-        </Tooltip>,
-        <Tooltip title="Delete" color="red">
-          <Popconfirm
-            title="Are you sure delete this task?"
-            okText="Yes"
-            cancelText="No"
-          >
-            <DeleteOutlined
+        <div className={Styles.icons}>
+          <Tooltip title="Edit" color="Green">
+            <EditOutlined
               fontSize="small"
-              style={{ paddingLeft: 15, cursor: "pointer" }}
+              style={{ paddingLeft: 5, cursor: "pointer" }}
+              onClick={EditIconHandler}
             />
-          </Popconfirm>
-        </Tooltip>,
+          </Tooltip>
+          <Tooltip title="Delete" color="red">
+            <Popconfirm
+              title="Are you sure delete this task?"
+              okText="Yes"
+              cancelText="No"
+            >
+              <DeleteOutlined
+                fontSize="small"
+                style={{ paddingLeft: 15, cursor: "pointer" }}
+              />
+            </Popconfirm>
+          </Tooltip>
+        </div>,
       ],
     },
     {
@@ -134,7 +136,12 @@ const ProfessionalInfo = () => {
 
   return (
     <>
-      <Table columns={columns} dataSource={data} bordered />
+      <Table
+        columns={columns}
+        dataSource={data}
+        bordered
+        rowClassName={Styles.TableRow}
+      />
 
       <Modal
         title="Add Company"

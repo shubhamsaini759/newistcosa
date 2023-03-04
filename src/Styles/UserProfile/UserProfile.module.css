@@ -92,6 +92,11 @@
 
 .expDetails {
     display: flex;
+    flex: 1;
+}
+
+.expDescription {
+    flex: 1;
 }
 
 .expinfo {

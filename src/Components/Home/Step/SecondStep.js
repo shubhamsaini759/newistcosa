@@ -15,7 +15,7 @@ import EditIconModal from "../Settings/EditProfile/EditIconModal";
 
 const SecondStep = (props) => {
   const [form] = Form.useForm();
-  const disaptch = useDispatch();
+  const dispatch = useDispatch();
 
   const { data: compList } = useQuery("CompanyList", CompanyList);
 
@@ -52,28 +52,30 @@ const SecondStep = (props) => {
   };
 
   const uniHandler = (data) => {
-    disaptch(userEditActions.uni({ uni: data }));
+    dispatch(userEditActions.uni({ uni: data }));
     form.setFieldsValue({
       University: data,
     });
   };
+
   const professionHandler = (data) => {
     setProfession(data);
-    disaptch(userEditActions.profession({ profession: data }));
+    dispatch(userEditActions.profession({ profession: data }));
 
     form.setFieldsValue({
       Profession: data,
     });
   };
+
   const degreeHandler = (data) => {
-    disaptch(userEditActions.degree({ degree: data }));
+    dispatch(userEditActions.degree({ degree: data }));
 
     form.setFieldsValue({
       Degree: data,
     });
   };
   const skillHandler = (data) => {
-    disaptch(userEditActions.skill({ skill: data }));
+    dispatch(userEditActions.skill({ skill: data }));
 
     form.setFieldsValue({
       Skills: data,
@@ -81,25 +83,25 @@ const SecondStep = (props) => {
   };
   const joiningHandler = (data) => {
     const formattedDate = DateFormatter(data);
-    disaptch(userEditActions.joining({ joining: formattedDate }));
+    dispatch(userEditActions.joining({ joining: formattedDate }));
 
     setJoin(formattedDate);
   };
   const completeHandler = (data) => {
     const formattedDate = DateFormatter(data);
-    disaptch(userEditActions.complete({ complete: formattedDate }));
+    dispatch(userEditActions.complete({ complete: formattedDate }));
 
     setCompletion(formattedDate);
   };
   const jobHandler = (data) => {
-    disaptch(userEditActions.job({ job: data }));
+    dispatch(userEditActions.job({ job: data }));
 
     form.setFieldsValue({
       Designation: data,
     });
   };
-  const companyHandler = (data) => {
-    disaptch(userEditActions.company({ company: data?.value }));
+  const companyHandler = (_, data) => {
+    dispatch(userEditActions.company({ company: data?.value }));
 
     form.setFieldsValue({
       CompanyName: data?.value,
@@ -107,18 +109,18 @@ const SecondStep = (props) => {
   };
   const fromHandler = (data) => {
     const formattedDate = DateFormatter(data);
-    disaptch(userEditActions.fromD({ from: formattedDate }));
+    dispatch(userEditActions.fromD({ from: formattedDate }));
 
     setFromDate(formattedDate);
   };
   const toHandler = (data) => {
     const formattedDate = DateFormatter(data);
-    disaptch(userEditActions.toD({ to: formattedDate }));
+    dispatch(userEditActions.toD({ to: formattedDate }));
 
     setToDate(formattedDate);
   };
   const describeHandler = (data) => {
-    disaptch(userEditActions.describe({ describe: data }));
+    dispatch(userEditActions.describe({ describe: data }));
 
     form.setFieldsValue({
       Responsibility: data,
