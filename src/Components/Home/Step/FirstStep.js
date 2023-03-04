@@ -27,7 +27,6 @@ const FirstStep = (props) => {
     CityList
   );
 
-
   const val = {
     BatchID: `${props?.userData?.BatchID}`,
     RollNumberID: `${props?.userData?.RollNumberID}`,

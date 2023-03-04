@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ImgCrop from "antd-img-crop";
 
-
-import { Modal, Upload } from 'antd';
+import { Modal, Upload } from "antd";
 import { useMutation, useQuery } from "react-query";
 import { ImageChange } from "../../../../Utils/api/UserMoreDetail/ImageChange";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ImageChangeActions } from "../../../../Store";
 import { UserMoreDetail } from "../../../../Utils/api/UserMoreDetail";
 
@@ -21,22 +20,25 @@ const getBase64 = (file) =>
   });
 
 const ImageChanger = () => {
-
   const dispatch = useDispatch();
-  const { data : imageData, mutateAsync : imageDetail } = useMutation('ImageChange',ImageChange)
-  const { data : userDetail } = useQuery('UserMoreDetail',UserMoreDetail)
+  const { data: imageData, mutateAsync: imageDetail } = useMutation(
+    "ImageChange",
+    ImageChange
+  );
+  const { data: userDetail } = useQuery("UserMoreDetail", UserMoreDetail);
+  const ImageDetails = useSelector((state) => state.ImageChangeReducer);
 
-
-  const [fileList, setFileList] = useState([ {
-    uid: '-1',
-    name: 'image.png',
-    status: 'done',
-    url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-  },]);
-  const [detail, setDetail] = useState('');
+  const [fileList, setFileList] = useState([
+    {
+      uid: "-1",
+      name: "image.png",
+      status: "done",
+      url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+    },
+  ]);
+  const [detail, setDetail] = useState("");
 
   const onChange = ({ fileList: newFileList }) => {
-    
     setFileList(newFileList);
     convertBase64(newFileList[0]);
   };
@@ -46,19 +48,15 @@ const ImageChanger = () => {
     setDetail(file.preview);
   };
 
-  useEffect(()=>{
-    console.log(detail)
-    dispatch(ImageChangeActions.path({ path : detail}) )
-    dispatch(ImageChangeActions.ids({ ids : userDetail?.RollNumberID}) )
-    
-  },[detail])
-
-
-
+  useEffect(() => {
+    console.log(detail);
+    dispatch(ImageChangeActions.path({ path: detail }));
+    dispatch(ImageChangeActions.ids({ ids: userDetail?.RollNumberID }));
+  }, [detail]);
 
   const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState('');
-  const [previewTitle, setPreviewTitle] = useState('Profile-Image');
+  const [previewImage, setPreviewImage] = useState("");
+  const [previewTitle, setPreviewTitle] = useState("Profile-Image");
 
   const handleCancel = () => setPreviewOpen(false);
 
@@ -71,9 +69,13 @@ const ImageChanger = () => {
     // setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
   };
 
+  const okHandler = async () => {
+    await imageDetail(ImageDetails);
+  };
+
   return (
     <>
-      <ImgCrop grid rotate>
+      <ImgCrop grid rotate onModalOk={okHandler}>
         <Upload
           action=""
           listType="picture-card"
@@ -85,12 +87,16 @@ const ImageChanger = () => {
         </Upload>
       </ImgCrop>
 
-
-      <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+      <Modal
+        open={previewOpen}
+        title={previewTitle}
+        footer={null}
+        onCancel={handleCancel}
+      >
         <img
           alt="example"
           style={{
-            width: '100%',
+            width: "100%",
           }}
           src={previewImage}
         />

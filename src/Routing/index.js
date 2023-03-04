@@ -20,12 +20,13 @@ const Routing = () => {
         {/* <Route path='/home' element={<Protected Component = {Dashboard} /> } />
               <Route path='/Information' element={<Protected Component = {Complete} /> } />  */}
 
-            <Route path="/home" element={<Dashboard />} >
-            <Route path='complete' element={<Step/> } />
-            <Route path='settings/editprofile' element={<EditProfile /> } />
-            <Route path='settings/userprofile' element={<UserProfile /> } />
-            <Route path='settings/changeimage' element={<ChangeImage /> } />
-            <Route path='settings/changepassword' element={<ChangePassword /> } />
+        <Route path="/home" element={<Dashboard />}>
+          <Route path="complete" element={<Step />} />
+
+          <Route path="settings/editprofile" element={<EditProfile />} />
+          <Route path="settings/userprofile" element={<UserProfile />} />
+          <Route path="settings/changeimage" element={<ChangeImage />} />
+          <Route path="settings/changepassword" element={<ChangePassword />} />
         </Route>
       </Routes>
     </>

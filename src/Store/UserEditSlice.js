@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const UserEditSlice = createSlice({
   name: "userEditMore",
   initialState: {
-    RollNumberID : '',
-    BatchID : '',
+    RollNumberID: "",
+    BatchID: "",
     CountryID: "",
     FullName: "",
     StateID: "",
@@ -14,7 +14,7 @@ export const UserEditSlice = createSlice({
     University: "",
     Degree: "",
     Skills: "",
-    PhoneNumber : '',
+    PhoneNumber: "",
     JoiningYear: "",
     ExpectedCompletionYear: "",
     Designation: "",
@@ -28,119 +28,118 @@ export const UserEditSlice = createSlice({
     Address: "",
     MaritalStatus: "",
     AboutYourSelf: "",
-    SpouseName:'',
-    AniversaryDate : '',
-    ChildDetails : '',
+    SpouseName: "",
+    AniversaryDate: "",
+    ChildDetails: "",
     ISTCNickName: "",
     ISTCFriendRoommate: "",
     ISTCAbout: "",
     Comments: "",
     SearchKeyword: "",
-    UserID : '',
-    UpdatedDate : null,
-    CreatedDate : null,
-    DeletedDate : null,
+    UserID: "",
+    UpdatedDate: null,
+    CreatedDate: null,
+    DeletedDate: null,
   },
   reducers: {
-    batchId(state, {payload}){
-      state.BatchID = payload.batchId
+    batchId(state, { payload }) {
+      state.BatchID = payload.batchId;
     },
-    rollNumber(state, {payload}){
-      state.RollNumberID = payload.rollNumber
+    rollNumber(state, { payload }) {
+      state.RollNumberID = payload.rollNumber;
     },
-    FullName(state, {payload}){
-      state.FullName = payload.FullName
+    FullName(state, { payload }) {
+      state.FullName = payload.FullName;
     },
-    pincode(state, {payload}){
-      state.PinCode = payload.pin
+    pincode(state, { payload }) {
+      state.PinCode = payload.pin;
     },
-    country(state, {payload}){
-      state.CountryID = payload.country
+    country(state, { payload }) {
+      state.CountryID = payload.country;
     },
-    state( state, {payload}){
-      state.StateID = payload.state
+    state(state, { payload }) {
+      state.StateID = payload.state;
     },
-    city(state, {payload}){
-      state.CityID = payload.city
+    city(state, { payload }) {
+      state.CityID = payload.city;
     },
-    uni(state, {payload}){
-      state.University = payload.uni
+    uni(state, { payload }) {
+      state.University = payload.uni;
     },
-    profession(state, {payload}){
-      state.Profession = payload.profession
+    profession(state, { payload }) {
+      state.Profession = payload.profession;
     },
-    degree(state, {payload}){
-      state.Degree = payload.degree
+    degree(state, { payload }) {
+      state.Degree = payload.degree;
     },
-    skill( state, {payload}){
-      state.Skills = payload.skill
+    skill(state, { payload }) {
+      state.Skills = payload.skill;
     },
-    phone(state, {payload}){
-      state.phone = payload.phone
+    phone(state, { payload }) {
+      state.PhoneNumber = payload.phone;
     },
-    joining( state, {payload}){
-      state.JoiningYear = payload.joining
+    joining(state, { payload }) {
+      state.JoiningYear = payload.joining;
     },
-    complete( state, {payload}){
-      state.ExpectedCompletionYear = payload.complete
+    complete(state, { payload }) {
+      state.ExpectedCompletionYear = payload.complete;
     },
-    job(state,{payload}){
-      state.Designation = payload.job
+    job(state, { payload }) {
+      state.Designation = payload.job;
     },
-    company( state, {payload}){
-      state.CompanyName = payload.company
+    company(state, { payload }) {
+      state.CompanyName = payload.company;
     },
-    fromD( state, {payload}){
-      state.FromDate = payload.from
+    fromD(state, { payload }) {
+      state.FromDate = payload.from;
     },
-    toD(state, {payload}){
-      state.ToDate = payload.to
+    toD(state, { payload }) {
+      state.ToDate = payload.to;
     },
-    describe( state, {payload}){
-      state.Responsibility = payload.describe
+    describe(state, { payload }) {
+      state.Responsibility = payload.describe;
     },
-    gender(state, {payload}){
-      state.Gender = payload.gender
+    gender(state, { payload }) {
+      state.Gender = payload.gender;
     },
-    dob( state, {payload}){
-      state.DateOfBirth = payload.dob
+    dob(state, { payload }) {
+      state.DateOfBirth = payload.dob;
     },
-    whatsapp(state,{payload}){
-      state.WhatsappNumber = payload.whatsapp
+    whatsapp(state, { payload }) {
+      state.WhatsappNumber = payload.whatsapp;
     },
-    address(state, {payload}){
-      state.Address = payload.address
+    address(state, { payload }) {
+      state.Address = payload.address;
     },
-    about( state, {payload}){
-      state.AboutYourSelf = payload.about
+    about(state, { payload }) {
+      state.AboutYourSelf = payload.about;
     },
-    marital(state, {payload}){
-      state.MaritalStatus = payload.marital
+    marital(state, { payload }) {
+      state.MaritalStatus = payload.marital;
     },
-    spouse(state, {payload}){
-      state.SpouseName = payload.spouse
+    spouse(state, { payload }) {
+      state.SpouseName = payload.spouse;
     },
-    aniversary(state, {payload}){
-      state.AniversaryDate = payload.aniversary
+    aniversary(state, { payload }) {
+      state.AniversaryDate = payload.aniversary;
     },
-    child(state, {payload}){
-      state.ChildDetails = payload.child
+    child(state, { payload }) {
+      state.ChildDetails = payload.child;
     },
-    nick(state, {payload}){
-      state.ISTCNickName = payload.nick
+    nick(state, { payload }) {
+      state.ISTCNickName = payload.nick;
     },
-    room(state, {payload}){
-      state.ISTCFriendRoommate = payload.room
+    room(state, { payload }) {
+      state.ISTCFriendRoommate = payload.room;
     },
-    aboutIstc(state, {payload}){
-      state.ISTCAbout = payload.aboutIstc
+    aboutIstc(state, { payload }) {
+      state.ISTCAbout = payload.aboutIstc;
     },
-    comments(state, {payload}){
-      state.Comments = payload.comments
+    comments(state, { payload }) {
+      state.Comments = payload.comments;
     },
-    keywords(state, {payload}){
-      state.SearchKeyword = payload.keywords
-    }
-
+    keywords(state, { payload }) {
+      state.SearchKeyword = payload.keywords;
+    },
   },
 });

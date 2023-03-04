@@ -16,13 +16,9 @@ import { DateFormatter } from "../../../Utils/Helpers";
 const ThirdStep = (props) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const dateFormat = "MM-DD-YYYY";
-
 
   const val = {
-    Gender: `${props?.userData?.Gender}`,
-
-    WhatsappNumber: `${props?.userData?.WhatsappNumber}`,
+    WhatsappNumber: "",
     Address: "",
     AboutYourSelf: "",
     MaritalStatus: "",
@@ -34,25 +30,28 @@ const ThirdStep = (props) => {
   const [dob, setDob] = useState(DateFormatter(props?.userData?.DateOfBirth));
 
   const [marital, setMarital] = useState("");
-  const [ ani, setAni ] = useState('');
+  const [ani, setAni] = useState("");
+  const [gen, setGen] = useState(props?.userData?.Gender);
 
   const genderHandler = (data) => {
-    dispatch(userEditActions.gender({ gender: data }));
-    form.setFieldsValue({
-      Gender: data,
-    });
+    dispatch(
+      userEditActions.gender({ gender: data ? data : props?.userData?.Gender })
+    );
+    setGen(data);
   };
 
   const dobHandler = (data) => {
     const formattedDate = DateFormatter(data);
-    dispatch(userEditActions.dob({ dob: formattedDate }));
-
+    dispatch(
+      userEditActions.dob({
+        dob: formattedDate
+          ? formattedDate
+          : DateFormatter(props?.userData?.DateOfBirth),
+      })
+    );
     setDob(formattedDate);
-
-    // form.setFieldsValue({
-    //   DateOfBirth: formattedDate,
-    // });
   };
+
   const whatsHandler = (data) => {
     dispatch(userEditActions.whatsapp({ whatsapp: data }));
 
@@ -60,6 +59,7 @@ const ThirdStep = (props) => {
       WhatsappNumber: data,
     });
   };
+
   const addressHnadler = (data) => {
     dispatch(userEditActions.address({ address: data }));
 
@@ -67,6 +67,7 @@ const ThirdStep = (props) => {
       Address: data,
     });
   };
+
   const aboutHandler = (data) => {
     dispatch(userEditActions.about({ about: data }));
 
@@ -74,6 +75,7 @@ const ThirdStep = (props) => {
       AboutYourSelf: data,
     });
   };
+
   const maritalHandler = (data) => {
     setMarital(data);
     dispatch(userEditActions.marital({ marital: data }));
@@ -82,6 +84,7 @@ const ThirdStep = (props) => {
       MaritalStatus: data,
     });
   };
+
   const spouseHandler = (data) => {
     dispatch(userEditActions.spouse({ spouse: data }));
 
@@ -89,12 +92,14 @@ const ThirdStep = (props) => {
       SpouseName: data,
     });
   };
+
   const aniHandler = (data) => {
-    const formattedDate = DateFormatter(data)
+    const formattedDate = DateFormatter(data);
     dispatch(userEditActions.aniversary({ aniversary: formattedDate }));
 
-    setAni(formattedDate)
+    setAni(formattedDate);
   };
+
   const ChildHandler = (data) => {
     dispatch(userEditActions.child({ child: data }));
 
@@ -112,7 +117,7 @@ const ThirdStep = (props) => {
       onFinish={props.next}
     >
       <div className={Styles.firstRow}>
-        <Gender name={Gender} handler={genderHandler} />
+        <Gender name={Gender} value={gen} handler={genderHandler} />
         <Dates
           label="Date of Birth"
           name="DateOfBirth"

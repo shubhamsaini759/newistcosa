@@ -16,6 +16,7 @@ const AutoInputs = (props) => {
         style={{ width: "100%" }}
       >
         <AutoComplete
+          disabled={props.disabled}
           options={props.list}
           filterOption={true}
           onSelect={(_, id) => props.handler(props.uid, id)}

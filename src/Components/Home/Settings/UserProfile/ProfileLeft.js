@@ -12,6 +12,7 @@ import { EditOutlined } from "@mui/icons-material";
 import BusinessIcon from "@mui/icons-material/Business";
 import PortraitIcon from "@mui/icons-material/Portrait";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import { NavLink } from "react-router-dom";
 
 const ProfileLeft = (props) => {
   const [dob, setDob] = useState("");
@@ -19,14 +20,16 @@ const ProfileLeft = (props) => {
   useEffect(() => {
     const x = new Date(props?.data?.DateOfBirth).toDateString();
     setDob(x.slice(4, 15));
-    
   }, []);
 
   return (
     <>
       <div className={Styles.Topleft}>
         <div className={Styles.photos}>
-          <Image width={100} src='https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png' />
+          <Image
+            width={100}
+            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+          />
           <Image
             width={100}
             src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
@@ -37,94 +40,91 @@ const ProfileLeft = (props) => {
           <p>{props?.data?.FullName} </p>
         </div>
 
-        {props?.data?.MembershipType ?
-        <div className={Styles.member}>
-          <WorkspacePremiumIcon />
-          <span>{props?.data?.MembershipType}</span>
-        </div>
-        :
-        ""
-        }
+        {props?.data?.MembershipType ? (
+          <div className={Styles.member}>
+            <WorkspacePremiumIcon />
+            <span>{props?.data?.MembershipType}</span>
+          </div>
+        ) : (
+          ""
+        )}
 
         <div className={Styles.editPro}>
-          <Button type="dashed">
-            <EditOutlined fontSize="small" /> Edit Profile
-          </Button>
+          <NavLink to="settings/changeimage">
+            <Button type="dashed">
+              <EditOutlined fontSize="small" /> Edit Profile
+            </Button>
+          </NavLink>
         </div>
       </div>
       <div className={Styles.topRight}>
-
         <div className={Styles.info}>
-        {props?.data?.Address ?
-          <div>
-            <PlaceIcon fontSize="small" style={{ marginRight: 10 }} />
-            <span>{props?.data?.Address}</span>
-          </div>
-          :
-          ""
-        }
+          {props?.data?.Address ? (
+            <div>
+              <PlaceIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{props?.data?.Address}</span>
+            </div>
+          ) : (
+            ""
+          )}
 
-        {props?.data?.Gender ?
-          <div>
-            <BoyIcon fontSize="small" style={{ marginRight: 10 }} />
-            <span>{props?.data?.Gender}</span>
-          </div>
-          :
-          ""
-        }
-        {
-          dob ? 
-          <div>
-            <CelebrationIcon fontSize="small" style={{ marginRight: 10 }} />
-            <span>{dob}</span>
-          </div>
-          :
-          ""
-        }
-        {
-          props?.data?.MaritalStatus ?
-          <div>
-            <FavoriteIcon fontSize="small" style={{ marginRight: 10 }} />
-            <span>{props?.data?.MaritalStatus}</span>
-          </div> 
-          :
-          ""
-        }
+          {props?.data?.Gender ? (
+            <div>
+              <BoyIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{props?.data?.Gender}</span>
+            </div>
+          ) : (
+            ""
+          )}
+          {dob ? (
+            <div>
+              <CelebrationIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{dob}</span>
+            </div>
+          ) : (
+            ""
+          )}
+          {props?.data?.MaritalStatus ? (
+            <div>
+              <FavoriteIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{props?.data?.MaritalStatus}</span>
+            </div>
+          ) : (
+            ""
+          )}
 
-        {props?.data?.Email ?
-          <div>
-            <EmailIcon fontSize="small" style={{ marginRight: 10 }} />
-            <span>{props?.data?.Email}</span>
-          </div>
-          :
-          ""
-        }
-        {
-          props?.data?.WhatsappNumber ?
-        
-          <div>
-            <CallIcon fontSize="small" style={{ marginRight: 10 }} />
-            <span>{props?.data?.WhatsappNumber}</span>
-          </div>
-          :
-          ""
-        }
-        {props?.data?.CompanyName ?
-          <div>
-            <BusinessIcon fontSize="small" style={{ marginRight: 10 }} />
-            <span>{props?.data?.CompanyName}</span>
-          </div>
-          :
-          ""
-        }
-        {props?.data?.Profession ?
-          <div>
-            <PortraitIcon fontSize="small" style={{ marginRight: 10 }} />
-            <span>{props?.data?.Profession}</span>
-          </div>
-          :
-          ""
-        }
+          {props?.data?.Email ? (
+            <div>
+              <EmailIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{props?.data?.Email}</span>
+            </div>
+          ) : (
+            ""
+          )}
+          {props?.data?.WhatsappNumber ? (
+            <div>
+              <CallIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{props?.data?.WhatsappNumber}</span>
+            </div>
+          ) : (
+            ""
+          )}
+          {props?.data?.CompanyName ? (
+            <div>
+              <BusinessIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{props?.data?.CompanyName}</span>
+            </div>
+          ) : (
+            ""
+          )}
+          {props?.data?.Profession ? (
+            <div>
+              <PortraitIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{props?.data?.Profession}</span>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

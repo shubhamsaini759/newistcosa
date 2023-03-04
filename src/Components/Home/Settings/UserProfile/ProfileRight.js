@@ -22,48 +22,54 @@ const ProfileRight = (props) => {
         <Divider className={Styles.dividers} orientation="left" plain>
           Experience
         </Divider>
-
-        <div className={Styles.experience}>
+        <div className={Styles.expBoxes}>
           {props?.data?.ProfessionalInformation?.map((x, ind) => (
-            <div className={Styles.expDetails} key={ind}>
-              <div className={Styles.expinfo}>
-                <h6>{x?.CompanyName}</h6>
-                <div>
-                  <BusinessIcon fontSize="small" style={{ marginRight: 10 }} />
-                  <span>Industrial area phase 2,panchkula</span>
+            <div className={Styles.experience} key={ind}>
+              <div className={Styles.expDetails}>
+                <div className={Styles.expinfo}>
+                  <h6>{x?.CompanyName}</h6>
+                  <div>
+                    <BusinessIcon
+                      fontSize="small"
+                      style={{ marginRight: 10 }}
+                    />
+                    <span>Industrial area phase 2,panchkula</span>
+                  </div>
+                  <div>
+                    <PortraitIcon
+                      fontSize="small"
+                      style={{ marginRight: 10 }}
+                    />
+                    <span>{x?.Designation}</span>
+                  </div>
+                  <div>
+                    <BusinessCenterIcon
+                      fontSize="small"
+                      style={{ marginRight: 10 }}
+                    />
+                    <span>Profession : {x?.Profession}</span>
+                  </div>
+                  <div>
+                    <CalendarMonthIcon
+                      fontSize="small"
+                      style={{ marginRight: 10 }}
+                    />
+                    <span>
+                      {new Date(x?.FromDate).toDateString().slice(3, 15)} -{" "}
+                      {x.ToDate
+                        ? new Date(x.ToDate).toDateString().slice(3, 15)
+                        : ""}
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <PortraitIcon fontSize="small" style={{ marginRight: 10 }} />
-                  <span>{x?.Designation}</span>
+                <div className={Styles.expDescription}>
+                  <p>Description :</p>
+                  <p>{x?.Responsibility}</p>
                 </div>
-                <div>
-                  <BusinessCenterIcon
-                    fontSize="small"
-                    style={{ marginRight: 10 }}
-                  />
-                  <span>Profession : {x?.Profession}</span>
-                </div>
-                <div>
-                  <CalendarMonthIcon
-                    fontSize="small"
-                    style={{ marginRight: 10 }}
-                  />
-                  <span>
-                    {new Date(x?.FromDate).toDateString().slice(3, 15)} -{" "}
-                    {x.ToDate
-                      ? new Date(x.ToDate).toDateString().slice(3, 15)
-                      : ""}
-                  </span>
-                </div>
-              </div>
-              <div className={Styles.expDescription}>
-                <p>Description :</p>
-                <p>{x?.Responsibility}</p>
               </div>
             </div>
           ))}
         </div>
-
         <Divider className={Styles.dividers} orientation="left" plain>
           About ISTCOSA
         </Divider>

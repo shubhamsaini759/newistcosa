@@ -17,67 +17,69 @@ import TextAreaInputs from "../../../GlobalComp/InputFields/TextAreaInputs";
 const AddCompModal = (props) => {
   const dispatch = useDispatch();
 
-  const professionaldetail = useSelector((state)=> state.professionalInfoReducer);
-  const { data : professionalDetails, error , mutateAsync : details } = useMutation('ProfessionalInfo',ProfessionalInfo);
-  const { data : profileData } = useQuery('UserProfileDetails',UserProfileDetails);
-  const { data : companyList } = useQuery('CompanyList',CompanyList);
-
+  const professionaldetail = useSelector(
+    (state) => state.professionalInfoReducer
+  );
+  const {
+    data: professionalDetails,
+    error,
+    mutateAsync: details,
+  } = useMutation("ProfessionalInfo", ProfessionalInfo);
+  const { data: profileData } = useQuery(
+    "UserProfileDetails",
+    UserProfileDetails
+  );
+  const { data: companyList } = useQuery("CompanyList", CompanyList);
 
   const [profession, setProfession] = useState("");
-  const [ fromDate, setFromDate ] = useState('');
-  const [ toDate, setToDate ] = useState('');
-  const [ compId, setCompId ] = useState('');
-  const [ userId, setUserId ] = useState(profileData?.RollNumberID)
-  console.log(userId,'userID')
-  console.log(compId,'compId')
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [compId, setCompId] = useState("");
+  const [userId, setUserId] = useState(profileData?.RollNumberID);
+  console.log(userId, "userID");
+  console.log(compId, "compId");
 
-
-
-  useEffect(()=>{
-    dispatch(professionalInfoActions.userId({userId : userId}) )
-    dispatch(professionalInfoActions.compId({compId : compId}) )
-    dispatch(professionalInfoActions.active({compactiveId : true}) )
-  },[compId])
+  useEffect(() => {
+    dispatch(professionalInfoActions.userId({ userId: userId }));
+    dispatch(professionalInfoActions.compId({ compId: compId }));
+    dispatch(professionalInfoActions.active({ compactiveId: true }));
+  }, [compId]);
 
   const professionHandler = (data) => {
     setProfession(data);
-    dispatch(professionalInfoActions.profess({ profess : data}) )
-    
+    dispatch(professionalInfoActions.profess({ profess: data }));
   };
-  const desigHandler = (data) =>{
-    dispatch(professionalInfoActions.desig({ desig : data}) )
-  }
-  const nameHandler = (_,data) =>{
-    setCompId(data?.id)
-    dispatch(professionalInfoActions.name({ name : data?.value }) )
+  const desigHandler = (data) => {
+    dispatch(professionalInfoActions.desig({ desig: data }));
+  };
+  const nameHandler = (_, data) => {
+    setCompId(data?.id);
+    dispatch(professionalInfoActions.name({ name: data?.value }));
+  };
 
-  }
-
-  const fromHandler = (data) =>{
-    const formattedDate = DateFormatter(data)
-    setFromDate(formattedDate)
-    dispatch(professionalInfoActions.fromDate({ fromDate : formattedDate}) )
-  }
-  const toHandler = (data) =>{
-    const formattedDate = DateFormatter(data)
-    setToDate(formattedDate)
-    dispatch(professionalInfoActions.toDate({ toDate : formattedDate}) )
-  }
-  const resHandler = (data) =>{
-    dispatch(professionalInfoActions.res({ res : data}) )
-  }
-
-
+  const fromHandler = (data) => {
+    const formattedDate = DateFormatter(data);
+    setFromDate(formattedDate);
+    dispatch(professionalInfoActions.fromDate({ fromDate: formattedDate }));
+  };
+  const toHandler = (data) => {
+    const formattedDate = DateFormatter(data);
+    setToDate(formattedDate);
+    dispatch(professionalInfoActions.toDate({ toDate: formattedDate }));
+  };
+  const resHandler = (data) => {
+    dispatch(professionalInfoActions.res({ res: data }));
+  };
 
   const cancelHandler = () => {
     props.onCancel(false);
   };
 
   const doneHandler = async () => {
-    await details(professionaldetail)
-    props.onDone(false);
+    console.log(professionaldetail);
+    // await details(professionaldetail)
+    // props.onDone(false);
   };
-
 
   return (
     <Form layout="vertical">
@@ -90,17 +92,40 @@ const AddCompModal = (props) => {
         />
       </div>
       <div className={Styles.secondRow}>
-        <Inputs label="Recent Designation"  size="small" handler={desigHandler} />
-        <AutoInputs label="Company Name" size="small" list={companyList}  handler={nameHandler} />
+        <Inputs
+          label="Recent Designation"
+          size="small"
+          handler={desigHandler}
+        />
+        <AutoInputs
+          label="Company Name"
+          size="small"
+          list={companyList}
+          handler={nameHandler}
+        />
       </div>
-    
-    
+
       <div className={Styles.fifthRow}>
-        <Dates label="From Date" size="small" value={fromDate} handler={fromHandler} />
-        <Dates label="To Date" size="small" value={toDate} handler={toHandler} />
+        <Dates
+          label="From Date"
+          size="small"
+          value={fromDate}
+          handler={fromHandler}
+        />
+        <Dates
+          label="To Date"
+          size="small"
+          value={toDate}
+          handler={toHandler}
+        />
       </div>
       <div className={Styles.sixthRow}>
-        <TextAreaInputs label="Responsibilities" length="400" size="small" handler={resHandler}  />
+        <TextAreaInputs
+          label="Responsibilities"
+          length="400"
+          size="small"
+          handler={resHandler}
+        />
       </div>
       <div className={Styles.seventhRow}>
         <Button danger onClick={cancelHandler}>
