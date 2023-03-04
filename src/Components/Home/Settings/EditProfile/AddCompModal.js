@@ -31,11 +31,13 @@ const AddCompModal = (props) => {
   );
   const { data: companyList } = useQuery("CompanyList", CompanyList);
 
+  console.log(profileData, "profileData");
+
   const [profession, setProfession] = useState("");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [compId, setCompId] = useState("");
-  const [userId, setUserId] = useState(profileData?.RollNumberID);
+  const [userId, setUserId] = useState(profileData?.UserID);
   console.log(userId, "userID");
   console.log(compId, "compId");
 

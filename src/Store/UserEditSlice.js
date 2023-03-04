@@ -141,5 +141,10 @@ export const UserEditSlice = createSlice({
     keywords(state, { payload }) {
       state.SearchKeyword = payload.keywords;
     },
+    allData(state, { payload }) {
+      for (let i in payload.data) {
+        state[i] = payload.data[i];
+      }
+    }
   },
 });

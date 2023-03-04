@@ -1,23 +1,22 @@
 import { Button, Form } from "antd";
 import React, { useEffect, useState } from "react";
-import Styles from "../../../../Styles/EditProfile/PersonalProfile.module.css";
-
 import { useMutation, useQuery } from "react-query";
-import { CountryList } from "../../../../Utils/api/CountryList";
-import Inputs from "../../../GlobalComp/InputFields/Inputs";
-import Gender from "../../../GlobalComp/InputFields/Gender";
-import Dates from "../../../GlobalComp/InputFields/Dates";
-import NumberInputs from "../../../GlobalComp/InputFields/NumberInputs";
-import EmailInputs from "../../../GlobalComp/InputFields/EmailInputs";
-import AutoInputs from "../../../GlobalComp/InputFields/AutoInputs";
-import TextAreaInputs from "../../../GlobalComp/InputFields/TextAreaInputs";
-import Marital from "../../../GlobalComp/InputFields/Marital";
-import { StateList } from "../../../../Utils/api/StateList";
-import { CityList } from "../../../../Utils/api/CityList";
 import { useDispatch, useSelector } from "react-redux";
 import { userEditActions } from "../../../../Store";
-import { DateFormatter } from "../../../../Utils/Helpers";
+import Styles from "../../../../Styles/EditProfile/PersonalProfile.module.css";
+import { CityList } from "../../../../Utils/api/CityList";
+import { CountryList } from "../../../../Utils/api/CountryList";
+import { StateList } from "../../../../Utils/api/StateList";
 import { userEditDetail } from "../../../../Utils/api/UserMoreDetail/UserEditDetail";
+import { DateFormatter } from "../../../../Utils/Helpers";
+import AutoInputs from "../../../GlobalComp/InputFields/AutoInputs";
+import Dates from "../../../GlobalComp/InputFields/Dates";
+import EmailInputs from "../../../GlobalComp/InputFields/EmailInputs";
+import Gender from "../../../GlobalComp/InputFields/Gender";
+import Inputs from "../../../GlobalComp/InputFields/Inputs";
+import Marital from "../../../GlobalComp/InputFields/Marital";
+import NumberInputs from "../../../GlobalComp/InputFields/NumberInputs";
+import TextAreaInputs from "../../../GlobalComp/InputFields/TextAreaInputs";
 
 const PersonalInfo = (props) => {
   const [form] = Form.useForm();
@@ -29,17 +28,9 @@ const PersonalInfo = (props) => {
     userEditDetail
   );
 
-  console.log(props);
-
   const [dob, setDob] = useState(DateFormatter(props?.userData?.DateOfBirth));
   const [marital, setMarital] = useState("");
   const [gen, setGen] = useState(props?.userData?.Gender);
-
-  const submitHandler = async () => {
-    console.log(perosnaldata, "personaldata");
-    // await edited(perosnaldata);
-    // console.log(editDetails)
-  };
 
   const val = {
     Fullname: `${props?.userData?.FullName}`,
@@ -62,8 +53,18 @@ const PersonalInfo = (props) => {
     ResidentialAddress: `${props?.userData?.Address}`,
     Marital: `${props?.userData?.MaritalStatus}`,
     SpouseName: `${props?.userData?.SpouseName}`,
-    AniversaryDate: `${props?.userData?.AniversaryDate}`,
+    AniversaryDate: `${DateFormatter(props?.userData?.AniversaryDate)}`,
     ChildDetails: `${props?.userData?.ChildDetails}`,
+  };
+
+  useEffect(() => {
+    dispatch(userEditActions.allData({ data: val }));
+  }, []);
+
+  const submitHandler = async () => {
+    console.log(perosnaldata, "personaldata");
+    // await edited(perosnaldata);
+    // console.log(editDetails)
   };
 
   const { data: countryData } = useQuery("CountryList", CountryList);
@@ -93,10 +94,10 @@ const PersonalInfo = (props) => {
     await countryId(data.id);
     data
       ? form.setFieldsValue({
-          Country: data.value,
-          State: "",
-          City: "",
-        })
+        Country: data.value,
+        State: "",
+        City: "",
+      })
       : console.log("no");
   };
 
@@ -110,9 +111,9 @@ const PersonalInfo = (props) => {
     await stateId(data.id);
     data
       ? form.setFieldsValue({
-          State: data.value,
-          City: "",
-        })
+        State: data.value,
+        City: "",
+      })
       : console.log("state");
   };
 
@@ -125,8 +126,8 @@ const PersonalInfo = (props) => {
 
     data
       ? form.setFieldValue({
-          City: data.value,
-        })
+        City: data.value,
+      })
       : console.log("city");
   };
 
@@ -213,9 +214,9 @@ const PersonalInfo = (props) => {
   const keywordhandler = (data) => {
     dispatch(
       userEditActions.keywords({
-        keywords: data ? data : props?.userData?.SearchKeyword,
+        keywords: data ? data : props?.userData?.SearchKeyword
       }
-    );
+      ));
   };
   const addressHandler = (data) => {
     dispatch(
