@@ -281,3 +281,74 @@ const UserRegister = () => {
 };
 
 export default UserRegister;
+
+
+// import { Button, Form } from 'antd'
+// import React from 'react'
+// import Styles from '../../../Styles/Register/RegFields.module.css'
+
+// import AutoInputs from '../../GlobalComp/InputFields/AutoInputs';
+// import Dates from '../../GlobalComp/InputFields/Dates';
+// import EmailInputs from '../../GlobalComp/InputFields/EmailInputs';
+// import Gender from '../../GlobalComp/InputFields/Gender';
+// import Inputs from '../../GlobalComp/InputFields/Inputs';
+// import NumberInputs from '../../GlobalComp/InputFields/NumberInputs';
+// import PasswordInputs from '../../GlobalComp/InputFields/PasswordInputs';
+
+// const UserRegister = () => {
+//     const [form] = Form.useForm();
+//     const val={
+//       CountryCode: "",
+//       Email : '',
+//       BatchID: "",
+//       RollNumberID: "",
+//       FullName: "",
+//       Gender: "",
+//       DateOfBirth: "",
+//       PhoneNumber: "",
+//       CountryID: "",
+//       StateID: "",
+//       CityID: "",
+//       UserID: "",
+//       ImagePath: "",
+//       Pincode: "",
+//       OldImage: "",
+//       Email: "",
+//       Password: "",
+//       ConfirmPassword: "",
+//       UploadImage: "",
+//     }
+
+//   return (
+//     <Form form={form} layout='vertical' initialValues={val} >
+//       <div className={Styles.firstRow} >
+//         <AutoInputs label='Batch ID' name='BatchID' />
+//         <AutoInputs label='Roll Number' name='RollNumberID' />
+//         <Inputs label='full Name' name='FullName' />
+//       </div>
+//       <div className={Styles.secondRow}>
+//         <Gender name='Gender' />
+//         <Dates label='Date of Birth' name='DateOfBirth' />
+//       </div>
+//       <div className={Styles.thirdRow} >
+//         <NumberInputs label='Phone Number' name='PhoneNumber' />
+//         <EmailInputs label='Email' name='Email' />
+//       </div>
+//       <div className={Styles.fourthRow} >
+//           <AutoInputs label='Country' name='CountryID' />
+//           <AutoInputs label='State' name='StateID' />
+//           <AutoInputs label='City' name='CityID' />
+//       </div>
+//       <div className={Styles.fifthRow}>
+//           <Inputs label='Pincode' name='Pincode' />
+//           <PasswordInputs label='Password' name="Password" />
+//           <PasswordInputs label='Confirm-Password' name="ConfirmPassword" />
+//       </div>
+//       <div className={Styles.sixthRow} >
+//         <Button type="primary">Submit</Button>
+//       </div>
+//     </Form>
+//   )
+// }
+
+// export default UserRegister

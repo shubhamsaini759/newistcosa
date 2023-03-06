@@ -1,0 +1,67 @@
+.defination{
+    height: 5rem;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+
+    display: flex;
+    align-items: center;
+}
+.defination p{
+    padding-left: 2rem;
+    font-size: x-large;
+    font-weight: 700;
+    color: saddlebrown;
+}
+
+.fields{
+    margin-top: 2rem;
+    height: auto;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+.firstRow{
+    display: flex;
+    gap: 1rem;
+}
+.secondRow{
+    display: flex;
+    gap: 1rem;
+}
+.thirdRow{
+    display: flex;
+    gap: 1rem;
+}
+.fourthRow{
+    display: flex;
+    gap: 1rem;
+}
+.fifthRow{
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    gap: 1rem;
+
+}
+.searchList{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .firstRow{
+        flex-direction: column;
+    }
+    .secondRow{
+        flex-direction: column;
+    }
+    .thirdRow{
+        flex-direction: column;
+    }
+    .fourthRow{
+        flex-direction: column;
+    }
+    
+}

@@ -1,4 +1,4 @@
-import { Button, Form } from "antd";
+import { Alert, Button, Form } from "antd";
 import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
@@ -64,7 +64,8 @@ const PersonalInfo = (props) => {
   const submitHandler = async () => {
     console.log(perosnaldata, "personaldata");
     // await edited(perosnaldata);
-    // console.log(editDetails)
+    <Alert message="Profile Updated" type="success" />;
+    console.log(editDetails)
   };
 
   const { data: countryData } = useQuery("CountryList", CountryList);
@@ -76,7 +77,6 @@ const PersonalInfo = (props) => {
     "CityList",
     CityList
   );
-
 
 
 

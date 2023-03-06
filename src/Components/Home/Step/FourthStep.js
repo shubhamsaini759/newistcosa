@@ -19,8 +19,8 @@ const FourthStep = (props) => {
 
   const DoneHandler = async () => {
     console.log(StepData, "stepData");
-    // await completeData(StepData);
-    // console.log(sendData,'completeApiResult')
+    await completeData(StepData);
+    console.log(sendData,'completeApiResult')
   };
 
   const val = {

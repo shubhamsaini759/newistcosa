@@ -13,13 +13,14 @@ import BusinessIcon from "@mui/icons-material/Business";
 import PortraitIcon from "@mui/icons-material/Portrait";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import { NavLink } from "react-router-dom";
+import { DateFormatter } from "../../../../Utils/Helpers";
 
 const ProfileLeft = (props) => {
   const [dob, setDob] = useState("");
 
   useEffect(() => {
-    const x = new Date(props?.data?.DateOfBirth).toDateString();
-    setDob(x.slice(4, 15));
+    setDob( DateFormatter(props?.data?.DateOfBirth) )
+  
   }, []);
 
   return (

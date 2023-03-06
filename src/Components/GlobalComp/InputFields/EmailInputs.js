@@ -9,15 +9,7 @@ const EmailInputs = (props) => {
             name={props.name}
             label={props.label}
             style={{ width : '100%'}}
-            rules={[
-            {
-                type: 'email',
-            },
-            {
-              required: true,
-              message: 'Please input your Email!',
-            }
-            ]}
+            rules={props.rule}
         >
             <Input disabled={props.disabled} onChange={(e)=>props.handler(e.target.value)} size={props.size}  />
         </Form.Item>

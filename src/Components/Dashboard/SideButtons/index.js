@@ -26,11 +26,7 @@ const SideButtons = () => {
           Home 
         </Menu.Item>
         <Menu.SubMenu title="Search">
-          <Menu.Item>Memorandum</Menu.Item>
-          <Menu.Item>History</Menu.Item>
-          <Menu.Item>Principals</Menu.Item>
-          <Menu.Item>president</Menu.Item>
-          <Menu.Item>Patrons</Menu.Item>
+          <Menu.Item onClick={()=>navigate('/home/search/usersearch')} >User</Menu.Item>
         </Menu.SubMenu>
         <Menu.SubMenu title="Lists">
           <Menu.Item>Exicutive Commttiee</Menu.Item>

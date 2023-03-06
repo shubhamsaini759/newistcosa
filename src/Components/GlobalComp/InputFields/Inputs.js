@@ -8,12 +8,7 @@ const Inputs = (props) => {
         label={props.label}
         name={props.name}
         style={{ width: "100%" }}
-        rules={[
-          {
-            required: true,
-            message: "Please input your details!",
-          },
-        ]}
+        rules={props.rule}
       >
         <Input
           disabled = {props.disabled}
