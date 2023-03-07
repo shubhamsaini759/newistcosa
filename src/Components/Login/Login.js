@@ -7,53 +7,71 @@ import { loginActions } from "../../Store";
 import api from "../../Utils/api";
 import { useNavigate } from "react-router-dom";
 import { Path } from "../../Utils/api/endPoints";
+import { Form } from "antd";
+import Inputs from "../GlobalComp/InputFields/Inputs";
+import PasswordInputs from "../GlobalComp/InputFields/PasswordInputs";
+import { useMutation } from "react-query";
+import { Logins } from "../../Utils/api/Login";
 
 const Login = () => {
+  const [form] = Form.useForm();
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const loginDetail = useSelector((state) => state.loginReducer);
+  const { data: loginData, mutateAsync: details } = useMutation(
+    "Login",
+    Logins
+  );
 
-  const [show, setShow] = useState(false);
-  const [err, setErr] = useState("");
-
-  const data = {
-    UserName: loginDetail?.rollNumber,
-    Password: loginDetail?.password,
+  const val = {
+    BatchID: "",
+    Password: "",
   };
 
-  const rollHandler = (e) => {
-    dispatch(loginActions.EnteredRoll({ rollNumber: e.target.value }));
+  // const data = {
+  //   UserName: loginDetail?.rollNumber,
+  //   Password: loginDetail?.password,
+  // };
+
+  const rollHandler = (data) => {
+    dispatch(loginActions.EnteredRoll({ rollNumber: data }));
+    form.setFieldsValue({
+      BatchID: data,
+    });
   };
-  const passHandler = (e) => {
-    dispatch(loginActions.EnteredPass({ password: e.target.value }));
-  };
-
-  const userLogin = (e) => {
-    e.preventDefault();
-    dispatch(loginActions.loginHandler());
-
-    api
-      .post(Path.UserLogin, data)
-      .then((result) => {
-        localStorage.setItem("accessToken", result.data[0].Token);
-        console.log(result, "output");
-
-        if (result.data[0].Role === "Admin") {
-          navigate("/home");
-          console.log("admin");
-        } else if (result.data[0].Role === "Student") {
-          console.log("student");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setErr(err.response.data.Message);
-      });
+  const passHandler = (data) => {
+    dispatch(loginActions.EnteredPass({ password: data }));
+    form.setFieldsValue({
+      Password: data,
+    });
   };
 
-  const handleCheck = () => {
-    setShow((x) => !x);
+  const userLogin = async () => {
+    await details(loginDetail);
+    console.log(loginDetail, "detail ");
+    console.log(loginData);
+
+    // e.preventDefault();
+    // dispatch(loginActions.loginHandler());
+
+    // api
+    //   .post(Path.UserLogin, data)
+    //   .then((result) => {
+    //     localStorage.setItem("accessToken", result.data[0].Token);
+    //     console.log(result, "output");
+
+    //     if (result.data[0].Role === "Admin") {
+    //       navigate("/home");
+    //       console.log("admin");
+    //     } else if (result.data[0].Role === "Student") {
+    //       console.log("student");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     // setErr(err.response.data.Message);
+    //   });
   };
 
   return (
@@ -61,8 +79,13 @@ const Login = () => {
       <div className={Styles.loginBox}>
         <div className={Styles.loginBoxInfo}>
           <h1>Login Here</h1>
-          <form className={Styles.loginData} onSubmit={userLogin}>
-            <TextField
+          <Form
+            layout="vertical"
+            form={form}
+            initialValues={val}
+            className={Styles.loginData}
+          >
+            {/* <TextField
               className={Styles.rollnum}
               size="small"
               onChange={rollHandler}
@@ -84,15 +107,21 @@ const Login = () => {
               name="password"
               label="Enter Password"
               variant="outlined"
+            /> */}
+            <Inputs label="Batch ID" name="Batch ID" handler={rollHandler} />
+            <PasswordInputs
+              label="Password"
+              name="Password"
+              handler={passHandler}
             />
-            <div>
+            {/* <div>
               <Checkbox
                 checked={show}
                 onChange={handleCheck}
                 inputProps={{ "aria-label": "controlled" }}
               />{" "}
               Show Password
-            </div>
+            </div> */}
             <div className={Styles.forgot}>
               Forgot your Password ?
               <Button
@@ -100,11 +129,12 @@ const Login = () => {
                 type="submit"
                 size="small"
                 className={Styles.logb}
+                onClick={userLogin}
               >
                 Login
               </Button>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </div>
