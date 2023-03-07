@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import Istcosa from "../Components/Dashboard/Istcosa";
 import UserSearch from "../Components/Home/Search/UserSearch";
 import ChangeImage from "../Components/Home/Settings/ChangeImage";
@@ -18,8 +18,9 @@ import RegisterPage from "../Pages/RegisterPage";
 const Routing = () => {
   return (
     <>
-      <Routes>
-
+  <HashRouter  hashType='slash'  >
+    
+      <Routes  >
 
 
       {/* <Route path='/' element={<Istcosa /> } >
@@ -29,11 +30,9 @@ const Routing = () => {
               <Route path='/Information' element={<Protected Component = {Complete} /> } />  */}
 
 
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path='/' element={<Navigate to='/login' replace={true} />} />
         <Route path="/register" element={<RegisterPage />} />
-
-      
-
 
         <Route path="/home" element={<Dashboard />}>
           <Route path="complete" element={<Step />} />
@@ -44,9 +43,11 @@ const Routing = () => {
           <Route path="settings/userprofile" element={<UserProfile />} />
           <Route path="settings/changeimage" element={<ChangeImage />} />
           <Route path="settings/changepassword" element={<ChangePassword />} />
-
         </Route>
+
       </Routes>
+  </HashRouter>
+      
     </>
   );
 };
