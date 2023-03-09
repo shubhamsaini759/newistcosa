@@ -14,6 +14,9 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 import { Tooltip } from "@mui/material";
+import { Space, Tag } from "antd";
+import { TwitterOutlined } from "@ant-design/icons";
+import { FacebookOutlined, LinkedinOutlined, YoutubeOutlined } from "@ant-design/icons/lib/icons";
 
 const FooterGlob = () => {
   return (
@@ -52,17 +55,20 @@ const FooterGlob = () => {
       <div className={Styles.upperRight}>
         <div className={Styles.texts}>
           <h2>Get In Touch</h2>
-          <p>
-            <span>
-              {" "}
-              <LocationOnIcon />{" "}
-            </span>
-            ISTCOSA Office old hostel Building Indo-Swiss Training Centre CSIO
-            Sector 30-C Chandigarh-160030
-          </p>
+          <div className={Styles.loc}>
+            <div>
+              <LocationOnIcon />
+            </div>
+            <div className={Styles.locPara}>
+              <p>
+              ISTCOSA Office old hostel Building Indo-Swiss Training Centre CSIO
+              Sector 30-C Chandigarh-160030
+              </p>
+            </div>
+          </div>
         </div>
         <div className={Styles.icons}>
-          <Tooltip title="Facebook">
+          {/* <Tooltip title="Facebook">
             <FacebookIcon sx={{ cursor: "pointer" }} fontSize="large" />
           </Tooltip>
           <Tooltip title="linkedin">
@@ -73,7 +79,19 @@ const FooterGlob = () => {
           </Tooltip>
           <Tooltip title="youtube">
             <YouTubeIcon sx={{ cursor: "pointer" }} fontSize="large" />
-          </Tooltip>
+          </Tooltip> */}
+            <Tag icon={<TwitterOutlined />} color="#55acee" style={{ display : 'flex', alignItems : 'center', cursor : 'pointer' }}>
+              Twitter
+            </Tag>
+            <Tag icon={<YoutubeOutlined />} color="#cd201f" style={{ display : 'flex', alignItems : 'center', cursor : 'pointer' }}>
+              Youtube
+            </Tag>
+            <Tag icon={<FacebookOutlined />} color="#3b5999" style={{ display : 'flex', alignItems : 'center', cursor : 'pointer' }}>
+              Facebook
+            </Tag>
+            <Tag icon={<LinkedinOutlined />} color="#55acee" style={{ display : 'flex', alignItems : 'center', cursor : 'pointer' }}>
+              LinkedIn
+            </Tag>
         </div>
       </div>
     </div>

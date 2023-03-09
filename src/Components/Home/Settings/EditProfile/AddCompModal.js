@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { professionalInfoActions } from "../../../../Store";
 import Styles from "../../../../Styles/EditProfile/EditIconModal.module.css";
 import { CompanyList } from "../../../../Utils/api/UserMoreDetail/CompanyList";
+import { ProfessionalEdit } from "../../../../Utils/api/UserMoreDetail/ProfessionalEdit";
 import { ProfessionalInfo } from "../../../../Utils/api/UserMoreDetail/ProfessionalInfo";
 import { UserProfileDetails } from "../../../../Utils/api/UserProfile";
 import { DateFormatter } from "../../../../Utils/Helpers";
@@ -15,7 +16,14 @@ import ProfessionList from "../../../GlobalComp/InputFields/ProfessionList";
 import TextAreaInputs from "../../../GlobalComp/InputFields/TextAreaInputs";
 
 const AddCompModal = (props) => {
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
+
+  const val={
+    Designation : props?.oldData?.Designation,
+    CompanyName : props?.oldData?.CompanyName,
+    Responsibility : props?.oldData?.Responsibility
+  }
 
   const professionaldetail = useSelector(
     (state) => state.professionalInfoReducer
@@ -24,53 +32,52 @@ const AddCompModal = (props) => {
     data: professionalDetails,
     error,
     mutateAsync: details,
-  } = useMutation("ProfessionalInfo", ProfessionalInfo);
-  const { data: profileData } = useQuery(
-    "UserProfileDetails",
-    UserProfileDetails
-  );
+  } = useMutation("ProfessionalEdit", ProfessionalEdit);
+
+  useEffect(()=>{
+    console.log(professionalDetails,'professionalDetails')
+  },[professionalDetails])
+
   const { data: companyList } = useQuery("CompanyList", CompanyList);
 
-  console.log(profileData, "profileData");
 
-  const [profession, setProfession] = useState("");
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
+  const [profession, setProfession] = useState(props?.oldData?.Profession);
+  const [fromDate, setFromDate] = useState(DateFormatter(props?.oldData?.FromDate));
+  const [toDate, setToDate] = useState(DateFormatter(props?.oldData?.ToDate));
   const [compId, setCompId] = useState("");
-  const [userId, setUserId] = useState(profileData?.UserID);
-  console.log(userId, "userID");
-  console.log(compId, "compId");
+  
+
 
   useEffect(() => {
-    dispatch(professionalInfoActions.userId({ userId: userId }));
-    dispatch(professionalInfoActions.compId({ compId: compId }));
+    dispatch(professionalInfoActions.userId({ userId: props?.oldData?.userId }));
+    dispatch(professionalInfoActions.compId({ compId: props?.oldData?.compId }));
     dispatch(professionalInfoActions.active({ compactiveId: true }));
   }, [compId]);
 
   const professionHandler = (data) => {
     setProfession(data);
-    dispatch(professionalInfoActions.profess({ profess: data }));
+    dispatch(professionalInfoActions.profess({ profess: data ? data : props?.oldData?.Profession }));
   };
   const desigHandler = (data) => {
-    dispatch(professionalInfoActions.desig({ desig: data }));
+    dispatch(professionalInfoActions.desig({ desig: data ? data : props?.oldData?.Designation }));
   };
   const nameHandler = (_, data) => {
     setCompId(data?.id);
-    dispatch(professionalInfoActions.name({ name: data?.value }));
+    dispatch(professionalInfoActions.name({ name: data? data.value : props?.oldData?.CompanyName }));
   };
 
   const fromHandler = (data) => {
     const formattedDate = DateFormatter(data);
     setFromDate(formattedDate);
-    dispatch(professionalInfoActions.fromDate({ fromDate: formattedDate }));
+    dispatch(professionalInfoActions.fromDate({ fromDate: formattedDate ? formattedDate : DateFormatter(props?.oldData?.FromDate) }));
   };
   const toHandler = (data) => {
     const formattedDate = DateFormatter(data);
     setToDate(formattedDate);
-    dispatch(professionalInfoActions.toDate({ toDate: formattedDate }));
+    dispatch(professionalInfoActions.toDate({ toDate: formattedDate  ? formattedDate : DateFormatter(props?.oldData?.ToDate)  }));
   };
   const resHandler = (data) => {
-    dispatch(professionalInfoActions.res({ res: data }));
+    dispatch(professionalInfoActions.res({ res: data ? data : props?.oldData?.Responsibility }));
   };
 
   const cancelHandler = () => {
@@ -78,13 +85,12 @@ const AddCompModal = (props) => {
   };
 
   const doneHandler = async () => {
-    console.log(professionaldetail);
-    // await details(professionaldetail)
-    // props.onDone(false);
+    await details(professionaldetail)
+    props.onDone(false);
   };
 
   return (
-    <Form layout="vertical">
+    <Form form={form} initialValues={val} layout="vertical">
       <div className={Styles.firstRow}>
         <ProfessionList
           label="Profession"
@@ -96,11 +102,13 @@ const AddCompModal = (props) => {
       <div className={Styles.secondRow}>
         <Inputs
           label="Recent Designation"
+          name = 'Designation'
           size="small"
           handler={desigHandler}
         />
         <AutoInputs
           label="Company Name"
+          name='CompanyName'
           size="small"
           list={companyList}
           handler={nameHandler}
@@ -124,6 +132,7 @@ const AddCompModal = (props) => {
       <div className={Styles.sixthRow}>
         <TextAreaInputs
           label="Responsibilities"
+          name='Responsibility'
           length="400"
           size="small"
           handler={resHandler}

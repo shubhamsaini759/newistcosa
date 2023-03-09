@@ -22,11 +22,15 @@ export const Path ={
         userMoreDetail : 'User/EditUserMoreDetails/1000',
         companyList : 'Company',
         userProfile : 'User/UserProfile/1000',
+        professionalDetails : 'User/UserProfessionalEdit/6301',
  
     // put
         userEditDetail : 'User/PutUserMoreDetails?userId=1000',
+        ProfessionalEdit : 'User/PutProfessionalInfo/1000',
+
 
     // post
         addCompany : 'Company',
         professionalInfo : 'User/AddProfessionalInfo'
 } 
+

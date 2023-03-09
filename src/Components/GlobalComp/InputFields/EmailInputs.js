@@ -11,7 +11,7 @@ const EmailInputs = (props) => {
             style={{ width : '100%'}}
             rules={props.rule}
         >
-            <Input disabled={props.disabled} onChange={(e)=>props.handler(e.target.value)} size={props.size}  />
+            <Input placeholder='Email Address' disabled={props.disabled} onChange={(e)=>props.handler(e.target.value)} size={props.size}  />
         </Form.Item>
     </>
   )

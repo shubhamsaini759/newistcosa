@@ -2,7 +2,7 @@ import { Button, Form } from "antd";
 import React, { useEffect } from "react";
 import Inputs from "../../GlobalComp/InputFields/Inputs";
 import AutoInputs from "../../GlobalComp/InputFields/AutoInputs";
-import NumberInputs from "../../GlobalComp/InputFields/AutoInputs";
+import NumberInputs from "../../GlobalComp/InputFields/NumberInputs";
 
 import Styles from "../../../Styles/Step/FirstStep.module.css";
 import { useMutation, useQuery } from "react-query";
@@ -120,10 +120,10 @@ const FirstStep = (props) => {
           list={countryList}
           handler={countryHandler}
           name="Country"
-          rule={{
+          rule={[{
           required: true,
           message: 'Please input your username!',
-        }}
+        }]}
         />
         <AutoInputs
           label="State"

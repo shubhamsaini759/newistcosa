@@ -12,6 +12,7 @@ const NumberInputs = (props) => {
 
         >
             <InputNumber
+            placeholder={props.label}
             size={props.size} 
             style={{ width :'100%' }}
             onChange={(e)=>props.handler(e)}

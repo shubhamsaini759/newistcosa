@@ -29,6 +29,7 @@ const PersonalInfo = (props) => {
   );
 
   const [dob, setDob] = useState(DateFormatter(props?.userData?.DateOfBirth));
+  const [ani, setAni] = useState(DateFormatter(props?.userData?.AniversaryDate));
   const [marital, setMarital] = useState("");
   const [gen, setGen] = useState(props?.userData?.Gender);
 
@@ -63,10 +64,13 @@ const PersonalInfo = (props) => {
 
   const submitHandler = async () => {
     console.log(perosnaldata, "personaldata");
-    // await edited(perosnaldata);
-    <Alert message="Profile Updated" type="success" />;
+    await edited(perosnaldata);
     console.log(editDetails)
   };
+  useEffect(()=>{
+    console.log(editDetails,'editDetails')
+
+  },[editDetails])
 
   const { data: countryData } = useQuery("CountryList", CountryList);
   const { data: stateData, mutateAsync: countryId } = useMutation(
@@ -247,6 +251,15 @@ const PersonalInfo = (props) => {
       })
     );
   };
+  const aniHandler = (data) =>{
+    const date = DateFormatter(data)
+    setAni(date)
+    dispatch(
+      userEditActions.aniversary({
+        aniversary: data ? date : props?.userData?.AniversaryDate
+      })
+    );
+  }
 
   return (
     <Form
@@ -382,7 +395,7 @@ const PersonalInfo = (props) => {
               name="SpouseName"
               handler={spouseHandler}
             />
-            <Dates label="Aniversary Date" name="AniversaryDate" />
+            <Dates label="Aniversary Date" name="AniversaryDate"  value={ani} handler={aniHandler} />
           </>
         ) : (
           ""

@@ -462,7 +462,7 @@ const UserRegister = () => {
   },[register])
 
   return (
-    <Form form={form} layout="vertical" initialValues={val}>
+    <Form form={form} layout="vertical" initialValues={val} style={{ width : '80%' }}>
       <div className={Styles.firstRow}>
         <AutoInputs
           label="Batch ID"
@@ -513,9 +513,7 @@ const UserRegister = () => {
             },
           ]}
         />
-      </div>
-      <div className={Styles.thirdRow}>
-        <NumberInputs
+          <NumberInputs
           label="Phone Number"
           name="PhoneNumber"
           handler={phoneHandler}
@@ -538,6 +536,9 @@ const UserRegister = () => {
           ]}
         />
       </div>
+      {/* <div className={Styles.thirdRow}>
+      
+      </div> */}
       <div className={Styles.fourthRow}>
         <AutoInputs
           label="Country"
@@ -575,9 +576,10 @@ const UserRegister = () => {
             },
           ]}
         />
+        <Inputs label="Pincode" name="Pincode" handler={pincodeHandler} />
+
       </div>
       <div className={Styles.fifthRow}>
-        <Inputs label="Pincode" name="Pincode" handler={pincodeHandler} />
         <PasswordInputs
           label="Password"
           name="Password"

@@ -9,7 +9,7 @@ const PasswordInputs = (props) => {
       rules={props.rule}
       style={{ width: "100%" }}
     >
-      <Input.Password onChange={(e) => props.handler(e.target.value)} />
+      <Input.Password placeholder={props.label} onChange={(e) => props.handler(e.target.value)} />
     </Form.Item>
   );
 };

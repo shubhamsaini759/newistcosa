@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 
 import NavButon from '../NavButon';
+import RegSearch from './RegSearch';
 
 
 
@@ -21,7 +22,10 @@ const Buttondraw = (props) => {
         <Drawer anchor={props.anchor} open={flag} onClose={()=>setFlag(false) }>
           <Box p={2} width='auto' textAlign='start' role='presentation' >
           
-            <Typography variant='h6' component='div' sx={{ display : 'flex', flexDirection : 'column', justifyContent : 'center', alignItems : 'flex-start' }} > <NavButon /> </Typography>
+            <Typography variant='h6' component='div' sx={{ display : 'flex', flexDirection : 'column', justifyContent : 'center', alignItems : 'flex-start' }} >
+              <NavButon /> 
+              <RegSearch />
+             </Typography>
          
 
           </Box>

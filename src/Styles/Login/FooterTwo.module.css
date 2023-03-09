@@ -6,34 +6,50 @@
     justify-content: space-around;
     align-items: center;
     color: white;
+    padding: 1rem;
 
 }
 
 .copyRight {
     display: flex;
-    width: 40%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.copyRight p{
+    display: flex;
+    align-items: center;
+    word-wrap: break-word;
+    
 }
 
 .buttons {
     width: 60%;
 
     display: flex;
-    /* justify-content: flex-end; */
+    justify-content: flex-end;
     align-items: self-end;
-    justify-content: space-around;
+    gap: 1rem;
 
 }
 
 @media screen and (max-width: 1024px) {
     .FooterTwo {
         flex-direction: column;
+        width: 100%;
     }
 
     .copyRight {
         padding-top: 3rem;
+    }
+    .buttons{
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: auto auto;
+        place-items: center;
+        justify-content: center;
+        width: 100%;
+        gap:1rem;
     }
 }
 

@@ -1,5 +1,5 @@
 import { Button, Form } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { userEditActions } from "../../../Store";
@@ -20,8 +20,10 @@ const FourthStep = (props) => {
   const DoneHandler = async () => {
     console.log(StepData, "stepData");
     await completeData(StepData);
-    console.log(sendData,'completeApiResult')
   };
+  useEffect(()=>{
+    console.log(sendData,'completeApiResult')
+  },[sendData])
 
   const val = {
     ISTCNickName: "",

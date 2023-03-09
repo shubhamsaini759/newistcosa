@@ -31,7 +31,7 @@ const Dashboards = () => {
     <Layout>
       {flag ? (
         <Alert
-          message="Your Profile is Incomplete, Please Complete Your Profile"
+          message="Profile is Incomplete, Please Complete Your Profile"
           banner
           closable
           onClick={EditMoreDetails}
