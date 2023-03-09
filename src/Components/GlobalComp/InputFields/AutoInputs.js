@@ -7,7 +7,10 @@ const AutoInputs = (props) => {
       <Form.Item
         label={props.label}
         name={props.name}
-        rules={props.rule}
+        rules={[{
+          required: true,
+          message: 'Please input your username!',
+        }]}
         style={{ width: "100%" }}
       >
         <AutoComplete

@@ -105,7 +105,7 @@ const FirstStep = (props) => {
       initialValues={val}
     >
       <div className={Styles.firtsRow}>
-        <Inputs label="Batch No." name="BatchID" disabled={true} />
+        <Inputs label="Batch No." name="BatchID" disabled={true}  />
         <Inputs label="Roll No." name="RollNumberID" disabled={true} />
         <Inputs label="Full name" name="FullName" disabled={true} />
       </div>
@@ -120,6 +120,10 @@ const FirstStep = (props) => {
           list={countryList}
           handler={countryHandler}
           name="Country"
+          rule={{
+          required: true,
+          message: 'Please input your username!',
+        }}
         />
         <AutoInputs
           label="State"

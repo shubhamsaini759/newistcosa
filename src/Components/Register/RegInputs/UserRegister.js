@@ -282,7 +282,7 @@
 // export default UserRegister;
 
 import { Button, Form } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { tempIdActions } from "../../../Store";
@@ -303,8 +303,10 @@ import PasswordInputs from "../../GlobalComp/InputFields/PasswordInputs";
 import { CityList } from "../../../Utils/api/CityList";
 import { StateList } from "../../../Utils/api/StateList";
 import { Register } from "../../../Utils/api/Register";
+import { useNavigate } from "react-router-dom";
 
 const UserRegister = () => {
+  const navigate = useNavigate();
   const { data: batchList } = useQuery("BatchList", BatchList);
   const { data: rollNumber, mutateAsync: batchId } = useMutation(
     "RegRollNumber",
@@ -398,7 +400,7 @@ const UserRegister = () => {
   };
   const countryHandler = async (_, data) => {
     await countId(data.id);
-    dispatch(tempIdActions.CountryId({ countryID: data.value }));
+    dispatch(tempIdActions.CountryId({ countryID: data.id }));
 
     form.setFieldsValue({
       Country: data.value,
@@ -448,9 +450,16 @@ const UserRegister = () => {
   const submitHandler = async () => {
     console.log(tempId);
     await regData(tempId);
+  };
+  useEffect(()=>{
     console.log(register, "register");
     console.log(error,'eroor')
-  };
+
+    // if(register.statusText === ' OK'){
+    //   navigate('/home')
+    // }
+
+  },[register])
 
   return (
     <Form form={form} layout="vertical" initialValues={val}>
@@ -606,7 +615,7 @@ const UserRegister = () => {
         <Test />
       </div>
       <div className={Styles.sixthRow}>
-        <Button type="primary" onClick={submitHandler}>
+        <Button type="primary" htmlType="submit" onClick={submitHandler}>
           Submit
         </Button>
       </div>

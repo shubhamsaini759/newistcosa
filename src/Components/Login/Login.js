@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Checkbox, TextField } from "@mui/material";
 import Styles from "../../Styles/Login/Login.module.css";
 
@@ -46,11 +46,17 @@ const Login = () => {
       Password: data,
     });
   };
+  useEffect(()=>{
+    console.log(loginData);
+
+  },[loginData])
 
   const userLogin = async () => {
     await details(loginDetail);
-    console.log(loginDetail, "detail ");
-    console.log(loginData);
+    if(loginData.statusText === 'OK'){
+      navigate('/home')
+    }
+    // console.log(loginDetail, "detail ");
 
     // e.preventDefault();
     // dispatch(loginActions.loginHandler());
