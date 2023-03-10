@@ -1,7 +1,8 @@
-import { Button, Form } from "antd";
-import React, { useEffect, useState } from "react";
+import { Button, Form,  } from "antd";
+import React, { useEffect,  } from "react";
 import { useMutation } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { userEditActions } from "../../../Store";
 import Styles from "../../../Styles/Step/FourthStep.module.css";
 import { userEditDetail } from "../../../Utils/api/UserMoreDetail/UserEditDetail";
@@ -10,6 +11,7 @@ import TextAreaInputs from "../../GlobalComp/InputFields/TextAreaInputs";
 
 const FourthStep = (props) => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const StepData = useSelector((state) => state.UserEditReducer);
   const { data: sendData, mutateAsync: completeData } = useMutation(
@@ -18,11 +20,16 @@ const FourthStep = (props) => {
   );
 
   const DoneHandler = async () => {
-    console.log(StepData, "stepData");
     await completeData(StepData);
   };
+
+
+
   useEffect(()=>{
-    console.log(sendData,'completeApiResult')
+    if(sendData?.statusText === 'OK'){
+      navigate('/home/settings/userprofile',{state : {flag : true}});
+    }
+
   },[sendData])
 
   const val = {
@@ -77,6 +84,7 @@ const FourthStep = (props) => {
       className={Styles.SecondStep}
       style={{ width: "100%", padding: "1rem" }}
     >
+
       <div className={Styles.firstRow}>
         <Inputs
           label="Your ISTC Nick Name"

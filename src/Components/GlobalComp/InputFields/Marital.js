@@ -41,7 +41,7 @@ const Marital = (props) => {
         },
         ]}
     >
-        <Select placeholder="Marital Status" value={props.value} onChange={(e)=>props.onChange(e)} >
+        <Select placeholder="Marital Status" defaultValue={props.value} onChange={(e)=>props.onChange(e)} >
             <Option value="Single">Single</Option>
             <Option value="Married">Married</Option>
             <Option value="Divorced">Divorced</Option>

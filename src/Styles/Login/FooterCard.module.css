@@ -30,6 +30,7 @@
     padding-left: 0.5rem;
 }
 
+
 @media screen and (min-width: 0px) and (max-width: 768px) {
     .cardDetails {
         font-size: 0.88rem;

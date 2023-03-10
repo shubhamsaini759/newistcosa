@@ -1,27 +1,27 @@
 .footer {
     padding: 0;
     margin: 0;
-
+    width: 100%;
     display: flex;
     justify-content: space-between;
     background-color: black;
     color: white;
     flex-direction: row;
-    padding: 0.6rem 20px;
+    padding: 0 2rem;
 
 
 }
 
 .upperLeft {
-    width: 70%;
     display: grid;
     grid-template-columns: auto auto;
+    gap: 0 3rem;
+    width: 70%;
 
 }
 
 .upperRight {
-    width: 30%;
-    padding: 0rem 1rem;
+    padding-left: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,9 +35,25 @@
 }
 .loc{
     display: flex;
+    gap: 5px;
 }
 .locPara{
     word-wrap: break-word;
+    font-size: smaller;
+}
+.texts h2{
+    display: flex;
+    justify-content: center;
+}
+@media screen and (max-width: 1200px) {
+    .icons{
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 1rem;
+    }
+    .locPara{
+        word-wrap: break-word;
+    }
 }
 @media screen and (max-width: 1024px) {
 
@@ -54,7 +70,11 @@
     .upperLeft {
         width: 100%;
     }
+    .icons{
+        padding-bottom: 0.8rem;
+    }
 }
+
 
 
 @media screen and (max-width: 550px) {

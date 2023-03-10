@@ -11,7 +11,6 @@ export const ImageChangeSlice = createSlice({
     reducers : {
         path(state, {payload}){
             state.ImagePath = payload.path
-        
         },
         ids(state,{payload}){
             state.UserId = payload.ids

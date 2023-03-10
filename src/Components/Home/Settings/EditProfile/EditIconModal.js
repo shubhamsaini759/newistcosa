@@ -1,5 +1,5 @@
 import { Button, Form, Modal } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { addCompanyActions } from "../../../../Store";
@@ -112,11 +112,14 @@ const EditIconModal = (props) => {
   };
 
   const doneHandler = async () => {
-    console.log(AddedCompany);
-    // await compDetails(AddedCompany);
-    // console.log(addCompany, "addCompanyApiResponse");
+    await compDetails(AddedCompany);
     props.onDone(false);
   };
+
+  useEffect(()=>{
+
+    console.log(addCompany, "addCompanyApiResponse");
+  },[AddedCompany])
 
   return (
     <Form form={form} layout="vertical" initialValues={val}>
@@ -177,10 +180,10 @@ const EditIconModal = (props) => {
       </div>
 
       <div className={Styles.seventhRow}>
-        <Button danger onClick={cancelHandler}>
+        <Button  onClick={cancelHandler}>
           Cancel
         </Button>
-        <Button type="primary" htmlType="submit" onClick={doneHandler} danger>
+        <Button type="primary" htmlType="submit" style={{ backgroundColor : '#6f0100' }} onClick={doneHandler} danger>
           Done
         </Button>
       </div>

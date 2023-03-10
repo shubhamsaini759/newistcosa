@@ -5,6 +5,7 @@ const NumberInputs = (props) => {
   return (
     <>
         <Form.Item
+            
             name={props.name}
             label={props.label}
             rules={props.rules}
@@ -12,6 +13,7 @@ const NumberInputs = (props) => {
 
         >
             <InputNumber
+            disabled={props.disabled}
             placeholder={props.label}
             size={props.size} 
             style={{ width :'100%' }}

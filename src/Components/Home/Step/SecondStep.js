@@ -152,8 +152,19 @@ const SecondStep = (props) => {
               label="College / University"
               name="University"
               handler={uniHandler}
+              rule={[
+              {
+                required: true,
+                message: "Please enter details!",
+              },
+            ]}
             />
-            <Inputs label="Degree " name="Degree" handler={degreeHandler} />
+            <Inputs label="Degree " name="Degree" handler={degreeHandler}  rule={[
+              {
+                required: true,
+                message: "Please enter details!",
+              },
+            ]} />
           </div>
           <div className={Styles.osecondRow}>
             <Inputs label="Skills" name="Skills" handler={skillHandler} />
@@ -162,6 +173,12 @@ const SecondStep = (props) => {
               name="JoiningYear"
               value={join}
               handler={joiningHandler}
+              rules={[
+              {
+                required: true,
+                message: "Please Select!",
+              },
+            ]}
             />
             <Dates
               label="Expected Complition Year"
@@ -178,12 +195,24 @@ const SecondStep = (props) => {
               label="Job Designation"
               name="Designation"
               handler={jobHandler}
+              rule={[
+              {
+                required: true,
+                message: "Please enter details!",
+              },
+            ]}
             />
             <AutoInputs
               label="Recent company"
               name="CompanyName"
               list={compList}
               handler={companyHandler}
+              rule={[
+              {
+                required: true,
+                message: "Please select!",
+              },
+            ]}
             />
             <Button onClick={addCompanyHandler}>Add</Button>
 
@@ -206,12 +235,24 @@ const SecondStep = (props) => {
               name="FromDate"
               value={fromDate}
               handler={fromHandler}
+              rules={[
+              {
+                required: true,
+                message: "Please Select!",
+              },
+            ]}
             />
             <Dates
               label="To Date"
               name="ToDate"
               value={toDate}
               handler={toHandler}
+              rules={[
+              {
+                required: true,
+                message: "Please Select!",
+              },
+            ]}
             />
           </div>
           <div className={Styles.fourthRow}>

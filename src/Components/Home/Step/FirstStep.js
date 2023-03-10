@@ -130,12 +130,20 @@ const FirstStep = (props) => {
           list={stateList}
           handler={stateHandler}
           name="State"
+          rule={[{
+          required: true,
+          message: 'Please input your username!',
+        }]}
         />
         <AutoInputs
           label="City"
           list={cityList}
           handler={cityHandler}
           name="City"
+          rule={[{
+          required: true,
+          message: 'Please input your username!',
+        }]}
         />
       </div>
 

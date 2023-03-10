@@ -453,12 +453,12 @@ const UserRegister = () => {
   };
   useEffect(()=>{
     console.log(register, "register");
-    console.log(error,'eroor')
+    console.log(error,'error')
 
-    // if(register.statusText === ' OK'){
-    //   navigate('/home')
-    // }
-
+    if(register?.statusText === ' OK'){
+      navigate('/home')
+    }
+    
   },[register])
 
   return (
@@ -472,7 +472,7 @@ const UserRegister = () => {
           rule={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Please Select!",
             },
           ]}
         />
@@ -484,7 +484,7 @@ const UserRegister = () => {
           rule={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Please select!",
             },
           ]}
         />
@@ -495,32 +495,38 @@ const UserRegister = () => {
           rule={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Please enter your name",
             },
           ]}
         />
       </div>
       <div className={Styles.secondRow}>
-        <Gender name="Gender" value={gen} handler={genderHandler} />
+        <Gender  name="Gender" value={gen} handler={genderHandler}  rule={[
+          {
+            required: true,
+            message: "Please select gender!",
+          },
+        ]}/>
         <Dates
           label="Date of Birth"
+          name='DateOfBirth'
           value={dob}
           handler={dobHandler}
-          rule={[
+          rules={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Please Select!",
             },
           ]}
         />
-          <NumberInputs
+        <NumberInputs
           label="Phone Number"
           name="PhoneNumber"
           handler={phoneHandler}
           rules={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Please enter your Phone No.",
             },
           ]}
         />
@@ -531,8 +537,9 @@ const UserRegister = () => {
           rule={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Please enter your Email",
             },
+             
           ]}
         />
       </div>
@@ -548,7 +555,7 @@ const UserRegister = () => {
           rule={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Please Select!",
             },
           ]}
         />
@@ -560,7 +567,7 @@ const UserRegister = () => {
           rule={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Please Select!",
             },
           ]}
         />
@@ -572,7 +579,7 @@ const UserRegister = () => {
           rule={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Please Select!",
             },
           ]}
         />
@@ -587,7 +594,7 @@ const UserRegister = () => {
           rule={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Please eneter your Password!",
             },
           ]}
         />
@@ -606,7 +613,7 @@ const UserRegister = () => {
                   return Promise.resolve();
                 }
                 return Promise.reject(
-                  new Error("The two passwords that you entered do not match!")
+                  new Error("The passwords that you entered do not match!")
                 );
               },
             }),
@@ -617,7 +624,7 @@ const UserRegister = () => {
         <Test />
       </div>
       <div className={Styles.sixthRow}>
-        <Button type="primary" htmlType="submit" onClick={submitHandler}>
+        <Button type="primary" htmlType="submit" style={{ backgroundColor : '#6f0100' }} onClick={submitHandler}>
           Submit
         </Button>
       </div>

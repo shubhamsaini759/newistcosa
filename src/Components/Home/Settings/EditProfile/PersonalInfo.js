@@ -1,4 +1,4 @@
-import { Alert, Button, Form } from "antd";
+import { Alert, Button, Form, message } from "antd";
 import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,7 +30,7 @@ const PersonalInfo = (props) => {
 
   const [dob, setDob] = useState(DateFormatter(props?.userData?.DateOfBirth));
   const [ani, setAni] = useState(DateFormatter(props?.userData?.AniversaryDate));
-  const [marital, setMarital] = useState("");
+  const [marital, setMarital] = useState(props?.userData?.MaritalStatus);
   const [gen, setGen] = useState(props?.userData?.Gender);
 
   const val = {
@@ -60,17 +60,13 @@ const PersonalInfo = (props) => {
 
   useEffect(() => {
     dispatch(userEditActions.allData({ data: val }));
-  }, []);
+  },[]);
 
   const submitHandler = async () => {
-    console.log(perosnaldata, "personaldata");
     await edited(perosnaldata);
-    console.log(editDetails)
   };
-  useEffect(()=>{
-    console.log(editDetails,'editDetails')
 
-  },[editDetails])
+
 
   const { data: countryData } = useQuery("CountryList", CountryList);
   const { data: stateData, mutateAsync: countryId } = useMutation(
@@ -102,7 +98,7 @@ const PersonalInfo = (props) => {
         State: "",
         City: "",
       })
-      : console.log("no");
+      : console.log("");
   };
 
   const stateHandler = async (_, data) => {
@@ -118,7 +114,7 @@ const PersonalInfo = (props) => {
         State: data.value,
         City: "",
       })
-      : console.log("state");
+      : console.log("");
   };
 
   const cityHandler = (_, data) => {
@@ -132,7 +128,7 @@ const PersonalInfo = (props) => {
       ? form.setFieldValue({
         City: data.value,
       })
-      : console.log("city");
+      : console.log("");
   };
 
   const nameHandler = (data) => {
@@ -267,7 +263,7 @@ const PersonalInfo = (props) => {
       layout="vertical"
       style={{ width: "100%" }}
       initialValues={val}
-    >
+    > 
       <div className={Styles.firstRow}>
         <Inputs label="Full Name" name="Fullname" handler={nameHandler} />
         <Inputs
@@ -291,7 +287,7 @@ const PersonalInfo = (props) => {
           handler={genderHandler}
         />
         <Dates
-          name="DateOfbirth"
+          name="DateOfBirth"
           label="Date of Birth"
           rules={[{ required: true, message: "Please select your DOB" }]}
           value={dob}
@@ -386,6 +382,7 @@ const PersonalInfo = (props) => {
         <Marital
           label="Marital Status"
           name="Marital"
+          value={marital}
           onChange={maritalHandler}
         />
         {marital === "Married" ? (

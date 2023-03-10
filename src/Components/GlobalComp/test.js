@@ -33,10 +33,11 @@ const Test = () => {
   const convertBase64 = async (file) => {
     file.preview = await getBase64(file.originFileObj);
     setDetail(file.preview);
+    console.log(file.preview,'preview')
   };
 
   useEffect(()=>{
-    console.log(detail)
+    console.log(detail,'detail')
     dispatch(tempIdActions.ImagePath({ path : detail}))
 
   },[detail])

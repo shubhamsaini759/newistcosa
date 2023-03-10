@@ -5,7 +5,6 @@ const EmailInputs = (props) => {
   return (
     <>
         <Form.Item
-          
             name={props.name}
             label={props.label}
             style={{ width : '100%'}}

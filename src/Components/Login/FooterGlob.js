@@ -7,14 +7,10 @@ import gen from "../../Assets/Login/gen.jpg";
 import vice from "../../Assets/Login/vice.jpg";
 import admin from "../../Assets/Login/admin.png";
 
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import YouTubeIcon from "@mui/icons-material/YouTube";
+
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
-import { Tooltip } from "@mui/material";
-import { Space, Tag } from "antd";
+import {  Tag } from "antd";
 import { TwitterOutlined } from "@ant-design/icons";
 import { FacebookOutlined, LinkedinOutlined, YoutubeOutlined } from "@ant-design/icons/lib/icons";
 

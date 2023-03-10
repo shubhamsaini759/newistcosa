@@ -24,19 +24,14 @@ const Gender = (props) => {
   return (
     <>
       <Form.Item
-        name={props.label}
+        name={props.name}
         label="Gender"
         style={{ width: "100%" }}
-        rules={[
-          {
-            required: true,
-            message: "Please select gender!",
-          },
-        ]}
+        rules={props.rule}
       >
         <Select
           placeholder="Gender"
-          value={props.value}
+          defaultValue={props.value}
           onChange={(e) => props.handler(e)}
         >
           <Option value="Male">Male</Option>

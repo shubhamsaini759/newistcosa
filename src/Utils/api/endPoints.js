@@ -27,6 +27,7 @@ export const Path ={
     // put
         userEditDetail : 'User/PutUserMoreDetails?userId=1000',
         ProfessionalEdit : 'User/PutProfessionalInfo/1000',
+        changeImage : 'User/ChangeProfilePicture?userId=1000',
 
 
     // post

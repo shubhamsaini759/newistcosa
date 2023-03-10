@@ -1,7 +1,6 @@
 import { Button, Form } from "antd";
 import React, { useState } from "react";
 import Styles from "../../../Styles/Step/ThirdStep.module.css";
-import dayjs from "dayjs";
 
 import Dates from "../../GlobalComp/InputFields/Dates";
 import Gender from "../../GlobalComp/InputFields/Gender";

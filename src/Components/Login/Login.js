@@ -47,15 +47,16 @@ const Login = () => {
     });
   };
   useEffect(()=>{
-    console.log(loginData);
-
+    if(loginData?.statusText === 'OK'){
+      navigate('/home')
+    }
   },[loginData])
 
   const userLogin = async () => {
     await details(loginDetail);
-    if(loginData.statusText === 'OK'){
-      navigate('/home')
-    }
+    // if(loginData.statusText === 'OK'){
+    //   navigate('/home')
+    // }
     // console.log(loginDetail, "detail ");
 
     // e.preventDefault();

@@ -139,10 +139,10 @@ const AddCompModal = (props) => {
         />
       </div>
       <div className={Styles.seventhRow}>
-        <Button danger onClick={cancelHandler}>
+        <Button  onClick={cancelHandler}>
           Cancel
         </Button>
-        <Button type="primary" htmlType="submit" onClick={doneHandler} danger>
+        <Button type="primary" htmlType="submit" style={{ backgroundColor : '#6f0100' }} onClick={doneHandler} danger>
           Done
         </Button>
       </div>
