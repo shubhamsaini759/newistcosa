@@ -1,5 +1,5 @@
 import { Button, Form, Modal } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
 import { userEditActions } from "../../../Store";
@@ -126,6 +126,9 @@ const SecondStep = (props) => {
       Responsibility: data,
     });
   };
+
+
+
 
   return (
     <Form

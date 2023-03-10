@@ -461,6 +461,14 @@ const UserRegister = () => {
     
   },[register])
 
+
+
+  const disabledYear = (current) => {
+    const year = new Date();
+    const final = year.getFullYear();
+    return current.year() > final - 18;
+  }
+
   return (
     <Form form={form} layout="vertical" initialValues={val} style={{ width : '80%' }}>
       <div className={Styles.firstRow}>
@@ -512,6 +520,7 @@ const UserRegister = () => {
           name='DateOfBirth'
           value={dob}
           handler={dobHandler}
+          disabledYear={disabledYear}
           rules={[
             {
               required: true,
@@ -596,6 +605,7 @@ const UserRegister = () => {
               required: true,
               message: "Please eneter your Password!",
             },
+            { min: 6, message: 'Password must be minimum 6 characters'},
           ]}
         />
         <PasswordInputs

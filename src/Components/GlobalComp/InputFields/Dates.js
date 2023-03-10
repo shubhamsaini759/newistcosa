@@ -18,6 +18,7 @@ const Dates = (props) => {
           value={!!props.value ? dayjs(props.value, dateFormat) : ""}
           onChange={(e) => props.handler(e)}
           format={dateFormat}
+          disabledDate={props.disabledYear}
         />
       </Form.Item>
     </>
