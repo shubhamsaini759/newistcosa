@@ -39,11 +39,19 @@
         padding-left: 0;
     }
 
+    .header {
+        padding-inline: 74px !important;
+    }
+
 }
 
 @media screen and (max-width: 600px) {
     .details {
         padding: 0;
+    }
+
+    .header {
+        padding-inline: 24px !important;
     }
 
 }

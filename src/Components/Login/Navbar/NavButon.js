@@ -7,17 +7,20 @@ import MemberDrop from "./NavButtons/MemberDrop";
 import OpportunityDrop from "./NavButtons/OpportunityDrop";
 import TeamDrop from "./NavButtons/TeamDrop";
 
-
 const NavButon = () => {
   return (
     <>
-      <Button variant="text" sx={{ color: "black" }} >Home</Button>
+      <Button variant="text" sx={{ color: "black" }}>
+        Home
+      </Button>
       <AboutDrop />
       <TeamDrop />
       <EventsDrop />
       <OpportunityDrop />
       <MemberDrop />
-      <Button variant="text" sx={{ color: "black" }}>Contacts</Button>
+      <Button variant="text" sx={{ color: "black" }}>
+        Contacts
+      </Button>
     </>
   );
 };

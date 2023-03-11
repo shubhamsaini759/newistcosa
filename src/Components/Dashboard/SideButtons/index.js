@@ -3,9 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const SideButtons = () => {
-
-    const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   return (
     <>
@@ -17,16 +15,18 @@ const SideButtons = () => {
           height: "100%",
         }}
       >
-        <Menu.Item onClick={()=>navigate('/home')} >
+        <Menu.Item onClick={() => navigate("/home")}>
           {/* <LaptopOutlined /> */}
-          Dashboard 
+          Dashboard
         </Menu.Item>
-        <Menu.Item >
+        <Menu.Item>
           {/* <LaptopOutlined /> */}
-          Home 
+          Home
         </Menu.Item>
         <Menu.SubMenu title="Search">
-          <Menu.Item onClick={()=>navigate('/home/search/usersearch')} >User</Menu.Item>
+          <Menu.Item onClick={() => navigate("/home/search/usersearch")}>
+            User
+          </Menu.Item>
         </Menu.SubMenu>
         <Menu.SubMenu title="Lists">
           <Menu.Item>Exicutive Commttiee</Menu.Item>
@@ -39,12 +39,20 @@ const SideButtons = () => {
           <Menu.Item>Videos</Menu.Item>
           <Menu.Item>Images</Menu.Item>
         </Menu.SubMenu>
-      
+
         <Menu.SubMenu title="Settings">
-          <Menu.Item onClick={()=>navigate('settings/userprofile')}>User Profile</Menu.Item>
-          <Menu.Item onClick={()=>navigate('settings/editprofile')}>Edit Profile</Menu.Item>
-          <Menu.Item onClick={()=>navigate('settings/changeimage')}>Change Image</Menu.Item>
-          <Menu.Item onClick={()=>navigate('settings/changepassword')}>Change Password</Menu.Item>
+          <Menu.Item onClick={() => navigate("settings/userprofile")}>
+            User Profile
+          </Menu.Item>
+          <Menu.Item onClick={() => navigate("settings/editprofile")}>
+            Edit Profile
+          </Menu.Item>
+          <Menu.Item onClick={() => navigate("settings/changeimage")}>
+            Change Image
+          </Menu.Item>
+          <Menu.Item onClick={() => navigate("settings/changepassword")}>
+            Change Password
+          </Menu.Item>
         </Menu.SubMenu>
       </Menu>
     </>

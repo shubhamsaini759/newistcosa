@@ -17,14 +17,13 @@ const Dashboards = () => {
   const { data: userData } = useQuery("UserMOreDetail", UserMoreDetail);
 
   const navigate = useNavigate();
- 
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   const EditMoreDetails = () => {
-
-    navigate("complete",{state : userData});
+    navigate("complete", { state: userData });
   };
 
   return (
@@ -43,7 +42,7 @@ const Dashboards = () => {
       )}
 
       <Header
-        className="header"
+        className={Styles.header}
         style={{
           display: "flex",
           alignItems: "center",
