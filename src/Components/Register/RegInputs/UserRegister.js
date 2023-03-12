@@ -321,10 +321,11 @@ const UserRegister = () => {
     "CityList",
     CityList
   );
-  const { data: register, mutateAsync: regData, error } = useMutation(
-    "Register",
-    Register
-  );
+  const {
+    data: register,
+    mutateAsync: regData,
+    error,
+  } = useMutation("Register", Register);
 
   const dispatch = useDispatch();
   const tempId = useSelector((state) => state.tempIdReducer);
@@ -451,26 +452,28 @@ const UserRegister = () => {
     console.log(tempId);
     await regData(tempId);
   };
-  useEffect(()=>{
+  useEffect(() => {
     console.log(register, "register");
-    console.log(error,'error')
+    console.log(error, "error");
 
-    if(register?.statusText === ' OK'){
-      navigate('/home')
+    if (register?.statusText === " OK") {
+      navigate("/home");
     }
-    
-  },[register])
-
-
+  }, [register]);
 
   const disabledYear = (current) => {
     const year = new Date();
     const final = year.getFullYear();
     return current.year() > final - 18;
-  }
+  };
 
   return (
-    <Form form={form} layout="vertical" initialValues={val} style={{ width : '80%' }}>
+    <Form
+      form={form}
+      layout="vertical"
+      initialValues={val}
+      style={{ width: "80%" }}
+    >
       <div className={Styles.firstRow}>
         <AutoInputs
           label="Batch ID"
@@ -509,15 +512,20 @@ const UserRegister = () => {
         />
       </div>
       <div className={Styles.secondRow}>
-        <Gender  name="Gender" value={gen} handler={genderHandler}  rule={[
-          {
-            required: true,
-            message: "Please select gender!",
-          },
-        ]}/>
+        <Gender
+          name="Gender"
+          value={gen}
+          handler={genderHandler}
+          rule={[
+            {
+              required: true,
+              message: "Please select gender!",
+            },
+          ]}
+        />
         <Dates
           label="Date of Birth"
-          name='DateOfBirth'
+          name="DateOfBirth"
           value={dob}
           handler={dobHandler}
           disabledYear={disabledYear}
@@ -548,7 +556,6 @@ const UserRegister = () => {
               required: true,
               message: "Please enter your Email",
             },
-             
           ]}
         />
       </div>
@@ -593,7 +600,6 @@ const UserRegister = () => {
           ]}
         />
         <Inputs label="Pincode" name="Pincode" handler={pincodeHandler} />
-
       </div>
       <div className={Styles.fifthRow}>
         <PasswordInputs
@@ -605,7 +611,7 @@ const UserRegister = () => {
               required: true,
               message: "Please eneter your Password!",
             },
-            { min: 6, message: 'Password must be minimum 6 characters'},
+            { min: 6, message: "Password must be minimum 6 characters" },
           ]}
         />
         <PasswordInputs
@@ -634,7 +640,12 @@ const UserRegister = () => {
         <Test />
       </div>
       <div className={Styles.sixthRow}>
-        <Button type="primary" htmlType="submit" style={{ backgroundColor : '#6f0100' }} onClick={submitHandler}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          style={{ backgroundColor: "#6f0100" }}
+          onClick={submitHandler}
+        >
           Submit
         </Button>
       </div>

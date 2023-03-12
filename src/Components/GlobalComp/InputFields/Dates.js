@@ -5,6 +5,10 @@ import React from "react";
 const Dates = (props) => {
   const dateFormat = "MM-DD-YYYY";
 
+  const disabledDate = (current) => {
+    return current && current < dayjs(props?.fromDate).endOf("day");
+  };
+
   return (
     <>
       <Form.Item
@@ -18,7 +22,9 @@ const Dates = (props) => {
           value={!!props.value ? dayjs(props.value, dateFormat) : ""}
           onChange={(e) => props.handler(e)}
           format={dateFormat}
-          disabledDate={props.disabledYear}
+          disabledDate={
+            props?.showTillCurrent ? disabledDate : props.disabledYear
+          }
         />
       </Form.Item>
     </>

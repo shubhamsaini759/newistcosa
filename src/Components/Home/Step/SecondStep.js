@@ -127,9 +127,6 @@ const SecondStep = (props) => {
     });
   };
 
-
-
-
   return (
     <Form
       form={form}
@@ -156,18 +153,23 @@ const SecondStep = (props) => {
               name="University"
               handler={uniHandler}
               rule={[
-              {
-                required: true,
-                message: "Please enter details!",
-              },
-            ]}
+                {
+                  required: true,
+                  message: "Please enter details!",
+                },
+              ]}
             />
-            <Inputs label="Degree " name="Degree" handler={degreeHandler}  rule={[
-              {
-                required: true,
-                message: "Please enter details!",
-              },
-            ]} />
+            <Inputs
+              label="Degree "
+              name="Degree"
+              handler={degreeHandler}
+              rule={[
+                {
+                  required: true,
+                  message: "Please enter details!",
+                },
+              ]}
+            />
           </div>
           <div className={Styles.osecondRow}>
             <Inputs label="Skills" name="Skills" handler={skillHandler} />
@@ -177,17 +179,19 @@ const SecondStep = (props) => {
               value={join}
               handler={joiningHandler}
               rules={[
-              {
-                required: true,
-                message: "Please Select!",
-              },
-            ]}
+                {
+                  required: true,
+                  message: "Please Select!",
+                },
+              ]}
             />
             <Dates
               label="Expected Complition Year"
               name="ExpectedCompletionYear"
               value={completion}
               handler={completeHandler}
+              showTillCurrent
+              fromDate={join}
             />
           </div>
         </>
@@ -199,11 +203,11 @@ const SecondStep = (props) => {
               name="Designation"
               handler={jobHandler}
               rule={[
-              {
-                required: true,
-                message: "Please enter details!",
-              },
-            ]}
+                {
+                  required: true,
+                  message: "Please enter details!",
+                },
+              ]}
             />
             <AutoInputs
               label="Recent company"
@@ -211,11 +215,11 @@ const SecondStep = (props) => {
               list={compList}
               handler={companyHandler}
               rule={[
-              {
-                required: true,
-                message: "Please select!",
-              },
-            ]}
+                {
+                  required: true,
+                  message: "Please select!",
+                },
+              ]}
             />
             <Button onClick={addCompanyHandler}>Add</Button>
 
@@ -239,23 +243,25 @@ const SecondStep = (props) => {
               value={fromDate}
               handler={fromHandler}
               rules={[
-              {
-                required: true,
-                message: "Please Select!",
-              },
-            ]}
+                {
+                  required: true,
+                  message: "Please Select!",
+                },
+              ]}
             />
             <Dates
               label="To Date"
               name="ToDate"
               value={toDate}
               handler={toHandler}
+              showTillCurrent
+              fromDate={fromDate}
               rules={[
-              {
-                required: true,
-                message: "Please Select!",
-              },
-            ]}
+                {
+                  required: true,
+                  message: "Please Select!",
+                },
+              ]}
             />
           </div>
           <div className={Styles.fourthRow}>

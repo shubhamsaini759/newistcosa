@@ -19,10 +19,9 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const loginDetail = useSelector((state) => state.loginReducer);
-  const { data: loginData, mutateAsync: details } = useMutation(
-    "Login",
-    Logins
-  );
+  const { mutateAsync: details } = useMutation("Login", Logins);
+
+  const [err, setErr] = useState("");
 
   const val = {
     BatchID: "",
@@ -35,25 +34,36 @@ const Login = () => {
   // };
 
   const rollHandler = (data) => {
+    if (!!err) {
+      setErr("");
+    }
     dispatch(loginActions.EnteredRoll({ rollNumber: data }));
     form.setFieldsValue({
       BatchID: data,
     });
   };
   const passHandler = (data) => {
+    if (!!err) {
+      setErr("");
+    }
     dispatch(loginActions.EnteredPass({ password: data }));
     form.setFieldsValue({
       Password: data,
     });
   };
-  useEffect(()=>{
-    if(loginData?.statusText === 'OK'){
-      navigate('/home')
-    }
-  },[loginData])
 
   const userLogin = async () => {
-    await details(loginDetail);
+    await details(loginDetail)
+      .then((resp) => {
+        if (resp?.statusText === "OK") {
+          navigate("/home");
+        }
+      })
+      .catch((err) => {
+        if (err?.response?.data?.Message) {
+          setErr(err?.response?.data?.Message);
+        }
+      });
     // if(loginData.statusText === 'OK'){
     //   navigate('/home')
     // }
@@ -86,6 +96,7 @@ const Login = () => {
       <div className={Styles.loginBox}>
         <div className={Styles.loginBoxInfo}>
           <h1>Login Here</h1>
+          <p style={{ color: "#FF0000" }}>{err}</p>
           <Form
             layout="vertical"
             form={form}
