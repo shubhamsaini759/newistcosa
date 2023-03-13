@@ -22,40 +22,41 @@ const PersonalInfo = (props) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
 
+  console.log(props,'props')
   const perosnaldata = useSelector((state) => state.UserEditReducer);
   const { data: editDetails, mutateAsync: edited } = useMutation(
     "userEditDetail",
     userEditDetail
   );
 
-  const [dob, setDob] = useState(DateFormatter(props?.userData?.DateOfBirth));
-  const [ani, setAni] = useState(DateFormatter(props?.userData?.AniversaryDate));
-  const [marital, setMarital] = useState(props?.userData?.MaritalStatus);
-  const [gen, setGen] = useState(props?.userData?.Gender);
+  const [dob, setDob] = useState(DateFormatter(props?.userData?.data?.DateOfBirth));
+  const [ani, setAni] = useState(DateFormatter(props?.userData?.data?.AniversaryDate));
+  const [marital, setMarital] = useState(props?.userData?.data?.MaritalStatus);
+  const [gen, setGen] = useState(props?.userData?.data?.Gender);
 
   const val = {
-    Fullname: `${props?.userData?.FullName}`,
-    BatchName: `${props?.userData?.BatchID}`,
-    RollNumber: `${props?.userData?.RollNumberID}`,
-    // DateOfbirth: `${props?.userData?.DateOfBirth}`,
-    WhatsappNumber: `${props?.userData?.WhatsappNumber}`,
-    Email: `${props?.userData?.Email}`,
-    ContactNumber: `${props?.userData?.PhoneNumber}`,
-    Country: `${props?.userData?.CountryName}`,
-    State: `${props?.userData?.StateName}`,
-    City: `${props?.userData?.CityName}`,
-    Pincode: `${props?.userData?.PinCode}`,
-    ISTCNickname: `${props?.userData?.ISTCNickName}`,
-    ISTCRoommates: `${props?.userData?.ISTCFriendRoommate}`,
-    Comments: `${props?.userData?.Commnets}`,
-    IstcAbout: `${props?.userData?.ISTCAbout}`,
-    AboutMyself: `${props?.userData?.AboutYourSelf}`,
-    SearchKeyword: `${props?.userData?.SearchKeyword}`,
-    ResidentialAddress: `${props?.userData?.Address}`,
-    Marital: `${props?.userData?.MaritalStatus}`,
-    SpouseName: `${props?.userData?.SpouseName}`,
-    AniversaryDate: `${DateFormatter(props?.userData?.AniversaryDate)}`,
-    ChildDetails: `${props?.userData?.ChildDetails}`,
+    Fullname: `${props?.userData?.data?.FullName}`,
+    BatchName: `${props?.userData?.data?.BatchID}`,
+    RollNumber: `${props?.userData?.data?.RollNumberID}`,
+    DateOfbirth: `${DateFormatter(props?.userData?.data?.DateOfBirth)}`,
+    WhatsappNumber: `${props?.userData?.data?.WhatsappNumber}`,
+    Email: `${props?.userData?.data?.Email}`,
+    ContactNumber: `${props?.userData?.data?.PhoneNumber}`,
+    Country: `${props?.userData?.data?.CountryName}`,
+    State: `${props?.userData?.data?.StateName}`,
+    City: `${props?.userData?.data?.CityName}`,
+    Pincode: `${props?.userData?.data?.PinCode}`,
+    ISTCNickname: `${props?.userData?.data?.ISTCNickName}`,
+    ISTCRoommates: `${props?.userData?.data?.ISTCFriendRoommate}`,
+    Comments: `${props?.userData?.data?.Commnets}`,
+    IstcAbout: `${props?.userData?.data?.ISTCAbout}`,
+    AboutMyself: `${props?.userData?.data?.AboutYourSelf}`,
+    SearchKeyword: `${props?.userData?.data?.SearchKeywords}`,
+    ResidentialAddress: `${props?.userData?.data?.Address}`,
+    Marital: `${props?.userData?.data?.MaritalStatus}`,
+    SpouseName: `${props?.userData?.data?.SpouseName}`,
+    AniversaryDate: `${DateFormatter(props?.userData?.data?.AniversaryDate)}`,
+    ChildDetails: `${props?.userData?.data?.ChildDetails}`,
   };
 
   useEffect(() => {
@@ -87,7 +88,7 @@ const PersonalInfo = (props) => {
   const countryHandler = async (_, data) => {
     dispatch(
       userEditActions.country({
-        country: data?.id ? data.id : props?.userData?.CountryID,
+        country: data?.id ? data.id : props?.userData?.data?.CountryID,
       })
     );
 
@@ -104,7 +105,7 @@ const PersonalInfo = (props) => {
   const stateHandler = async (_, data) => {
     dispatch(
       userEditActions.state({
-        state: data?.id ? data.id : props?.userData?.StateID
+        state: data?.id ? data.id : props?.userData?.data?.StateID
       })
     );
 
@@ -120,7 +121,7 @@ const PersonalInfo = (props) => {
   const cityHandler = (_, data) => {
     dispatch(
       userEditActions.city({
-        city: data?.id ? data.id : props?.userData?.CityID
+        city: data?.id ? data.id : props?.userData?.data?.CityID
       })
     );
 
@@ -134,14 +135,14 @@ const PersonalInfo = (props) => {
   const nameHandler = (data) => {
     dispatch(
       userEditActions.FullName({
-        FullName: data ? data : props?.userData?.FullName
+        FullName: data ? data : props?.userData?.data?.FullName
       })
     );
   };
 
   const genderHandler = (data) => {
     dispatch(
-      userEditActions.gender({ gender: data ? data : props?.userData?.Gender })
+      userEditActions.gender({ gender: data ? data : props?.userData?.data?.Gender })
     );
     setGen(data);
   };
@@ -152,7 +153,7 @@ const PersonalInfo = (props) => {
       userEditActions.dob({
         dob: formattedDate
           ? formattedDate
-          : DateFormatter(props?.userData?.DateOfBirth)
+          : DateFormatter(props?.userData?.data?.DateOfBirth)
       })
     );
     setDob(formattedDate);
@@ -161,67 +162,67 @@ const PersonalInfo = (props) => {
   const whatsappHandler = (data) => {
     dispatch(
       userEditActions.whatsapp({
-        whatsapp: data ? data : props?.userData?.WhatsappNumber
+        whatsapp: data ? data : props?.userData?.data?.WhatsappNumber
       })
     );
   };
   const numberHandler = (data) => {
     dispatch(
       userEditActions.phone({
-        phone: data ? data : props?.userData?.PhoneNumber,
+        phone: data ? data : props?.userData?.data?.PhoneNumber,
       })
     );
   };
   const pincodeHandler = (data) => {
     dispatch(
-      userEditActions.pincode({ pin: data ? data : props?.userData?.PinCode })
+      userEditActions.pincode({ pin: data ? data : props?.userData?.data?.PinCode })
     );
   };
 
   const nicknameHandler = (data) => {
     dispatch(
       userEditActions.nick({
-        nick: data ? data : props?.userData?.ISTCNickName
+        nick: data ? data : props?.userData?.data?.ISTCNickName
       })
     );
   };
   const roommatesHandler = (data) => {
     dispatch(
       userEditActions.room({
-        room: data ? data : props?.userData?.ISTCFriendRoommate
+        room: data ? data : props?.userData?.data?.ISTCFriendRoommate
       })
     );
   };
   const commentHandler = (data) => {
     dispatch(
       userEditActions.comments({
-        comments: data ? data : props?.userData?.Commnets
+        comments: data ? data : props?.userData?.data?.Commnets
       })
     );
   };
   const istcAboutHandler = (data) => {
     dispatch(
       userEditActions.aboutIstc({
-        aboutIstc: data ? data : props?.userData?.ISTCAbout
+        aboutIstc: data ? data : props?.userData?.data?.ISTCAbout
       })
     );
   };
   const myselfHandler = (data) => {
     dispatch(
-      userEditActions.about({ about: data ? data : props?.userData?.ISTCAbout })
+      userEditActions.about({ about: data ? data : props?.userData?.data?.AboutYourSelf })
     );
   };
   const keywordhandler = (data) => {
     dispatch(
       userEditActions.keywords({
-        keywords: data ? data : props?.userData?.SearchKeyword
+        keywords: data ? data : props?.userData?.data?.SearchKeywords
       }
       ));
   };
   const addressHandler = (data) => {
     dispatch(
       userEditActions.address({
-        address: data ? data : props?.userData?.Address
+        address: data ? data : props?.userData?.data?.Address
       })
     );
   };
@@ -229,21 +230,21 @@ const PersonalInfo = (props) => {
     setMarital(data);
     dispatch(
       userEditActions.marital({
-        marital: data ? data : props?.userData?.MaritalStatus
+        marital: data ? data : props?.userData?.data?.MaritalStatus
       })
     );
   };
   const spouseHandler = (data) => {
     dispatch(
       userEditActions.spouse({
-        spouse: data ? data : props?.userData?.SpouseName
+        spouse: data ? data : props?.userData?.data?.SpouseName
       })
     );
   };
   const childHandler = (data) => {
     dispatch(
       userEditActions.child({
-        child: data ? data : props?.userData?.ChildDetails
+        child: data ? data : props?.userData?.data?.ChildDetails
       })
     );
   };
@@ -252,7 +253,7 @@ const PersonalInfo = (props) => {
     setAni(date)
     dispatch(
       userEditActions.aniversary({
-        aniversary: data ? date : props?.userData?.AniversaryDate
+        aniversary: data ? date : DateFormatter(props?.userData?.data?.AniversaryDate)
       })
     );
   }
@@ -265,18 +266,19 @@ const PersonalInfo = (props) => {
       initialValues={val}
     > 
       <div className={Styles.firstRow}>
-        <Inputs label="Full Name" name="Fullname" handler={nameHandler} />
+        <Inputs label="Full Name" name="Fullname" handler={nameHandler} rule={[{ required : true, message : 'Please enter you Name' }]} />
         <Inputs
           disabled={true}
           label="Batch Year"
           name="BatchName"
-          value={props?.userData?.BatchID}
+          value={props?.userData?.data?.BatchID}
+          
         />
         <Inputs
           disabled={true}
           label="Roll Number"
           name="RollNumber"
-          value={props?.userData?.RollNumberID}
+          value={props?.userData?.data?.RollNumberID}
         />
       </div>
       <div className={Styles.secondRow}>
@@ -298,7 +300,7 @@ const PersonalInfo = (props) => {
         <NumberInputs
           label="Whatsapp Number"
           name="WhatsappNumber"
-          rules={[{ type: "Number" }]}
+          rules={[{ type: "Number" },{ require : true, message : ' Please Enter your Contact Number' }]}
           handler={whatsappHandler}
         />
         <EmailInputs disabled={true} label="Email" name="Email" />
@@ -319,18 +321,23 @@ const PersonalInfo = (props) => {
           list={countryData}
           handler={countryHandler}
           name="Country"
+          rule={[{ required : true, message : 'Please select!' }]}
         />
         <AutoInputs
           label="State"
           list={stateData}
           handler={stateHandler}
           name="State"
+          rule={[{ required : true, message : 'Please select Country first!' }]}
+
         />
         <AutoInputs
           label="City"
           list={cityData}
           handler={cityHandler}
           name="City"
+          rule={[{ required : true, message : 'Please select State first!' }]}
+
         />
       </div>
       <div className={Styles.fifthRow}>

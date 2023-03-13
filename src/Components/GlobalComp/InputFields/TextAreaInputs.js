@@ -5,7 +5,7 @@ const TextAreaInputs = (props) => {
   return (
    <>
     <Form.Item
-        name={props.label}
+        name={props.name}
         label={props.label}
         style={{width : '100%'}}
     >

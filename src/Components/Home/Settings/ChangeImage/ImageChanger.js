@@ -23,10 +23,7 @@ const ImageChanger = () => {
   const dispatch = useDispatch();
   const ImageData = useSelector((state)=> state.ImageChangeReducer)
   const { data: userDetail } = useQuery("UserMoreDetail", UserMoreDetail);
-  const { data: imageData, mutateAsync: imageDetail } = useMutation("ImageChange",ImageChange);
-  console.log(imageData,'apires')
-
-  console.log(ImageData,'data')
+  const { data: imageApi, mutateAsync: imageDetail } = useMutation("ImageChange",ImageChange);
 
   const [fileList, setFileList] = useState([]);
   const [detail, setDetail] = useState('');
@@ -70,22 +67,31 @@ const ImageChanger = () => {
     // setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
   };
 
-
-  const OkHandler = async() =>{
-   await imageDetail(ImageData)
+  // console.log(ImageData,'redux')
+  const OkHandler = () =>{
+    imageDetail(ImageData)
   }
 
+  // useEffect(()=>{
+  //   imageDetail(ImageData)
+  //   .then((res)=>{
+  //     console.log(res,'result')
+  //   })
+  //   .catch((err)=>{
+  //     console.log(err,'error')
+  //   })
+  // },[ImageData])
 
   return (
     <>
-      <ImgCrop grid rotate onModalOk={OkHandler} >
+      <ImgCrop grid rotate onModalOk={OkHandler}  >
         <Upload
           action=""
           listType="picture-card"
           fileList={fileList}
           onChange={onChange}
           onPreview={handlePreview}
-
+          
         >
           {fileList.length < 1 && "+ Upload"}
         </Upload>

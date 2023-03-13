@@ -28,6 +28,7 @@ const Gender = (props) => {
         label="Gender"
         style={{ width: "100%" }}
         rules={props.rule}
+        required
       >
         <Select
           placeholder="Gender"

@@ -122,7 +122,7 @@ const FirstStep = (props) => {
           name="Country"
           rule={[{
           required: true,
-          message: 'Please input your username!',
+          message: 'Please select!',
         }]}
         />
         <AutoInputs
@@ -132,7 +132,7 @@ const FirstStep = (props) => {
           name="State"
           rule={[{
           required: true,
-          message: 'Please input your username!',
+          message: 'Please select Country first!',
         }]}
         />
         <AutoInputs
@@ -142,7 +142,7 @@ const FirstStep = (props) => {
           name="City"
           rule={[{
           required: true,
-          message: 'Please input your username!',
+          message: 'Please select State first!',
         }]}
         />
       </div>

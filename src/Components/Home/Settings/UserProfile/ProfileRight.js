@@ -7,18 +7,31 @@ import PortraitIcon from "@mui/icons-material/Portrait";
 import BusinessIcon from "@mui/icons-material/Business";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
+import { DateFormatter } from "../../../../Utils/Helpers";
+import { Celebration } from "@mui/icons-material";
 
 const ProfileRight = (props) => {
   return (
     <>
       <div className={Styles.Bottom}>
+      {
+        props?.data?.AboutYourSelf ? 
+        <>
         <Divider className={Styles.dividers} orientation="left" plain>
           About Myself
         </Divider>
         <div className={Styles.myself}>
           <p>{props?.data?.AboutYourSelf}</p>
         </div>
-
+        </>
+        :
+        ""
+      }
+      {
+        props?.data?.ProfessionalInformation ? 
+        <>
         <Divider className={Styles.dividers} orientation="left" plain>
           Experience
         </Divider>
@@ -70,24 +83,89 @@ const ProfileRight = (props) => {
             </div>
           ))}
         </div>
-        <Divider className={Styles.dividers} orientation="left" plain>
-          About ISTCOSA
-        </Divider>
-        <div className={Styles.aboutIstcosa}>
-          <div>
-            <p>{props?.data?.ISTCAbout}</p>
+        </>
+        :
+        ""
+      }
+      {
+        props?.data?.ISTCAbout ? 
+        <>
+          <Divider className={Styles.dividers} orientation="left" plain>
+            About ISTCOSA
+          </Divider>
+          <div className={Styles.aboutIstcosa}>
+            <div>
+              <p>{props?.data?.ISTCAbout}</p>
+            </div>
           </div>
-        </div>
-
-        <Divider className={Styles.dividers} orientation="left" plain>
-          Comments ISTC
-        </Divider>
-        <div className={Styles.commentsIstcosa}>
-          <div>
-            <p>{props?.data?.Commnets}</p>
+        </>
+          :
+          ""
+      }
+      {
+        props?.data?.Comments ? 
+        <>
+          <Divider className={Styles.dividers} orientation="left" plain>
+            Comments ISTC
+          </Divider>
+          <div className={Styles.commentsIstcosa}>
+            <div>
+              <p>{props?.data?.Comments}</p>
+            </div>
           </div>
-        </div>
+        </>
+        :
+        ""
+      }
       </div>
+      {
+        props?.data?.AniversaryDate ? 
+        <>
+          <Divider className={Styles.dividers} orientation="left" plain>
+             Family Details
+          </Divider>
+          <div className={Styles.commentsIstcosa}>
+            <div>
+              {props?.data?.SpouseName ?
+              <div style={{ display :'flex', gap : '1rem' }} >
+                <DriveFileRenameOutlineIcon  fontSize="small" />
+                <p>
+                    {props?.data?.SpouseName}
+                  </p>
+                </div>
+                :
+                ""
+              }
+             
+              {DateFormatter(props?.data?.AniversaryDate)
+              ?
+              <div style={{ display :'flex', gap : '1rem' }} >
+                <Celebration fontSize="small"  />
+                <p>
+                  {DateFormatter(props?.data?.AniversaryDate)}
+                </p>
+              </div>
+              :
+              ""
+              }
+
+              {props?.data?.ChildDetails
+              ?
+                <div style={{ display :'flex', gap : '1rem' }} >
+                <FamilyRestroomIcon fontSize="small"  />
+                  <p>
+                    {props?.data?.ChildDetails}
+                  </p>
+                </div>
+                :
+                ""
+              }
+            </div>
+          </div>
+        </>
+        :
+        ""
+      }
     </>
   );
 };

@@ -19,15 +19,16 @@ export const Path ={
 
 // Dashboard
     // get
-        userMoreDetail : 'User/EditUserMoreDetails/1000',
+        userMoreDetail : 'User/EditUserMoreDetails/161100',
         companyList : 'Company',
-        userProfile : 'User/UserProfile/1000',
-        professionalDetails : 'User/UserProfessionalEdit/6301',
+        userProfile : 'User/UserProfile/161100',
+        professionalDetails : 'User/UserProfessionalEdit/161100',
+        PersonalDetails : 'User/UserPersonalEdit/161100',
  
     // put
-        userEditDetail : 'User/PutUserMoreDetails?userId=1000',
-        ProfessionalEdit : 'User/PutProfessionalInfo/1000',
-        changeImage : 'User/ChangeProfilePicture?userId=1000',
+        userEditDetail : 'User/PutUserMoreDetails?userId=161100',
+        ProfessionalEdit : 'User/PutProfessionalInfo/161100',
+        changeImage : 'User/ChangeProfilePicture?userId=161100',
 
 
     // post

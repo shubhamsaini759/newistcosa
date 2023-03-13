@@ -26,9 +26,9 @@ const FourthStep = (props) => {
 
 
   useEffect(()=>{
-    // if(sendData?.statusText === 'OK'){
-    //   navigate('/home/settings/userprofile',{state : {flag : true}});
-    // }
+    if(sendData?.statusText === 'OK'){
+      navigate('/home/settings/userprofile',{state : {flag : true}});
+    }
     console.log(sendData,'senddata')
 
   },[sendData])

@@ -12,6 +12,8 @@ import Inputs from "../GlobalComp/InputFields/Inputs";
 import PasswordInputs from "../GlobalComp/InputFields/PasswordInputs";
 import { useMutation } from "react-query";
 import { Logins } from "../../Utils/api/Login";
+import { LockOutlined } from "@mui/icons-material";
+import { UserOutlined } from "@ant-design/icons";
 
 const Login = () => {
   const [form] = Form.useForm();
@@ -126,8 +128,9 @@ const Login = () => {
               label="Enter Password"
               variant="outlined"
             /> */}
-            <Inputs label="Batch ID" name="Batch ID" handler={rollHandler} />
+            <Inputs label="Batch ID" name="Batch ID" prefix={<UserOutlined size='small' className="site-form-item-icon"  />} handler={rollHandler} />
             <PasswordInputs
+              prefix={<LockOutlined fontSize="small" className="site-form-item-icon" />}
               label="Password"
               name="Password"
               handler={passHandler}

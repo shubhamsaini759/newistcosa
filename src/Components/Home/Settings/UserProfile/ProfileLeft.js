@@ -12,11 +12,13 @@ import { EditOutlined } from "@mui/icons-material";
 import BusinessIcon from "@mui/icons-material/Business";
 import PortraitIcon from "@mui/icons-material/Portrait";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import { NavLink } from "react-router-dom";
 import { DateFormatter } from "../../../../Utils/Helpers";
 
 const ProfileLeft = (props) => {
   const [dob, setDob] = useState("");
+
 
   useEffect(() => {
     setDob( DateFormatter(props?.data?.DateOfBirth) )
@@ -110,18 +112,27 @@ const ProfileLeft = (props) => {
           ) : (
             ""
           )}
-          {props?.data?.CompanyName ? (
+          {props?.data?.ProfessionalInformation[0]?.Profession ? (
             <div>
-              <BusinessIcon fontSize="small" style={{ marginRight: 10 }} />
-              <span>{props?.data?.CompanyName}</span>
+              <PortraitIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{props?.data?.ProfessionalInformation[0]?.Profession}</span>
             </div>
           ) : (
             ""
           )}
-          {props?.data?.Profession ? (
+          {props?.data?.ProfessionalInformation[0]?.CompanyName ? (
             <div>
-              <PortraitIcon fontSize="small" style={{ marginRight: 10 }} />
-              <span>{props?.data?.Profession}</span>
+              <BusinessIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{props?.data?.ProfessionalInformation[0]?.CompanyName}</span>
+            </div>
+          ) : (
+            ""
+          )}
+         
+          {props?.data?.ProfessionalInformation[0]?.Designation ? (
+            <div>
+              <BusinessCenterIcon fontSize="small" style={{ marginRight: 10 }} />
+              <span>{props?.data?.ProfessionalInformation[0]?.Designation}</span>
             </div>
           ) : (
             ""

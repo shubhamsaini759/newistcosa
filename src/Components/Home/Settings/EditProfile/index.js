@@ -12,11 +12,13 @@ import AddCompModal from "./AddCompModal";
 import PersonalInfo from "./PersonalInfo";
 import { UserMoreDetail } from "../../../../Utils/api/UserMoreDetail";
 import { useQuery } from "react-query";
+import { PersonalDetails } from "../../../../Utils/api/UserMoreDetail/PersonalDetails";
 const { Panel } = Collapse;
 
 const EditProfile = () => {
 
-    const { data: userData } = useQuery('UserMoreDetail',UserMoreDetail)
+    const {data : personalDataApi } = useQuery('PersonalDetails',PersonalDetails)
+
 
   const [addCompany, setAddCompany] = useState(false);
 
@@ -31,12 +33,11 @@ const EditProfile = () => {
     setAddCompany(e);
   };
 
-
     return(
         <div className={Styles.collapseDetails}>
             <Collapse size="large">
                 <Panel header="Personal Information" key="1">
-                    <PersonalInfo userData={userData} />
+                    <PersonalInfo userData={personalDataApi} />
                 </Panel>
             </Collapse>
             

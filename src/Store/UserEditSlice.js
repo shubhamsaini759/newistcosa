@@ -35,7 +35,7 @@ export const UserEditSlice = createSlice({
     ISTCFriendRoommate: "",
     ISTCAbout: "",
     Comments: "",
-    SearchKeyword: "",
+    SearchKeywords: "",
     UserID: "",
     UpdatedDate: null,
     CreatedDate: null,
@@ -139,7 +139,7 @@ export const UserEditSlice = createSlice({
       state.Comments = payload.comments;
     },
     keywords(state, { payload }) {
-      state.SearchKeyword = payload.keywords;
+      state.SearchKeywords = payload.keywords;
     },
   
     allData(state, { payload }) {

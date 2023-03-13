@@ -11,6 +11,7 @@ const Inputs = (props) => {
         rules={props.rule}
       >
         <Input
+          prefix={props.prefix}
           placeholder={props.label}
           disabled = {props.disabled}
           value={props.value}
