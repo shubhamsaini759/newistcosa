@@ -418,7 +418,7 @@ const PersonalInfo = (props) => {
       )}
 
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button type="primary" htmlType="submit" onClick={submitHandler}>
+        <Button type="primary" htmlType="submit"  onClick={submitHandler}>
           Submit
         </Button>
       </div>
