@@ -7,7 +7,7 @@ import { loginActions } from "../../Store";
 import api from "../../Utils/api";
 import { useNavigate } from "react-router-dom";
 import { Path } from "../../Utils/api/endPoints";
-import { Form } from "antd";
+import { Divider, Form } from "antd";
 import Inputs from "../GlobalComp/InputFields/Inputs";
 import PasswordInputs from "../GlobalComp/InputFields/PasswordInputs";
 import { useMutation } from "react-query";
@@ -128,9 +128,9 @@ const Login = () => {
               label="Enter Password"
               variant="outlined"
             /> */}
-            <Inputs label="Batch ID" name="Batch ID" prefix={<UserOutlined size='small' className="site-form-item-icon"  />} handler={rollHandler} />
+            <Inputs label="Roll Number" name="Batch ID" prefix={<UserOutlined size='small' style={{color :"#d9d9d9" }}  className="site-form-item-icon"  />} handler={rollHandler} />
             <PasswordInputs
-              prefix={<LockOutlined fontSize="small" className="site-form-item-icon" />}
+              prefix={<LockOutlined fontSize="small" style={{color :"#d9d9d9" }} className="site-form-item-icon" />}
               label="Password"
               name="Password"
               handler={passHandler}

@@ -12,6 +12,7 @@ const Dates = (props) => {
   return (
     <>
       <Form.Item
+        name={props.name}
         label={props.label}
         rules={props.rules}
         style={{ width: "100%" }}
@@ -22,6 +23,7 @@ const Dates = (props) => {
           value={!!props.value ? dayjs(props.value, dateFormat) : ""}
           onChange={(e) => props.handler(e)}
           format={dateFormat}
+
           disabledDate={
             props?.showTillCurrent ? disabledDate : props.disabledYear
           }

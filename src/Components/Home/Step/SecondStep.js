@@ -256,12 +256,7 @@ const SecondStep = (props) => {
               handler={toHandler}
               showTillCurrent
               fromDate={fromDate}
-              rules={[
-                {
-                  required: true,
-                  message: "Please Select!",
-                },
-              ]}
+              
             />
           </div>
           <div className={Styles.fourthRow}>

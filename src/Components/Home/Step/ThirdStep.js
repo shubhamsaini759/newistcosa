@@ -23,6 +23,7 @@ const ThirdStep = (props) => {
     MaritalStatus: "",
     SpouseName: "",
     AniversaryDate: "",
+    DateOfBirth : '',
     ChildDetails: "",
   };
 
@@ -122,6 +123,12 @@ const ThirdStep = (props) => {
           name="DateOfBirth"
           value={dob}
           handler={dobHandler}
+          rules={[
+                {
+                  required: true,
+                  message: "Please Select!",
+                },
+              ]}
         />
         <NumberInputs
           label="Whatsapp Number"

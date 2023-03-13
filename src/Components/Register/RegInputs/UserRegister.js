@@ -529,6 +529,8 @@ const UserRegister = () => {
           value={dob}
           handler={dobHandler}
           disabledYear={disabledYear}
+          required={true}
+          
           rules={[
             {
               required: true,
