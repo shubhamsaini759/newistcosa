@@ -9,3 +9,11 @@ export const DateFormatter = (date) => {
   }
   return null;
 };
+
+
+export const disabledYear = (current) => {
+  const year = new Date();
+  const final = year.getFullYear();
+  return current.year() > final - 18;
+};
+

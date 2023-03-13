@@ -290,7 +290,7 @@ import Styles from "../../../Styles/Register/RegFields.module.css";
 import { BatchList } from "../../../Utils/api/BatchList";
 import { CountryList } from "../../../Utils/api/CountryList";
 import { RegRollNumber } from "../../../Utils/api/RollNumber";
-import { DateFormatter } from "../../../Utils/Helpers";
+import { DateFormatter, disabledYear } from "../../../Utils/Helpers";
 import Test from "../../GlobalComp/test";
 
 import AutoInputs from "../../GlobalComp/InputFields/AutoInputs";
@@ -461,11 +461,7 @@ const UserRegister = () => {
     }
   }, [register]);
 
-  const disabledYear = (current) => {
-    const year = new Date();
-    const final = year.getFullYear();
-    return current.year() > final - 18;
-  };
+
 
   return (
     <Form

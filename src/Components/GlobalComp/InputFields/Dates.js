@@ -12,7 +12,6 @@ const Dates = (props) => {
   return (
     <>
       <Form.Item
-        name={props.name}
         label={props.label}
         rules={props.rules}
         style={{ width: "100%" }}

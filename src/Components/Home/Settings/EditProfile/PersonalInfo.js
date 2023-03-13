@@ -8,7 +8,7 @@ import { CityList } from "../../../../Utils/api/CityList";
 import { CountryList } from "../../../../Utils/api/CountryList";
 import { StateList } from "../../../../Utils/api/StateList";
 import { userEditDetail } from "../../../../Utils/api/UserMoreDetail/UserEditDetail";
-import { DateFormatter } from "../../../../Utils/Helpers";
+import { DateFormatter, disabledYear } from "../../../../Utils/Helpers";
 import AutoInputs from "../../../GlobalComp/InputFields/AutoInputs";
 import Dates from "../../../GlobalComp/InputFields/Dates";
 import EmailInputs from "../../../GlobalComp/InputFields/EmailInputs";
@@ -78,8 +78,6 @@ const PersonalInfo = (props) => {
     "CityList",
     CityList
   );
-
-
 
 
 
@@ -292,6 +290,7 @@ const PersonalInfo = (props) => {
           name="DateOfBirth"
           label="Date of Birth"
           rules={[{ required: true, message: "Please select your DOB" }]}
+          disabledYear={disabledYear}
           value={dob}
           handler={dobHandler}
         />
